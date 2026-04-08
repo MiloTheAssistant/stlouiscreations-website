@@ -15,7 +15,7 @@ export const products: Product[] = [
     slug: "custom-engraved-tumbler-20oz",
     name: "Custom Engraved Tumbler - 20oz",
     price: 2499,
-    stripePriceId: "price_tumbler_20oz",
+    stripePriceId: "price_1TK3RPHeg8aT6eIyUe107wHf",
     images: ["/images/shop/tumbler-20oz.jpg"],
     description:
       "Premium 20oz stainless steel tumbler with custom laser engraving. Perfect for corporate gifts, team events, and branded merchandise.",
@@ -33,7 +33,7 @@ export const products: Product[] = [
     slug: "custom-engraved-tumbler-30oz",
     name: "Custom Engraved Tumbler - 30oz",
     price: 2999,
-    stripePriceId: "price_tumbler_30oz",
+    stripePriceId: "price_1TK3RRHeg8aT6eIy2cfqQZfI",
     images: ["/images/shop/tumbler-30oz.jpg"],
     description:
       "Large 30oz stainless steel tumbler with precision laser engraving. Ideal for bulk orders and corporate gifting programs.",
@@ -51,7 +51,7 @@ export const products: Product[] = [
     slug: "engraved-cutting-board",
     name: "Engraved Bamboo Cutting Board",
     price: 3499,
-    stripePriceId: "price_cutting_board",
+    stripePriceId: "price_1TK3RSHeg8aT6eIyHnybtZiW",
     images: ["/images/shop/cutting-board.jpg"],
     description:
       "Beautiful bamboo cutting board with custom laser engraving. A perfect wedding gift, housewarming present, or corporate award.",
@@ -69,7 +69,7 @@ export const products: Product[] = [
     slug: "slate-coaster-set",
     name: "Custom Slate Coaster Set (4pc)",
     price: 2799,
-    stripePriceId: "price_slate_coasters",
+    stripePriceId: "price_1TK3RUHeg8aT6eIyV8jXPSMZ",
     images: ["/images/shop/slate-coasters.jpg"],
     description:
       "Set of 4 natural slate coasters with custom laser engraving. Great for restaurants, bars, and personalized home decor.",
@@ -86,7 +86,7 @@ export const products: Product[] = [
     slug: "crystal-award-tower",
     name: "Crystal Tower Award",
     price: 4999,
-    stripePriceId: "price_crystal_tower",
+    stripePriceId: "price_1TK3RVHeg8aT6eIyiWShRYs5",
     images: ["/images/shop/crystal-tower.jpg"],
     description:
       "Elegant crystal tower award with 3D laser engraving. Perfect for sports tournaments, corporate recognition, and achievement awards.",
@@ -104,7 +104,7 @@ export const products: Product[] = [
     slug: "acrylic-plaque",
     name: "Custom Acrylic Plaque",
     price: 3299,
-    stripePriceId: "price_acrylic_plaque",
+    stripePriceId: "price_1TK3RWHeg8aT6eIy5rlN8yGA",
     images: ["/images/shop/acrylic-plaque.jpg"],
     description:
       "Modern acrylic plaque with precision laser engraving. Ideal for employee recognition, sports awards, and milestone celebrations.",
@@ -121,7 +121,7 @@ export const products: Product[] = [
     slug: "leather-journal",
     name: "Engraved Leather Journal",
     price: 2999,
-    stripePriceId: "price_leather_journal",
+    stripePriceId: "price_1TK3RXHeg8aT6eIycawYXKNO",
     images: ["/images/shop/leather-journal.jpg"],
     description:
       "Premium leather journal with custom laser engraving on the cover. Perfect for executive gifts and corporate branding.",
@@ -138,7 +138,7 @@ export const products: Product[] = [
     slug: "custom-water-bottle",
     name: "Custom Water Bottle - Fundraiser",
     price: 1499,
-    stripePriceId: "price_water_bottle",
+    stripePriceId: "price_1TK3RXHeg8aT6eIyl1GHG1cB",
     images: ["/images/shop/water-bottle.jpg"],
     description:
       "Affordable custom water bottles perfect for school fundraisers, team sports, and charity events. Bulk pricing available.",
