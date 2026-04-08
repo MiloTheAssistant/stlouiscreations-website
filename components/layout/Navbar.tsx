@@ -4,10 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { navLinks } from "@/lib/constants";
+import { useCart } from "@/lib/cart-context";
 import MobileMenu from "./MobileMenu";
+import CartDrawer from "@/components/shop/CartDrawer";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const { count } = useCart();
   const { scrollY } = useScroll();
   const bgOpacity = useTransform(scrollY, [0, 80], [0, 1]);
   const borderOpacity = useTransform(scrollY, [0, 80], [0, 0.1]);
@@ -62,7 +66,11 @@ export default function Navbar() {
             </Link>
 
             {/* Cart Icon */}
-            <Link href="/shop" className="relative text-text hover:text-primary transition-colors">
+            <button
+              onClick={() => setCartOpen(true)}
+              className="relative text-text hover:text-primary transition-colors"
+              aria-label="Open cart"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -77,7 +85,16 @@ export default function Navbar() {
                   d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
                 />
               </svg>
-            </Link>
+              {count > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-2 -right-2 w-5 h-5 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center"
+                >
+                  {count}
+                </motion.span>
+              )}
+            </button>
 
             {/* Mobile Toggle */}
             <button
@@ -113,6 +130,7 @@ export default function Navbar() {
       </motion.header>
 
       <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );
 }
