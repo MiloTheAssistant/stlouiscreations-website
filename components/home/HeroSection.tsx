@@ -32,7 +32,7 @@ export default function HeroSection() {
         <AnimatedHeading
           text="Engrave Your Imagination"
           as="h1"
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95]"
+          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05]"
           delay={0.3}
         />
 

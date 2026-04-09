@@ -25,7 +25,10 @@ export default function AnimatedHeading({
   return (
     <Tag className={className}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden">
+        <span
+          key={i}
+          className="inline-block overflow-hidden align-bottom pb-[0.18em]"
+        >
           <motion.span
             className="inline-block"
             initial={{ y: "100%" }}
