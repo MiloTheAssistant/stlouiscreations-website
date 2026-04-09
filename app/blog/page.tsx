@@ -3,6 +3,7 @@ import Link from "next/link";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
+import { getAllPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -10,34 +11,9 @@ export const metadata: Metadata = {
     "Tips, guides, and insights on laser engraving, custom products, and business gifting from St. Louis Creations.",
 };
 
-const posts = [
-  {
-    slug: "custom-tumblers-bulk-orders",
-    title: "Why Custom Tumblers Are the #1 Corporate Gift",
-    excerpt:
-      "Discover why laser-engraved tumblers have become the go-to choice for corporate gifting, team events, and branded merchandise.",
-    date: "2026-03-15",
-    readTime: "5 min",
-  },
-  {
-    slug: "laser-engraving-materials-guide",
-    title: "The Ultimate Guide to Laser Engraving Materials",
-    excerpt:
-      "From acrylic to stone — learn which materials work best for different laser engraving applications and how to choose the right one.",
-    date: "2026-03-01",
-    readTime: "8 min",
-  },
-  {
-    slug: "sports-awards-season",
-    title: "Getting Ready for Awards Season: A Planning Guide",
-    excerpt:
-      "Plan ahead for your league or tournament awards. Tips on bulk ordering, customization options, and turnaround times.",
-    date: "2026-02-15",
-    readTime: "6 min",
-  },
-];
-
 export default function BlogPage() {
+  const posts = getAllPosts();
+
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
@@ -55,7 +31,7 @@ export default function BlogPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post, i) => (
-            <FadeUpSection key={post.slug} delay={i * 0.1}>
+            <FadeUpSection key={post.slug} delay={i * 0.05}>
               <Link href={`/blog/${post.slug}`} className="group block h-full">
                 <div className="bg-surface border border-white/5 p-8 hover:border-primary/20 transition-all duration-300 h-full flex flex-col">
                   <div className="flex items-center gap-4 text-muted text-xs font-display uppercase tracking-wider mb-4">

@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent, useReducedMotion } from "framer-motion";
 import { materials } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
+import MaterialVisual from "./MaterialVisual";
 
 export default function MaterialsShowcase() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -43,27 +44,32 @@ export default function MaterialsShowcase() {
               Any Surface. Every Detail.
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {materials.map((mat) => (
               <div
                 key={mat.name}
-                className="bg-surface border border-white/5 p-6"
+                className="bg-surface border border-white/5 overflow-hidden"
               >
-                <h3 className="font-display text-lg font-bold text-primary mb-2">
-                  {mat.name}
-                </h3>
-                <p className="text-muted text-xs leading-relaxed mb-3">
-                  {mat.description}
-                </p>
-                <div className="flex flex-wrap gap-1">
-                  {mat.uses.map((use) => (
-                    <span
-                      key={use}
-                      className="text-[10px] px-2 py-0.5 bg-white/5 text-muted rounded-sm"
-                    >
-                      {use}
-                    </span>
-                  ))}
+                <div className="relative aspect-[16/10]">
+                  <MaterialVisual material={mat.name} />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-bold text-primary mb-2">
+                    {mat.name}
+                  </h3>
+                  <p className="text-muted text-xs leading-relaxed mb-3">
+                    {mat.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1">
+                    {mat.uses.map((use) => (
+                      <span
+                        key={use}
+                        className="text-[10px] px-2 py-0.5 bg-white/5 text-muted rounded-sm"
+                      >
+                        {use}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -95,23 +101,14 @@ export default function MaterialsShowcase() {
               {materials.map((mat, i) => (
                 <motion.div
                   key={mat.name}
-                  className="absolute inset-0 flex items-center justify-center"
+                  className="absolute inset-0"
                   animate={{
                     opacity: activeIndex === i ? 1 : 0,
                     scale: activeIndex === i ? 1 : 0.95,
                   }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                 >
-                  <div className="text-center p-12">
-                    <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="font-display text-3xl font-bold text-primary">
-                        {mat.name[0]}
-                      </span>
-                    </div>
-                    <p className="text-muted text-sm">
-                      Material Preview
-                    </p>
-                  </div>
+                  <MaterialVisual material={mat.name} />
                 </motion.div>
               ))}
             </div>

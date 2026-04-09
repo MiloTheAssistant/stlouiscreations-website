@@ -18,7 +18,7 @@ const config: Config = {
         muted: "#888888",
       },
       fontFamily: {
-        display: ["var(--font-space-grotesk)", "sans-serif"],
+        display: ["var(--font-archivo)", "sans-serif"],
         body: ["var(--font-inter)", "sans-serif"],
       },
       boxShadow: {
