@@ -1,9 +1,22 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import GlowButton from "@/components/ui/GlowButton";
 import { materials } from "@/lib/constants";
+
+// Materials with real photograph thumbnails in /public/images/materials/
+const MATERIALS_WITH_IMAGES = new Set([
+  "acrylic",
+  "wood",
+  "glass",
+  "metal",
+  "leather",
+  "stone",
+  "fabric",
+  "rubber",
+]);
 
 export const metadata: Metadata = {
   title: "Services",
@@ -123,19 +136,35 @@ export default function ServicesPage() {
                       Compatible Materials
                     </h3>
                     <div className="grid grid-cols-2 gap-3">
-                      {service.materials.map((mat) => (
-                        <div
-                          key={mat}
-                          className="flex items-center gap-3 p-3 bg-background border border-white/5"
-                        >
-                          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <span className="text-primary text-xs font-bold">
-                              {mat[0]}
-                            </span>
+                      {service.materials.map((mat) => {
+                        const slug = mat.toLowerCase();
+                        const hasImage = MATERIALS_WITH_IMAGES.has(slug);
+                        return (
+                          <div
+                            key={mat}
+                            className="group flex items-center gap-3 p-2 bg-background border border-white/5 hover:border-primary/30 transition-colors"
+                          >
+                            {hasImage ? (
+                              <div className="relative w-12 h-12 flex-shrink-0 overflow-hidden">
+                                <Image
+                                  src={`/images/materials/${slug}.png`}
+                                  alt={`${mat} material sample`}
+                                  fill
+                                  sizes="48px"
+                                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                />
+                              </div>
+                            ) : (
+                              <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                <span className="text-primary text-sm font-bold">
+                                  {mat[0]}
+                                </span>
+                              </div>
+                            )}
+                            <span className="text-sm">{mat}</span>
                           </div>
-                          <span className="text-sm">{mat}</span>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -156,14 +185,27 @@ export default function ServicesPage() {
             {materials.map((mat) => (
               <div
                 key={mat.name}
-                className="bg-surface border border-white/5 p-6 hover:border-primary/30 transition-colors"
+                className="group relative overflow-hidden border border-white/5 hover:border-primary/40 transition-colors aspect-[4/5]"
               >
-                <h3 className="font-display font-bold text-primary mb-2">
-                  {mat.name}
-                </h3>
-                <p className="text-muted text-xs leading-relaxed">
-                  {mat.description}
-                </p>
+                {/* Background photograph */}
+                <Image
+                  src={`/images/materials/${mat.name.toLowerCase()}.png`}
+                  alt={`${mat.name} material sample`}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover scale-110 group-hover:scale-125 transition-transform duration-700"
+                />
+                {/* Gradient overlay for legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/10" />
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-end p-5">
+                  <h3 className="font-display font-bold text-primary mb-2 text-lg">
+                    {mat.name}
+                  </h3>
+                  <p className="text-muted text-xs leading-relaxed">
+                    {mat.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

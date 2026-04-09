@@ -8,10 +8,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <h3 className="font-display text-xl font-bold text-text tracking-tight mb-4">
-              St. Louis<span className="text-primary">.</span> Creations
-            </h3>
-            <p className="text-muted text-sm leading-relaxed max-w-xs">
+            <Link href="/" aria-label={`${siteConfig.name} home`} className="inline-block">
+              <h3 className="font-display text-2xl font-bold text-text tracking-tight leading-none">
+                St. Louis<span className="text-primary">.</span> Creations
+              </h3>
+              <p className="font-body italic text-sm text-muted mt-2 tracking-wide">
+                &ldquo;{siteConfig.tagline}&rdquo;
+              </p>
+            </Link>
+            <p className="text-muted text-sm leading-relaxed max-w-xs mt-5">
               {siteConfig.description}
             </p>
             <div className="flex gap-4 mt-6">

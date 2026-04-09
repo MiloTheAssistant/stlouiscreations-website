@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { navLinks } from "@/lib/constants";
+import { navLinks, siteConfig } from "@/lib/constants";
 import { useCart } from "@/lib/cart-context";
 import MobileMenu from "./MobileMenu";
 import CartDrawer from "@/components/shop/CartDrawer";
@@ -32,13 +32,17 @@ export default function Navbar() {
         }}
       >
         <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-display text-xl font-bold text-text tracking-tight">
-              St. Louis<span className="text-primary">.</span>
+          {/* Wordmark + Tagline */}
+          <Link
+            href="/"
+            className="flex flex-col leading-none"
+            aria-label={`${siteConfig.name} home`}
+          >
+            <span className="font-display text-xl md:text-2xl font-bold text-text tracking-tight">
+              St. Louis<span className="text-primary">.</span> Creations
             </span>
-            <span className="font-display text-xl font-bold text-text tracking-tight">
-              Creations
+            <span className="hidden sm:block font-body italic text-[11px] md:text-xs text-muted mt-1 tracking-wide">
+              &ldquo;{siteConfig.tagline}&rdquo;
             </span>
           </Link>
 
