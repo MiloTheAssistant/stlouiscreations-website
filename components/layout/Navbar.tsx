@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { navLinks } from "@/lib/constants";
 import { useCart } from "@/lib/cart-context";
@@ -34,19 +33,13 @@ export default function Navbar() {
       >
         <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center"
-            aria-label="St. Louis Creations home"
-          >
-            <Image
-              src="/brand/logo.png"
-              alt="St. Louis Creations"
-              width={200}
-              height={200}
-              priority
-              className="h-14 w-auto"
-            />
+          <Link href="/" className="flex items-center gap-2">
+            <span className="font-display text-xl font-bold text-text tracking-tight">
+              St. Louis<span className="text-primary">.</span>
+            </span>
+            <span className="font-display text-xl font-bold text-text tracking-tight">
+              Creations
+            </span>
           </Link>
 
           {/* Desktop Nav */}

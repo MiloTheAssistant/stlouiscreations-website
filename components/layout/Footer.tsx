@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { navLinks, siteConfig, socialLinks } from "@/lib/constants";
 
 export default function Footer() {
@@ -9,15 +8,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-block mb-5" aria-label="St. Louis Creations home">
-              <Image
-                src="/brand/logo.png"
-                alt="St. Louis Creations"
-                width={200}
-                height={200}
-                className="h-24 w-auto"
-              />
-            </Link>
+            <h3 className="font-display text-xl font-bold text-text tracking-tight mb-4">
+              St. Louis<span className="text-primary">.</span> Creations
+            </h3>
             <p className="text-muted text-sm leading-relaxed max-w-xs">
               {siteConfig.description}
             </p>

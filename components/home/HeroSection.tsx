@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import GlowButton from "@/components/ui/GlowButton";
@@ -16,6 +17,42 @@ export default function HeroSection() {
 
       {/* Orange radial glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
+
+      {/* Logo watermark — large, low-opacity, slow breathing animation */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+      >
+        <motion.div
+          animate={{ scale: [1, 1.03, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="relative w-[min(90vw,900px)] aspect-square"
+          style={{
+            mixBlendMode: "screen",
+            filter: "drop-shadow(0 0 80px rgba(255,107,0,0.15))",
+          }}
+        >
+          <Image
+            src="/brand/logo.png"
+            alt=""
+            fill
+            priority
+            className="object-contain opacity-[0.10]"
+            sizes="(max-width: 768px) 90vw, 900px"
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Soft vignette over logo to keep the heading readable */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(10,10,10,0) 0%, rgba(10,10,10,0.35) 45%, rgba(10,10,10,0.85) 80%)",
+        }}
+      />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Eyebrow */}
