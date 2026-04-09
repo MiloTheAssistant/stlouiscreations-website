@@ -30,6 +30,21 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "St. Louis Creations",
     locale: "en_US",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "St. Louis Creations — 3D Design, Printing, Laser Engraving",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "St. Louis Creations",
+    description:
+      "Custom laser engraving, cutting & 3D printing for businesses that demand precision at scale.",
+    images: ["/og-image.png"],
   },
 };
 
