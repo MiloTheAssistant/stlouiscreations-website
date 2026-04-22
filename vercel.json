@@ -1,0 +1,257 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/collections/:handle",
+      "destination": "/shop",
+      "permanent": true
+    },
+
+    {
+      "source": "/products/10-tips-to-buy-use-a-laser-in-your-soho-business",
+      "destination": "/shop/10-tips-to-buy-use-a-laser-in-your-soho-business",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt075",
+      "destination": "/shop/stllc-slt075",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt076",
+      "destination": "/shop/stllc-slt076",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt081",
+      "destination": "/shop/stllc-slt081",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt078",
+      "destination": "/shop/stllc-slt078",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt001",
+      "destination": "/shop/stllc-slt001",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt077",
+      "destination": "/shop/stllc-slt077",
+      "permanent": true
+    },
+    {
+      "source": "/products/slate-coaster-serving-board-set",
+      "destination": "/shop/slate-coaster-serving-board-set",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt061",
+      "destination": "/shop/stllc-slt061",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt071",
+      "destination": "/shop/stllc-slt071",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt030",
+      "destination": "/shop/stllc-slt030",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt042",
+      "destination": "/shop/stllc-slt042",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt078r",
+      "destination": "/shop/stllc-slt078r",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt080",
+      "destination": "/shop/stllc-slt080",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt079",
+      "destination": "/shop/stllc-slt079",
+      "permanent": true
+    },
+    {
+      "source": "/products/stllc-slt051",
+      "destination": "/shop/stllc-slt051",
+      "permanent": true
+    },
+    {
+      "source": "/products/slate-coaster-square-round",
+      "destination": "/shop/slate-coaster-square-round",
+      "permanent": true
+    },
+
+    {
+      "source": "/blogs/news/why-choose-a-customized-wood-and-slate-cheese-board",
+      "destination": "/blog/why-choose-a-customized-wood-and-slate-cheese-board",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/personalized-laser-engraved-slate-coasters-the-perfect-groomsman-gift",
+      "destination": "/blog/personalized-laser-engraved-slate-coasters-the-perfect-groomsman-gift",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/uv-lasers",
+      "destination": "/blog/uv-lasers",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/what-is-a-diode-laser",
+      "destination": "/blog/what-is-a-diode-laser",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/what-is-a-co2-laser",
+      "destination": "/blog/what-is-a-co2-laser",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/what-is-a-mopa-fiber-laser",
+      "destination": "/blog/what-is-a-mopa-fiber-laser",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/top-personalized-pet-gifts",
+      "destination": "/blog/top-personalized-pet-gifts",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/top-8-personalized-wedding-gifts",
+      "destination": "/blog/top-8-personalized-wedding-gifts",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/laser-engraving-safety",
+      "destination": "/blog/laser-engraving-safety",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/the-benefits-of-laser-engraving-over-traditional-engraving-methods",
+      "destination": "/blog/the-benefits-of-laser-engraving-over-traditional-engraving-methods",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/10-creative-ways-to-use-laser-engraving-in-your-business",
+      "destination": "/blog/10-creative-ways-to-use-laser-engraving-in-your-business",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/how-to-choose-the-right-laser-engraver-for-your-business",
+      "destination": "/blog/how-to-choose-the-right-laser-engraver-for-your-business",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/a-beginners-guide-to-laser-engraving",
+      "destination": "/blog/a-beginners-guide-to-laser-engraving",
+      "permanent": true
+    },
+
+    {
+      "source": "/pages/about-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/pages/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/pages/st-louis-laser-creations",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/pages/engraving-materials",
+      "destination": "/materials",
+      "permanent": true
+    },
+    {
+      "source": "/pages/catalogs",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/pages/fundraisers",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/pages/fundraiser-water-bottles-accessories",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/pages/billing-terms-and-conditions",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/pages/data-sale-opt-out",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/pages/pick-up-local-delivery",
+      "destination": "/shipping",
+      "permanent": true
+    },
+    {
+      "source": "/pages/acrylic-material-types",
+      "destination": "/materials/acrylic",
+      "permanent": true
+    },
+    {
+      "source": "/pages/wood-material",
+      "destination": "/materials/wood",
+      "permanent": true
+    },
+    {
+      "source": "/pages/glass-material",
+      "destination": "/materials/glass",
+      "permanent": true
+    },
+    {
+      "source": "/pages/metal-material",
+      "destination": "/materials/metal",
+      "permanent": true
+    },
+    {
+      "source": "/pages/rubber",
+      "destination": "/materials/rubber",
+      "permanent": true
+    },
+    {
+      "source": "/pages/fabric-material",
+      "destination": "/materials/fabric",
+      "permanent": true
+    },
+    {
+      "source": "/pages/leather-material",
+      "destination": "/materials/leather",
+      "permanent": true
+    },
+    {
+      "source": "/pages/stone-slate-tile",
+      "destination": "/materials/stone-slate-tile",
+      "permanent": true
+    }
+  ]
+}
