@@ -7,7 +7,7 @@ import GlowButton from "@/components/ui/GlowButton";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "The terms and conditions governing your use of the St. Louis Laser Creations website and services.",
+    "The terms and conditions governing your use of the St. Louis Creations website and services.",
 };
 
 export default function TermsPage() {
@@ -119,7 +119,7 @@ export default function TermsPage() {
           </h2>
           <p className="text-muted leading-relaxed">
             All content on this site — text, graphics, logos, images, and more —
-            is the property of St. Louis Laser Creations or our content
+            is the property of St. Louis Creations or our content
             suppliers. It&apos;s protected by copyright and other intellectual
             property laws.
           </p>
@@ -153,7 +153,7 @@ export default function TermsPage() {
             Limitation of Liability
           </h2>
           <p className="text-muted leading-relaxed">
-            To the fullest extent allowed by law, St. Louis Laser Creations is
+            To the fullest extent allowed by law, St. Louis Creations is
             not liable for any indirect, incidental, special, consequential, or
             punitive damages arising from your use of the site or our products.
           </p>

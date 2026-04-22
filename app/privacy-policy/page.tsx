@@ -7,7 +7,7 @@ import GlowButton from "@/components/ui/GlowButton";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How St. Louis Laser Creations collects, uses, and protects your personal information.",
+    "How St. Louis Creations collects, uses, and protects your personal information.",
 };
 
 export default function PrivacyPolicyPage() {

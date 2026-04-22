@@ -7,7 +7,7 @@ import GlowButton from "@/components/ui/GlowButton";
 export const metadata: Metadata = {
   title: "Shipping Policy",
   description:
-    "Shipping details for St. Louis Laser Creations — where we ship from, carriers, transit times, and more.",
+    "Shipping details for St. Louis Creations — where we ship from, carriers, transit times, and more.",
 };
 
 const carriers = [

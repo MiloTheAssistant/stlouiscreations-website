@@ -7,7 +7,7 @@ import GlowButton from "@/components/ui/GlowButton";
 export const metadata: Metadata = {
   title: "Refund & Return Policy",
   description:
-    "Our return window, refund process, and how we handle damages and issues for St. Louis Laser Creations orders.",
+    "Our return window, refund process, and how we handle damages and issues for St. Louis Creations orders.",
 };
 
 export default function RefundPolicyPage() {
