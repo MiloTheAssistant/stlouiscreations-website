@@ -1,3 +1,5 @@
+import { polarCamelProducts } from "./polar-camel-products";
+
 export interface Product {
   slug: string;
   name: string;
@@ -7,6 +9,7 @@ export interface Product {
   description: string;
   details: string[];
   category: string;
+  subcategory?: string;
   tags?: string[];
   supplier?: string;
   supplierSku?: string;
@@ -21,7 +24,26 @@ export interface Product {
   status?: string;
 }
 
-export const products: Product[] = [
+export {
+  drinkwareSubcategoryGroups,
+  drinkwareSubcategories,
+  polarCamelSubcategoryGroups,
+  polarCamelSubcategories,
+} from "./polar-camel-products";
+
+const featuredProductSlugs = new Set([
+  "polar-camel-ltm7201-stainless-steel-20oz-ringneck-tumbler-standard-lid",
+  "polar-camel-ltm7217-yellow-20-oz-polar-camel-ringneck-tumbler-with-standard-lid",
+  "polar-camel-dcs301s-750-ml-polar-camel-square-decanter-set-with-4-11-oz-square-rocks-glasses",
+  "polar-camel-lwc101-black-polar-camel-powder-coated-wine-chiller",
+  "polar-camel-lsb202-white-1-1-4-quart-polar-camel-hot-cold-serving-bowl-with-lid",
+  "airflyte-p5473-rosewood-gold-sunburst-plaque",
+  "stllc-slt075",
+  "stllc-slt001",
+]);
+
+const baseProducts: Product[] = [
+  ...polarCamelProducts,
   {
     slug: "airflyte-p5473-rosewood-gold-sunburst-plaque",
     name: "Airflyte P5473 Rosewood Gold Sunburst Plaque",
@@ -286,9 +308,26 @@ export const products: Product[] = [
   },
 ];
 
+export const products: Product[] = baseProducts.map((product) => {
+  if (!featuredProductSlugs.has(product.slug)) {
+    return product;
+  }
+
+  const tags = product.tags?.includes("Featured")
+    ? product.tags
+    : ["Featured", ...(product.tags ?? [])];
+
+  return {
+    ...product,
+    tags,
+    featured: true,
+  };
+});
+
 export const categories = [
-  { slug: "all", label: "All Products" },
   { slug: "drinkware", label: "Drinkware" },
+  { slug: "glassware", label: "Glassware" },
+  { slug: "home-goods", label: "Home Goods" },
   { slug: "wood-slate", label: "Wood & Slate" },
   { slug: "awards", label: "Awards" },
   { slug: "corporate", label: "Corporate" },
@@ -307,5 +346,6 @@ export function getProductsByCategory(category: string): Product[] {
 }
 
 export function getFeaturedProducts(): Product[] {
-  return products.filter((p) => p.featured);
+  return products.filter((p) => p.tags?.includes("Featured"));
 }
+

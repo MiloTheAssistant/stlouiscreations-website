@@ -37,14 +37,14 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           <FadeUpSection>
-            <div className="aspect-square bg-surface border border-white/5 flex items-center justify-center overflow-hidden">
+            <div className="relative aspect-square bg-white border border-white/10 flex items-center justify-center overflow-hidden shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06),0_24px_70px_rgba(0,0,0,0.24)]">
               {product.images[0] ? (
                 <Image
                   src={product.images[0]}
                   alt={product.name}
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-contain p-8"
+                  className="object-contain p-8 sm:p-10"
                   unoptimized
                 />
               ) : (

@@ -21,16 +21,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       }}
       transition={{ duration: 0.3 }}
     >
-      {/* Image placeholder */}
       <Link href={`/shop/${product.slug}`}>
-        <div className="relative aspect-square bg-background overflow-hidden">
+        <div className="relative aspect-square bg-white overflow-hidden border-b border-white/10 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)]">
           {product.images[0] ? (
             <Image
               src={product.images[0]}
               alt={product.name}
               fill
               sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-              className="object-contain p-6"
+              className="object-contain p-7 transition-transform duration-300 group-hover:scale-[1.03]"
               unoptimized
             />
           ) : (
@@ -42,7 +41,6 @@ export default function ProductCard({ product }: ProductCardProps) {
               </div>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
       </Link>
 

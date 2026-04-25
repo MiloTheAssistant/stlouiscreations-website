@@ -16,8 +16,8 @@ export default function ShopPage() {
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
           <p className="text-muted mt-4 max-w-xl mx-auto">
-            Custom laser engraved products for every occasion.
-            All items are fully customizable with your design.
+            Seasonal gifts, event-ready awards, and personalized specials for holidays,
+            milestones, clients, teams, and hosts.
           </p>
         </FadeUpSection>
 
