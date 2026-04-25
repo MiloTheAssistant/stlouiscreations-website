@@ -14,7 +14,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-40 bg-background/98 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-40 bg-background/98 backdrop-blur-sm lg:hidden"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}

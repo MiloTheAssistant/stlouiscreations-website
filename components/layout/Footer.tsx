@@ -2,10 +2,24 @@ import Link from "next/link";
 import { navLinks, siteConfig, socialLinks } from "@/lib/constants";
 
 export default function Footer() {
+  const policyLinks = [
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Return and Refund Policy", href: "/refund-policy" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Shipping Policy", href: "/shipping" },
+    { label: "Contact Us", href: "/contact" },
+  ];
+
+  const brandLinks = [
+    { label: "Amazon Store", href: "https://www.amazon.com" },
+    { label: "eBay Store", href: "https://www.ebay.com" },
+    { label: "JDS Direct, LLC", href: "https://stllasercreations.com" },
+  ];
+
   return (
     <footer className="bg-surface border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
             <Link href="/" aria-label={`${siteConfig.name} home`} className="inline-block">
@@ -79,6 +93,42 @@ export default function Footer() {
                   info@stlouiscreations.com
                 </a>
               </li>
+            </ul>
+          </div>
+
+          {/* Policies and brand links */}
+          <div>
+            <h4 className="font-display text-sm uppercase tracking-wider text-text mb-4">
+              Customer Care
+            </h4>
+            <ul className="space-y-3 mb-8">
+              {policyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-muted text-sm hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h4 className="font-display text-sm uppercase tracking-wider text-text mb-4">
+              Our Brand Online
+            </h4>
+            <ul className="space-y-3">
+              {brandLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted text-sm hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

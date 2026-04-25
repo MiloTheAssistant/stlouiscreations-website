@@ -47,12 +47,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative text-sm font-display uppercase tracking-wider text-muted hover:text-text transition-colors group"
+                className="relative text-xs font-display uppercase tracking-wider text-muted hover:text-text transition-colors group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 h-0.5 bg-primary w-0 group-hover:w-full transition-all duration-300" />
@@ -64,7 +64,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="/contact"
-              className="hidden md:inline-flex items-center px-5 py-2.5 bg-primary text-white font-display text-xs uppercase tracking-wider font-bold hover:shadow-glow transition-shadow duration-300"
+              className="hidden lg:inline-flex items-center px-5 py-2.5 bg-primary text-white font-display text-xs uppercase tracking-wider font-bold hover:shadow-glow transition-shadow duration-300"
             >
               Get a Quote
             </Link>
@@ -102,7 +102,7 @@ export default function Navbar() {
 
             {/* Mobile Toggle */}
             <button
-              className="md:hidden text-text"
+              className="lg:hidden text-text"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >

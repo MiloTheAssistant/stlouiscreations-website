@@ -104,7 +104,7 @@
     },
     {
       "source": "/blogs/news/uv-lasers",
-      "destination": "/blog/uv-lasers",
+      "destination": "/blog/overview-of-uv-lasers",
       "permanent": true
     },
     {
@@ -139,7 +139,7 @@
     },
     {
       "source": "/blogs/news/the-benefits-of-laser-engraving-over-traditional-engraving-methods",
-      "destination": "/blog/the-benefits-of-laser-engraving-over-traditional-engraving-methods",
+      "destination": "/blog/benefits-of-laser-engraving-over-traditional-methods",
       "permanent": true
     },
     {
@@ -180,17 +180,17 @@
     },
     {
       "source": "/pages/catalogs",
-      "destination": "/shop",
+      "destination": "/catalogs",
       "permanent": true
     },
     {
       "source": "/pages/fundraisers",
-      "destination": "/shop",
+      "destination": "/fundraisers",
       "permanent": true
     },
     {
       "source": "/pages/fundraiser-water-bottles-accessories",
-      "destination": "/shop",
+      "destination": "/fundraisers/water-bottles-accessories",
       "permanent": true
     },
     {

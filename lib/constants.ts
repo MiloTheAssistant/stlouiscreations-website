@@ -9,6 +9,9 @@ export const siteConfig = {
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
+  { label: "Materials", href: "/materials" },
+  { label: "Catalogs", href: "/catalogs" },
+  { label: "Fundraisers", href: "/fundraisers" },
   { label: "Shop", href: "/shop" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
@@ -41,52 +44,60 @@ export const services = [
 
 export const materials = [
   {
+    slug: "acrylic",
     name: "Acrylic",
     description: "Crystal-clear or colored acrylic for awards, signage, and displays.",
     uses: ["Awards", "Signage", "Displays", "Keychains"],
-    image: "/images/materials/acrylic.jpg",
+    image: "/images/materials/acrylic.png",
   },
   {
+    slug: "wood",
     name: "Wood",
     description: "Natural wood engraving for a warm, rustic, handcrafted aesthetic.",
     uses: ["Cutting Boards", "Signs", "Coasters", "Plaques"],
-    image: "/images/materials/wood.jpg",
+    image: "/images/materials/wood.png",
   },
   {
+    slug: "glass",
     name: "Glass",
     description: "Elegant glass etching for corporate gifts and premium awards.",
     uses: ["Wine Glasses", "Awards", "Vases", "Decanters"],
-    image: "/images/materials/glass.jpg",
+    image: "/images/materials/glass.png",
   },
   {
+    slug: "metal",
     name: "Metal",
     description: "Durable metal engraving for industrial marking and luxury items.",
     uses: ["Name Plates", "Dog Tags", "Business Cards", "Tools"],
-    image: "/images/materials/metal.jpg",
+    image: "/images/materials/metal.png",
   },
   {
+    slug: "leather",
     name: "Leather",
     description: "Premium leather personalization for wallets, belts, and journals.",
     uses: ["Wallets", "Journals", "Belts", "Portfolios"],
-    image: "/images/materials/leather.jpg",
+    image: "/images/materials/leather.png",
   },
   {
+    slug: "stone-slate-tile",
     name: "Stone",
     description: "Permanent stone engraving for memorials, tiles, and outdoor markers.",
     uses: ["Memorials", "Tiles", "Coasters", "Garden Markers"],
-    image: "/images/materials/stone.jpg",
+    image: "/images/materials/stone.png",
   },
   {
+    slug: "fabric",
     name: "Fabric",
     description: "Intricate fabric cutting and marking for textiles and apparel.",
     uses: ["Patches", "Labels", "Patterns", "Custom Apparel"],
-    image: "/images/materials/fabric.jpg",
+    image: "/images/materials/fabric.png",
   },
   {
+    slug: "rubber",
     name: "Rubber",
     description: "Custom rubber stamps and gaskets with precision laser cutting.",
     uses: ["Stamps", "Gaskets", "Seals", "Mats"],
-    image: "/images/materials/rubber.jpg",
+    image: "/images/materials/rubber.png",
   },
 ];
 
