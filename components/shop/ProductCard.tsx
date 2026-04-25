@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Product } from "@/lib/products";
 import { formatPrice } from "@/lib/utils";
@@ -23,13 +24,24 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Image placeholder */}
       <Link href={`/shop/${product.slug}`}>
         <div className="relative aspect-square bg-background overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
-              <span className="font-display text-2xl font-bold text-primary">
-                {product.name[0]}
-              </span>
+          {product.images[0] ? (
+            <Image
+              src={product.images[0]}
+              alt={product.name}
+              fill
+              sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+              className="object-contain p-6"
+              unoptimized
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
+                <span className="font-display text-2xl font-bold text-primary">
+                  {product.name[0]}
+                </span>
+              </div>
             </div>
-          </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
       </Link>
@@ -41,9 +53,20 @@ export default function ProductCard({ product }: ProductCardProps) {
           </h3>
         </Link>
         <p className="text-muted text-xs mt-1 line-clamp-2">{product.description}</p>
+        {product.tags && product.tags.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {product.tags.slice(0, 2).map((tag) => (
+              <span key={tag} className="text-[10px] text-muted border border-white/10 px-2 py-1">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
         <div className="flex items-center justify-between mt-4">
           <span className="font-display text-lg font-bold text-primary">
-            {formatPrice(product.price)}
+            {product.purchaseMode === "quote"
+              ? `From ${formatPrice(product.price)}`
+              : formatPrice(product.price)}
           </span>
           <AddToCartButton product={product} size="sm" />
         </div>

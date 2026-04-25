@@ -7,12 +7,62 @@ export interface Product {
   description: string;
   details: string[];
   category: string;
+  tags?: string[];
+  supplier?: string;
+  supplierSku?: string;
+  purchaseMode?: "cart" | "quote";
+  seo?: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
   featured?: boolean;
   shopifyId?: number;
   status?: string;
 }
 
 export const products: Product[] = [
+  {
+    slug: "airflyte-p5473-rosewood-gold-sunburst-plaque",
+    name: "Airflyte P5473 Rosewood Gold Sunburst Plaque",
+    price: 21000,
+    stripePriceId: "quote",
+    images: ["/images/products/airflyte/p5473.png"],
+    description:
+      "Personalized Airflyte P5473 rosewood piano finish plaque with a gold sunburst frame casting and brass-plated steel LaserFX engraving plate for polished recognition awards.",
+    details: [
+      "Airflyte SKU: P5473",
+      "Size: 11\" x 15\"",
+      "Rosewood piano finish plaque with goldtone metal frame casting",
+      "Brass-plated steel LaserFX engraving plate",
+      "Personalization, proofing, and current availability confirmed before production",
+    ],
+    category: "awards",
+    tags: [
+      "corporate awards",
+      "rosewood plaque",
+      "laser engraved plaque",
+      "recognition awards",
+      "Airflyte awards",
+    ],
+    supplier: "Airflyte",
+    supplierSku: "P5473",
+    purchaseMode: "quote",
+    seo: {
+      title: "Airflyte P5473 Rosewood Gold Sunburst Plaque",
+      description:
+        "Personalized Airflyte P5473 rosewood piano finish plaque with gold sunburst frame casting for corporate awards, service recognition, and milestone honors.",
+      keywords: [
+        "Airflyte P5473",
+        "rosewood plaque",
+        "gold sunburst plaque",
+        "corporate recognition awards",
+        "laser engraved plaque St. Louis",
+      ],
+    },
+    featured: false,
+    status: "active",
+  },
   {
     slug: "10-tips-to-buy-use-a-laser-in-your-soho-business",
     name: "10 Tips To Buy & Use a Laser in Your SOHO Business",

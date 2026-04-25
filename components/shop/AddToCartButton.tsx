@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import type { Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,22 @@ export default function AddToCartButton({
 }: AddToCartButtonProps) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
+
+  if (product.purchaseMode === "quote") {
+    return (
+      <Link
+        href={`/contact?product=${encodeURIComponent(product.slug)}`}
+        className={cn(
+          "inline-block text-center font-display uppercase tracking-wider font-bold transition-all duration-300",
+          size === "sm"
+            ? "text-[10px] px-3 py-2 bg-primary text-white hover:shadow-glow-sm"
+            : "text-xs px-8 py-4 bg-primary text-white hover:shadow-glow w-full"
+        )}
+      >
+        Request Quote
+      </Link>
+    );
+  }
 
   const handleClick = () => {
     addItem(product, quantity);
