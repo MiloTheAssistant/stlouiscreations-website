@@ -1,11 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/",
-      "destination": "/",
-      "permanent": false
-    },
-    {
       "source": "/collections/:handle",
       "destination": "/shop",
       "permanent": true
