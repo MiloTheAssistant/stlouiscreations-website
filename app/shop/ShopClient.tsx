@@ -6,7 +6,7 @@ import {
   categories,
   polarCamelSubcategories,
   polarCamelSubcategoryGroups,
-} from "@/lib/products";
+} from "@/lib/shop-navigation";
 import type { ShopProduct } from "@/lib/shop-product";
 import ProductGrid from "@/components/shop/ProductGrid";
 import { cn } from "@/lib/utils";
@@ -163,7 +163,7 @@ export default function ShopClient({
         >
           All Shop
         </button>
-        {categories.filter((cat) => cat.slug !== "all").map((cat) => (
+        {categories.map((cat) => (
           <button
             key={cat.slug}
             onClick={() => selectCategory(cat.slug)}

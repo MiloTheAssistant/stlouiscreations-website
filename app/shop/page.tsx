@@ -3,7 +3,7 @@ import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import ShopClient from "./ShopClient";
-import { categories, polarCamelSubcategories } from "@/lib/products";
+import { categories, polarCamelSubcategories } from "@/lib/shop-navigation";
 import { getFeaturedShopProducts, getShopCatalog } from "@/lib/catalog/shop";
 
 export const dynamic = "force-dynamic";
