@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { ShopProduct } from "@/lib/shop-product";
 import ProductCard from "./ProductCard";
-import FadeUpSection from "@/components/ui/FadeUpSection";
 
 interface ProductGridProps {
   products: ShopProduct[];
@@ -46,10 +45,10 @@ export default function ProductGrid({
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {visibleProducts.map((product, i) => (
-          <FadeUpSection key={product.slug} delay={Math.min(i * 0.03, 0.18)}>
+        {visibleProducts.map((product) => (
+          <div key={product.slug}>
             <ProductCard product={product} />
-          </FadeUpSection>
+          </div>
         ))}
       </div>
 
