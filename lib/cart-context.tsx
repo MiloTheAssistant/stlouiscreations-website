@@ -1,10 +1,10 @@
 "use client";
 
 import { createContext, useContext, useReducer, useEffect, type ReactNode } from "react";
-import type { Product } from "./products";
+import type { ShopProduct } from "./shop-product";
 
 export interface CartItem {
-  product: Product;
+  product: ShopProduct;
   quantity: number;
 }
 
@@ -13,7 +13,7 @@ interface CartState {
 }
 
 type CartAction =
-  | { type: "ADD_ITEM"; product: Product; quantity?: number }
+  | { type: "ADD_ITEM"; product: ShopProduct; quantity?: number }
   | { type: "REMOVE_ITEM"; slug: string }
   | { type: "UPDATE_QTY"; slug: string; quantity: number }
   | { type: "CLEAR_CART" }
@@ -23,7 +23,7 @@ interface CartContextType {
   items: CartItem[];
   total: number;
   count: number;
-  addItem: (product: Product, quantity?: number) => void;
+  addItem: (product: ShopProduct, quantity?: number) => void;
   removeItem: (slug: string) => void;
   updateQty: (slug: string, quantity: number) => void;
   clearCart: () => void;

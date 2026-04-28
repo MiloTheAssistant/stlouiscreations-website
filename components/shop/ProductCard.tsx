@@ -3,18 +3,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import type { Product } from "@/lib/products";
+import type { ShopProduct } from "@/lib/shop-product";
 import { formatPrice } from "@/lib/utils";
 import AddToCartButton from "./AddToCartButton";
 
 interface ProductCardProps {
-  product: Product;
+  product: ShopProduct;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <motion.div
       className="group bg-surface border border-white/5 overflow-hidden"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "420px" }}
       whileHover={{
         boxShadow: "0 0 30px rgba(255,107,0,0.2)",
         borderColor: "rgba(255,107,0,0.3)",

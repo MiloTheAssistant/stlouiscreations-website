@@ -1,45 +1,70 @@
 "use client";
 
-import { useMemo } from "react";
+import { type FormEvent, useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   categories,
   polarCamelSubcategories,
   polarCamelSubcategoryGroups,
-  products,
 } from "@/lib/products";
+import type { ShopProduct } from "@/lib/shop-product";
 import ProductGrid from "@/components/shop/ProductGrid";
 import { cn } from "@/lib/utils";
 
 const occasionSpecials = [
   {
     title: "Summer Parties",
-    description: "Coolers, tumblers, serving pieces, and awards for 4th of July cookouts, golf outings, and company picnics.",
+    description:
+      "Coolers, tumblers, serving pieces, and awards for 4th of July cookouts, golf outings, and company picnics.",
   },
   {
     title: "Spring Celebrations",
-    description: "Fresh personalized gifts for Easter baskets, graduations, school events, weddings, and showers.",
+    description:
+      "Fresh personalized gifts for Easter baskets, graduations, school events, weddings, and showers.",
   },
   {
     title: "Fall Gatherings",
-    description: "Halloween, Thanksgiving, tailgates, and harvest-table pieces with engraving that feels made for the moment.",
+    description:
+      "Halloween, Thanksgiving, tailgates, and harvest-table pieces with engraving that feels made for the moment.",
   },
   {
     title: "Christmas Gifts",
-    description: "Drinkware, home goods, glassware, and recognition awards ready for clients, teams, families, and hosts.",
+    description:
+      "Drinkware, home goods, glassware, and recognition awards ready for clients, teams, families, and hosts.",
   },
 ];
 
-export default function ShopClient() {
+interface ShopClientProps {
+  activeCategory: string;
+  activeSubcategory: string;
+  categoryProductCount: number;
+  featuredProducts: ShopProduct[];
+  page: number;
+  pageSize: number;
+  products: ShopProduct[];
+  searchQuery: string;
+  subcategoryCounts: Record<string, number>;
+  totalCount: number;
+}
+
+export default function ShopClient({
+  activeCategory,
+  activeSubcategory,
+  categoryProductCount,
+  featuredProducts,
+  page,
+  pageSize,
+  products,
+  searchQuery,
+  subcategoryCounts,
+  totalCount,
+}: ShopClientProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const requestedCategory = searchParams.get("category");
-  const isLandingPage = !requestedCategory;
-  const activeCategory = requestedCategory && categories.some((cat) => cat.slug === requestedCategory)
-    ? requestedCategory
-    : "drinkware";
-  const requestedSubcategory = searchParams.get("subcategory") ?? "all";
+  const [searchInput, setSearchInput] = useState(searchQuery);
+  const isSearching = searchQuery.length > 0;
+  const isLandingPage = activeCategory === "all" && !isSearching;
   const activeCategoryHasSubcategories = polarCamelSubcategories.some(
     (subcat) => subcat.category === activeCategory
   );
@@ -51,81 +76,100 @@ export default function ShopClient() {
     () => polarCamelSubcategoryGroups.filter((group) => group.category === activeCategory),
     [activeCategory]
   );
-  const activeSubcategory =
-    activeCategoryHasSubcategories &&
-    activeCategorySubcategories.some((subcat) => subcat.slug === requestedSubcategory)
-      ? requestedSubcategory
-      : "all";
-
-  const filtered = useMemo(
-    () => {
-      const categoryProducts = products.filter((p) => p.category === activeCategory);
-
-      if (!activeCategoryHasSubcategories || activeSubcategory === "all") {
-        return categoryProducts;
-      }
-
-      return categoryProducts.filter((p) => p.subcategory === activeSubcategory);
-    },
-    [activeCategory, activeCategoryHasSubcategories, activeSubcategory]
-  );
-
-  const subcategoryCounts = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const product of products) {
-      if (product.category === activeCategory && product.subcategory) {
-        counts.set(product.subcategory, (counts.get(product.subcategory) ?? 0) + 1);
-      }
-    }
-    return counts;
-  }, [activeCategory]);
-  const activeCategoryProductCount = useMemo(
-    () => products.filter((product) => product.category === activeCategory).length,
-    [activeCategory]
-  );
-  const featuredProducts = useMemo(
-    () => products.filter((product) => product.tags?.includes("Featured")).slice(0, 8),
-    []
-  );
-
   const activeCategoryLabel =
-    categories.find((cat) => cat.slug === activeCategory)?.label ?? "Drinkware";
+    activeCategory === "all"
+      ? "All Shop"
+      : categories.find((cat) => cat.slug === activeCategory)?.label ?? "Shop";
   const activeSubcategoryLabel =
-    activeSubcategory === "all"
-      ? `All ${activeCategoryLabel}`
-      : activeCategorySubcategories.find((subcat) => subcat.slug === activeSubcategory)
-          ?.label ?? `All ${activeCategoryLabel}`;
+    activeSubcategory
+      ? activeCategorySubcategories.find((subcat) => subcat.slug === activeSubcategory)
+          ?.label ?? activeCategoryLabel
+      : `Choose ${activeCategoryLabel} Line`;
+  const shouldShowLinePicker =
+    activeCategoryHasSubcategories && !activeSubcategory && !isSearching;
 
-  function selectCategory(category: string) {
+  useEffect(() => {
+    setSearchInput(searchQuery);
+  }, [searchQuery]);
+
+  function replaceParams(mutator: (params: URLSearchParams) => void) {
     const params = new URLSearchParams(searchParams.toString());
-    params.delete("subcategory");
-    params.set("category", category);
+    mutator(params);
     const query = params.toString();
     router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
   }
 
-  function selectSubcategory(subcategory: string) {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("category", activeCategory);
-    if (subcategory === "all") {
+  function submitSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    replaceParams((params) => {
+      const query = searchInput.trim();
+      params.delete("page");
+      if (query) {
+        params.set("q", query);
+      } else {
+        params.delete("q");
+      }
+    });
+  }
+
+  function clearSearch() {
+    replaceParams((params) => {
+      params.delete("q");
+      params.delete("page");
+    });
+  }
+
+  function selectCategory(category: string) {
+    replaceParams((params) => {
       params.delete("subcategory");
-    } else {
-      params.set("subcategory", subcategory);
-    }
-    const query = params.toString();
-    router.replace(`${pathname}?${query}`, { scroll: false });
+      params.delete("page");
+      if (category === "all") {
+        params.delete("category");
+      } else {
+        params.set("category", category);
+      }
+    });
+  }
+
+  function selectSubcategory(subcategory: string) {
+    replaceParams((params) => {
+      params.set("category", activeCategory);
+      params.delete("page");
+      if (subcategory) {
+        params.set("subcategory", subcategory);
+      } else {
+        params.delete("subcategory");
+      }
+    });
+  }
+
+  function loadMore() {
+    replaceParams((params) => {
+      params.set("page", String(page + 1));
+    });
   }
 
   return (
     <>
       <div className="flex flex-wrap justify-center gap-2 border-y border-white/10 py-4">
+        <button
+          onClick={() => selectCategory("all")}
+          className={cn(
+            "px-4 py-2 text-[11px] font-display uppercase tracking-wider transition-all duration-300 border",
+            activeCategory === "all"
+              ? "bg-primary text-white border-primary"
+              : "bg-transparent text-muted border-white/10 hover:border-primary/30 hover:text-text"
+          )}
+        >
+          All Shop
+        </button>
         {categories.filter((cat) => cat.slug !== "all").map((cat) => (
           <button
             key={cat.slug}
             onClick={() => selectCategory(cat.slug)}
             className={cn(
               "px-4 py-2 text-[11px] font-display uppercase tracking-wider transition-all duration-300 border",
-              !isLandingPage && activeCategory === cat.slug
+              activeCategory === cat.slug
                 ? "bg-primary text-white border-primary"
                 : "bg-transparent text-muted border-white/10 hover:border-primary/30 hover:text-text"
             )}
@@ -134,6 +178,34 @@ export default function ShopClient() {
           </button>
         ))}
       </div>
+
+      <form
+        onSubmit={submitSearch}
+        className="mt-6 grid gap-3 border-b border-white/10 pb-6 sm:grid-cols-[minmax(0,1fr)_auto_auto]"
+      >
+        <input
+          type="search"
+          value={searchInput}
+          onChange={(event) => setSearchInput(event.target.value)}
+          placeholder={`Search ${activeSubcategory ? activeSubcategoryLabel : activeCategoryLabel}`}
+          className="min-h-12 w-full border border-white/10 bg-surface px-4 text-sm text-text outline-none transition-colors placeholder:text-muted focus:border-primary/50"
+        />
+        <button
+          type="submit"
+          className="min-h-12 border border-primary bg-primary px-6 font-display text-xs font-bold uppercase tracking-wider text-white transition-shadow hover:shadow-glow-sm"
+        >
+          Search
+        </button>
+        {isSearching && (
+          <button
+            type="button"
+            onClick={clearSearch}
+            className="min-h-12 border border-white/10 px-6 font-display text-xs font-bold uppercase tracking-wider text-muted transition-colors hover:border-primary/30 hover:text-text"
+          >
+            Clear
+          </button>
+        )}
+      </form>
 
       {isLandingPage ? (
         <section className="mt-10 space-y-12">
@@ -185,100 +257,131 @@ export default function ShopClient() {
             <ProductGrid products={featuredProducts} />
           </section>
         </section>
-      ) : (
-      <div
-        className={cn(
-          "mt-10",
-          activeCategoryHasSubcategories && "lg:grid lg:grid-cols-[290px_minmax(0,1fr)] lg:gap-8"
-        )}
-      >
-        {activeCategoryHasSubcategories && (
-          <aside className="lg:sticky lg:top-28 lg:self-start">
-            <div className="border border-white/10 bg-surface/80 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur">
-              <div className="border-b border-white/10 p-5">
-                <p className="font-display text-[11px] uppercase tracking-wider text-primary">
-                  {activeCategoryLabel} Catalog
-                </p>
-                <h2 className="mt-2 font-display text-xl font-bold leading-tight">
-                  Product Lines
-                </h2>
-                <p className="mt-2 text-xs leading-relaxed text-muted">
-                  Browse Polar Camel families by product line, finish, and use case.
-                </p>
-              </div>
-
-              <details className="group lg:hidden">
-                <summary className="flex cursor-pointer list-none items-center justify-between border-b border-white/10 px-5 py-4 font-display text-xs uppercase tracking-wider text-text">
-                  {activeSubcategoryLabel}
-                  <span className="text-primary transition-transform group-open:rotate-180">
-                    v
-                  </span>
-                </summary>
-                <CatalogLineNav
-                  activeCategoryLabel={activeCategoryLabel}
-                  activeSubcategory={activeSubcategory}
-                  selectSubcategory={selectSubcategory}
-                  subcategoryCounts={subcategoryCounts}
-                  categoryProductCount={activeCategoryProductCount}
-                  subcategoryGroups={activeCategoryGroups}
-                  subcategories={activeCategorySubcategories}
-                />
-              </details>
-
-              <div className="hidden lg:block">
-                <CatalogLineNav
-                  activeCategoryLabel={activeCategoryLabel}
-                  activeSubcategory={activeSubcategory}
-                  selectSubcategory={selectSubcategory}
-                  subcategoryCounts={subcategoryCounts}
-                  categoryProductCount={activeCategoryProductCount}
-                  subcategoryGroups={activeCategoryGroups}
-                  subcategories={activeCategorySubcategories}
-                />
-              </div>
-            </div>
-          </aside>
-        )}
-
-        <section className={cn(activeCategoryHasSubcategories && "mt-8 lg:mt-0")}>
-          <div className="mb-6 flex flex-col gap-3 border-b border-white/10 pb-5 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="font-display text-[11px] uppercase tracking-wider text-primary">
-                {activeCategoryLabel}
-              </p>
-              <h2 className="mt-1 font-display text-2xl font-bold">
-                {activeCategory === "drinkware"
-                  ? activeSubcategoryLabel
-                  : activeCategoryHasSubcategories
-                    ? activeSubcategoryLabel
-                    : activeCategoryLabel}
-              </h2>
-            </div>
-            <p className="text-sm text-muted">
-              {filtered.length} {filtered.length === 1 ? "product" : "products"}
+      ) : shouldShowLinePicker ? (
+        <section className="mt-10 space-y-6">
+          <div className="border-b border-white/10 pb-5">
+            <p className="font-display text-[11px] uppercase tracking-wider text-primary">
+              {activeCategoryLabel}
+            </p>
+            <h2 className="mt-1 font-display text-2xl font-bold">
+              Choose a product line
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+              Browse by product family or search this category to narrow the catalog before loading products.
             </p>
           </div>
-
-          <ProductGrid products={filtered} />
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {activeCategorySubcategories.map((subcategory) => (
+              <button
+                key={subcategory.slug}
+                onClick={() => selectSubcategory(subcategory.slug)}
+                className="border border-white/10 bg-surface/70 p-5 text-left transition-colors hover:border-primary/30"
+              >
+                <span className="font-display text-sm font-bold uppercase tracking-wider text-text">
+                  {subcategory.label}
+                </span>
+                <span className="mt-3 block text-xs text-muted">
+                  {subcategoryCounts[subcategory.slug] ?? 0} products
+                </span>
+              </button>
+            ))}
+          </div>
         </section>
-      </div>
+      ) : (
+        <div
+          className={cn(
+            "mt-10",
+            activeCategoryHasSubcategories && "lg:grid lg:grid-cols-[290px_minmax(0,1fr)] lg:gap-8"
+          )}
+        >
+          {activeCategoryHasSubcategories && (
+            <aside className="lg:sticky lg:top-28 lg:self-start">
+              <div className="border border-white/10 bg-surface/80 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur">
+                <div className="border-b border-white/10 p-5">
+                  <p className="font-display text-[11px] uppercase tracking-wider text-primary">
+                    {activeCategoryLabel} Catalog
+                  </p>
+                  <h2 className="mt-2 font-display text-xl font-bold leading-tight">
+                    Product Lines
+                  </h2>
+                  <p className="mt-2 text-xs leading-relaxed text-muted">
+                    Browse Polar Camel families by product line, finish, and use case.
+                  </p>
+                </div>
+
+                <details className="group lg:hidden">
+                  <summary className="flex cursor-pointer list-none items-center justify-between border-b border-white/10 px-5 py-4 font-display text-xs uppercase tracking-wider text-text">
+                    {activeSubcategoryLabel}
+                    <span className="text-primary transition-transform group-open:rotate-180">
+                      v
+                    </span>
+                  </summary>
+                  <CatalogLineNav
+                    activeSubcategory={activeSubcategory}
+                    selectSubcategory={selectSubcategory}
+                    subcategoryCounts={subcategoryCounts}
+                    categoryProductCount={categoryProductCount}
+                    subcategoryGroups={activeCategoryGroups}
+                    subcategories={activeCategorySubcategories}
+                  />
+                </details>
+
+                <div className="hidden lg:block">
+                  <CatalogLineNav
+                    activeSubcategory={activeSubcategory}
+                    selectSubcategory={selectSubcategory}
+                    subcategoryCounts={subcategoryCounts}
+                    categoryProductCount={categoryProductCount}
+                    subcategoryGroups={activeCategoryGroups}
+                    subcategories={activeCategorySubcategories}
+                  />
+                </div>
+              </div>
+            </aside>
+          )}
+
+          <section className={cn(activeCategoryHasSubcategories && "mt-8 lg:mt-0")}>
+            <div className="mb-6 flex flex-col gap-3 border-b border-white/10 pb-5 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="font-display text-[11px] uppercase tracking-wider text-primary">
+                  {activeCategoryLabel}
+                </p>
+                <h2 className="mt-1 font-display text-2xl font-bold">
+                  {activeSubcategory || activeCategoryHasSubcategories
+                    ? activeSubcategoryLabel
+                    : activeCategoryLabel}
+                </h2>
+              </div>
+              <p className="text-sm text-muted">
+                {isSearching && `Search: "${searchQuery}" - `}
+                {totalCount} {totalCount === 1 ? "product" : "products"}
+              </p>
+            </div>
+
+            <ProductGrid
+              products={products}
+              totalCount={totalCount}
+              onLoadMore={loadMore}
+              initialLimit={pageSize}
+              emptyMessage="No products found. Try a broader search or choose another category."
+            />
+          </section>
+        </div>
       )}
     </>
   );
 }
 
 interface CatalogLineNavProps {
-  activeCategoryLabel: string;
   activeSubcategory: string;
   selectSubcategory: (subcategory: string) => void;
-  subcategoryCounts: Map<string, number>;
+  subcategoryCounts: Record<string, number>;
   categoryProductCount: number;
   subcategoryGroups: typeof polarCamelSubcategoryGroups;
   subcategories: typeof polarCamelSubcategories;
 }
 
 function CatalogLineNav({
-  activeCategoryLabel,
   activeSubcategory,
   selectSubcategory,
   subcategoryCounts,
@@ -289,15 +392,15 @@ function CatalogLineNav({
   return (
     <nav className="max-h-[70vh] overflow-y-auto p-4">
       <button
-        onClick={() => selectSubcategory("all")}
+        onClick={() => selectSubcategory("")}
         className={cn(
           "mb-4 flex w-full items-center justify-between border px-3 py-2.5 text-left font-display text-xs uppercase tracking-wider transition-colors",
-          activeSubcategory === "all"
+          activeSubcategory === ""
             ? "border-primary bg-primary text-white"
             : "border-white/10 bg-background/50 text-muted hover:border-primary/30 hover:text-text"
         )}
       >
-        <span>All {activeCategoryLabel}</span>
+        <span>Product Lines</span>
         <span>{categoryProductCount}</span>
       </button>
 
@@ -323,7 +426,7 @@ function CatalogLineNav({
                   >
                     <span>{subcat.label}</span>
                     <span className="font-display text-[10px] text-muted">
-                      {subcategoryCounts.get(subcat.slug) ?? 0}
+                      {subcategoryCounts[subcat.slug] ?? 0}
                     </span>
                   </button>
                 ))}
