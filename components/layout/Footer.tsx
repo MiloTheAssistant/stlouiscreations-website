@@ -84,13 +84,21 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-3 text-muted text-sm">
-              <li>St. Louis, Missouri</li>
+              <li>St. Louis, MO</li>
               <li>
                 <a
-                  href="mailto:info@stlouiscreations.com"
+                  href="mailto:contact@stlouiscreations.com"
                   className="hover:text-primary transition-colors"
                 >
-                  info@stlouiscreations.com
+                  contact@stlouiscreations.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+15735000064"
+                  className="hover:text-primary transition-colors"
+                >
+                  (573) 500-0064
                 </a>
               </li>
             </ul>

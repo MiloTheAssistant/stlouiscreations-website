@@ -65,7 +65,7 @@ export default function ContactPage() {
                 <h3 className="font-display text-sm uppercase tracking-wider mb-3">
                   Location
                 </h3>
-                <p className="text-muted text-sm">St. Louis, Missouri</p>
+                <p className="text-muted text-sm">St. Louis, MO</p>
               </div>
 
               <div>
@@ -73,10 +73,22 @@ export default function ContactPage() {
                   Email
                 </h3>
                 <a
-                  href="mailto:info@stlouiscreations.com"
+                  href="mailto:contact@stlouiscreations.com"
                   className="text-primary text-sm hover:underline"
                 >
-                  info@stlouiscreations.com
+                  contact@stlouiscreations.com
+                </a>
+              </div>
+
+              <div>
+                <h3 className="font-display text-sm uppercase tracking-wider mb-3">
+                  Phone
+                </h3>
+                <a
+                  href="tel:+15735000064"
+                  className="text-primary text-sm hover:underline"
+                >
+                  (573) 500-0064
                 </a>
               </div>
 

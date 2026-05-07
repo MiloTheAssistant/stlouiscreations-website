@@ -103,10 +103,10 @@ export default function RefundPolicyPage() {
               <span className="font-semibold text-text">To start a return:</span>{" "}
               Email us at{" "}
               <a
-                href="mailto:Contact@StllaserCreations.com"
+                href="mailto:contact@stlouiscreations.com"
                 className="text-primary underline hover:no-underline"
               >
-                Contact@StllaserCreations.com
+                contact@stlouiscreations.com
               </a>
               . If your return is approved, we&apos;ll send you a return
               shipping label along with instructions on where and how to send
@@ -188,10 +188,10 @@ export default function RefundPolicyPage() {
                 <strong>Haven&apos;t seen your refund after 15 business days?</strong>{" "}
                 Contact us at{" "}
                 <a
-                  href="mailto:Contact@StllaserCreations.com"
+                  href="mailto:contact@stlouiscreations.com"
                   className="text-primary underline hover:no-underline"
                 >
-                  Contact@StllaserCreations.com
+                  contact@stlouiscreations.com
                 </a>{" "}
                 and we&apos;ll look into it.
               </p>
@@ -208,19 +208,20 @@ export default function RefundPolicyPage() {
             <p>
               <span className="font-semibold text-text">Email:</span>{" "}
               <a
-                href="mailto:Contact@StllaserCreations.com"
+                href="mailto:contact@stlouiscreations.com"
                 className="text-primary underline hover:no-underline"
               >
-                Contact@StllaserCreations.com
+                contact@stlouiscreations.com
               </a>
             </p>
             <p>
-              <span className="font-semibold text-text">Phone:</span> (636)
-              628-6737
+              <span className="font-semibold text-text">Phone:</span> (573)
+              500-0064
             </p>
             <p>
-              <span className="font-semibold text-text">Mail:</span> 903
-              Southern Hills Court, Eureka, MO 63025
+              <span className="font-semibold text-text">Mail:</span> St. Louis
+              Creations, 903 Southern Hills Court, Eureka, MO 63025, United
+              States
             </p>
           </div>
           <GlowButton href="/contact" variant="primary">

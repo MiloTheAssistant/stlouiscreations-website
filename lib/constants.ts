@@ -163,5 +163,13 @@ export const valueProps = [
 
 export const socialLinks = {
   facebook: "https://www.facebook.com/stllasercreations",
+  messenger: "https://m.me/stllasercreations",
   instagram: "https://www.instagram.com/stllasercreations",
+};
+
+export const contactLinks = {
+  email: "contact@stlouiscreations.com",
+  quote: "/contact",
+  orderSupport:
+    "mailto:contact@stlouiscreations.com?subject=Order%20Status%20Request",
 };

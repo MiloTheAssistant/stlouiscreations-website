@@ -3,6 +3,7 @@ import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ContactLauncher from "@/components/layout/ContactLauncher";
 import { CartProvider } from "@/lib/cart-context";
 
 const archivo = Archivo({
@@ -62,6 +63,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <ContactLauncher />
         </CartProvider>
       </body>
     </html>
