@@ -27,7 +27,10 @@ export default function Footer() {
                 St. Louis<span className="text-primary">.</span> Creations
               </h3>
               <p className="font-body italic text-sm text-muted mt-2 tracking-wide">
-                &ldquo;{siteConfig.tagline}&rdquo;
+                {siteConfig.tagline}
+              </p>
+              <p className="font-display text-[11px] uppercase tracking-[0.22em] text-primary mt-2">
+                {siteConfig.descriptor}
               </p>
             </Link>
             <p className="text-muted text-sm leading-relaxed max-w-xs mt-5">
@@ -84,13 +87,21 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-3 text-muted text-sm">
-              <li>St. Louis, Missouri</li>
+              <li>St. Louis, MO</li>
               <li>
                 <a
-                  href="mailto:info@stlouiscreations.com"
+                  href="mailto:contact@stlouiscreations.com"
                   className="hover:text-primary transition-colors"
                 >
-                  info@stlouiscreations.com
+                  contact@stlouiscreations.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+15735000064"
+                  className="hover:text-primary transition-colors"
+                >
+                  (573) 500-0064
                 </a>
               </li>
             </ul>
@@ -139,7 +150,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} St. Louis Creations. All rights reserved.
           </p>
           <p className="text-muted/50 text-xs">
-            Precision Crafted in St. Louis, MO
+            Creatively engineered in St. Louis, MO
           </p>
         </div>
       </div>

@@ -42,7 +42,7 @@ export default function Navbar() {
               St. Louis<span className="text-primary">.</span> Creations
             </span>
             <span className="hidden sm:block font-body italic text-[11px] md:text-xs text-muted mt-1 tracking-wide">
-              &ldquo;{siteConfig.tagline}&rdquo;
+              {siteConfig.descriptor}
             </span>
           </Link>
 
@@ -66,7 +66,7 @@ export default function Navbar() {
               href="/contact"
               className="hidden lg:inline-flex items-center px-5 py-2.5 bg-primary text-white font-display text-xs uppercase tracking-wider font-bold hover:shadow-glow transition-shadow duration-300"
             >
-              Get a Quote
+              Start a Quote
             </Link>
 
             {/* Cart Icon */}

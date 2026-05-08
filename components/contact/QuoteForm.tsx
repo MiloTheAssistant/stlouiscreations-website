@@ -20,14 +20,14 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const productTypes = [
-  "Tumblers & Drinkware",
-  "Wood & Slate Products",
-  "Sports Awards",
+  "Precision Laser Engraving",
+  "3D Printing / Design Services",
+  "Custom Design & Production",
+  "Branded Drinkware",
+  "Awards & Recognition",
   "Corporate Gifts",
   "Fundraiser Items",
-  "Custom Engraving",
   "Laser Cutting",
-  "3D Printing",
   "Other",
 ];
 
@@ -48,17 +48,23 @@ export default function QuoteForm() {
     try {
       const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
       if (!endpoint) {
-        // Fallback: just show success for now
-        await new Promise((r) => setTimeout(r, 1000));
-        setStatus("success");
-        reset();
+        setStatus("error");
         return;
       }
 
       const res = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          _replyto: data.email,
+          _subject: `St. Louis Creations quote request: ${data.productType}`,
+          source: "stlouiscreations.com/contact",
+          submittedAt: new Date().toISOString(),
+        }),
       });
 
       if (res.ok) {
@@ -190,7 +196,7 @@ export default function QuoteForm() {
           <div>
             <textarea
               {...register("message")}
-              placeholder="Tell us about your project *"
+            placeholder="Tell us about the idea, material, quantity, deadline, and intended use *"
               rows={5}
               className={cn(
                 inputClasses,
@@ -214,7 +220,7 @@ export default function QuoteForm() {
             disabled={status === "loading"}
             className="w-full px-8 py-4 bg-primary text-white font-display text-xs uppercase tracking-wider font-bold hover:shadow-glow transition-shadow duration-300 disabled:opacity-50"
           >
-            {status === "loading" ? "Sending..." : "Submit Quote Request"}
+            {status === "loading" ? "Sending..." : "Submit Fabrication Quote"}
           </button>
         </motion.form>
       )}

@@ -29,12 +29,16 @@ export default function ServicesStrip() {
     <section className="py-24 md:py-32 bg-surface">
       <div className="max-w-7xl mx-auto px-6">
         <FadeUpSection className="text-center mb-16">
-          <SectionLabel>What We Do</SectionLabel>
+          <SectionLabel>Fabrication Capabilities</SectionLabel>
           <AnimatedHeading
-            text="Precision at Every Scale"
+            text="Engineered Creative Solutions"
             as="h2"
             className="font-display text-3xl md:text-5xl font-bold mt-4"
           />
+          <p className="text-muted mt-5 max-w-2xl mx-auto leading-relaxed">
+            We combine digital design, machine precision, and material
+            knowledge to move ideas from concept to finished physical products.
+          </p>
         </FadeUpSection>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

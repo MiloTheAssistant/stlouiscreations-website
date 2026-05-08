@@ -44,12 +44,16 @@ export default function WhyChooseUs() {
     <section className="py-24 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Why St. Louis Creations</SectionLabel>
+          <SectionLabel>Prototype to Production</SectionLabel>
           <AnimatedHeading
-            text="The B2B Laser Partner You Need"
+            text="A Studio Built for Physical Ideas"
             as="h2"
             className="font-display text-3xl md:text-5xl font-bold mt-4"
           />
+          <p className="text-muted mt-5 max-w-2xl mx-auto leading-relaxed">
+            The work is equal parts creative direction, engineering discipline,
+            material selection, and production execution.
+          </p>
         </FadeUpSection>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

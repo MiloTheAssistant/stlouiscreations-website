@@ -1,9 +1,10 @@
 export const siteConfig = {
   name: "St. Louis Creations",
+  descriptor: "Digital Fabrication Studio",
   description:
-    "Custom laser engraving, cutting & 3D printing for businesses that demand precision at scale.",
+    "A digital fabrication studio engineering ideas into precision-crafted physical products for brands, creators, and innovators.",
   url: "https://stlouiscreations.com",
-  tagline: "Engrave Your Imagination",
+  tagline: "Creatively Engineered Reality",
 };
 
 export const navLinks = [
@@ -20,25 +21,25 @@ export const navLinks = [
 
 export const services = [
   {
-    title: "Laser Engraving",
+    title: "Precision Laser Engraving",
     description:
-      "Precision engraving on virtually any surface — from tumblers to trophies.",
+      "Permanent, production-ready marks for branded products, awards, materials, and industrial details.",
     icon: "engraving",
     href: "/services#engraving",
   },
   {
-    title: "Laser Cutting",
+    title: "Advanced Additive Manufacturing",
     description:
-      "Clean, accurate cuts for custom shapes, signage, and intricate designs.",
-    icon: "cutting",
-    href: "/services#cutting",
-  },
-  {
-    title: "3D Printing",
-    description:
-      "Rapid prototyping and custom parts with professional-grade 3D printing.",
+      "Professional 3D printing for prototypes, fixtures, parts, and small-batch creative production.",
     icon: "printing",
     href: "/services#printing",
+  },
+  {
+    title: "Custom Design & Production",
+    description:
+      "From concept files to finished goods, we help turn digital ideas into physical reality.",
+    icon: "cutting",
+    href: "/services#production",
   },
 ];
 
@@ -103,65 +104,73 @@ export const materials = [
 
 export const productCategories = [
   {
-    title: "Tumblers & Drinkware",
-    description: "Custom engraved tumblers, mugs, and water bottles for every occasion.",
-    image: "/images/products/tumblers.jpg",
+    title: "Branded Drinkware",
+    description: "Precision-engraved tumblers, mugs, and bottles for launches, teams, events, and client gifts.",
+    image: "/images/products/polar-camel/ltm7201.png",
     href: "/shop?category=drinkware",
   },
   {
-    title: "Wood & Slate",
-    description: "Handcrafted wood and slate products with precision laser engraving.",
-    image: "/images/products/wood-slate.jpg",
+    title: "Wood, Slate & Display Pieces",
+    description: "Premium materials shaped into signage, recognition pieces, home goods, and branded objects.",
+    image: "/images/materials/wood.png",
     href: "/shop?category=wood-slate",
   },
   {
-    title: "Sports Awards",
-    description: "Trophies, plaques, and medals for teams, leagues, and tournaments.",
-    image: "/images/products/sports-awards.jpg",
+    title: "Awards & Recognition",
+    description: "Plaques, trophies, and recognition systems produced with consistent detail and polish.",
+    image: "/images/products/airflyte/p5473.png",
     href: "/shop?category=awards",
   },
   {
     title: "Corporate Gifts",
-    description: "Branded merchandise and executive gifts that make an impression.",
-    image: "/images/products/corporate-gifts.jpg",
+    description: "Executive gifts and branded merchandise engineered to feel intentional, durable, and refined.",
+    image: "/images/materials/metal.png",
     href: "/shop?category=corporate",
   },
   {
-    title: "Fundraiser Items",
-    description: "Custom water bottles, accessories, and items perfect for fundraising events.",
-    image: "/images/products/fundraiser.jpg",
+    title: "Fundraiser Products",
+    description: "Useful, customizable products for schools, teams, nonprofits, and community campaigns.",
+    image: "/images/products/polar-camel/ltm7253.png",
     href: "/shop?category=fundraiser",
   },
 ];
 
 export const valueProps = [
   {
-    number: 10000,
-    suffix: "+",
-    label: "Products Delivered",
-    description: "Thousands of custom orders fulfilled with precision and care.",
-  },
-  {
-    number: 24,
-    suffix: "hr",
-    label: "Fast Turnaround",
-    description: "Rush orders available with 24-hour turnaround on most items.",
+    number: 3,
+    suffix: "",
+    label: "Fabrication Modes",
+    description: "Laser engraving, additive manufacturing, and custom production under one studio workflow.",
   },
   {
     number: 8,
     suffix: "",
-    label: "Material Types",
-    description: "Engrave on acrylic, wood, glass, metal, leather, stone, fabric, and rubber.",
+    label: "Material Families",
+    description: "Acrylic, wood, glass, metal, leather, stone, fabric, and rubber for creative builds.",
+  },
+  {
+    number: 24,
+    suffix: "hr",
+    label: "Quote Response",
+    description: "Clear next steps for viable projects, materials, quantities, and deadlines.",
   },
   {
     number: 100,
     suffix: "%",
-    label: "Custom Everything",
-    description: "Every order is fully customizable — your design, your way.",
+    label: "Custom Direction",
+    description: "Every engagement starts with the intended form, finish, use case, and production goal.",
   },
 ];
 
 export const socialLinks = {
   facebook: "https://www.facebook.com/stllasercreations",
+  messenger: "https://m.me/stllasercreations",
   instagram: "https://www.instagram.com/stllasercreations",
+};
+
+export const contactLinks = {
+  email: "contact@stlouiscreations.com",
+  quote: "/contact",
+  orderSupport:
+    "mailto:contact@stlouiscreations.com?subject=Order%20Status%20Request",
 };

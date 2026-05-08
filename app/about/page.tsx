@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
@@ -7,29 +8,29 @@ import GlowButton from "@/components/ui/GlowButton";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "St. Louis Creations — precision laser engraving, cutting & 3D printing. Learn about our story, values, and commitment to quality craftsmanship.",
+    "St. Louis Creations is a digital fabrication studio where creativity, engineering, and advanced manufacturing converge.",
 };
 
 const values = [
   {
-    title: "Precision",
+    title: "Precision-Driven",
     description:
-      "Every detail matters. Our laser systems operate at micrometer accuracy, ensuring your designs are reproduced flawlessly every time.",
+      "Every material, mark, and finish has to serve the final object. We care about repeatability, detail, and usable results.",
   },
   {
-    title: "Speed",
+    title: "Creative",
     description:
-      "We understand deadlines. With 24-hour rush options and streamlined production, we deliver without sacrificing quality.",
+      "We work with people who have ideas, not just purchase orders. The goal is to make the physical result feel intentional.",
   },
   {
-    title: "Partnership",
+    title: "Future-Facing",
     description:
-      "We're not just a vendor — we're your manufacturing partner. We work with you from concept to delivery to ensure the best result.",
+      "Digital files, additive manufacturing, laser systems, and AI-era design workflows all belong in the same studio conversation.",
   },
   {
-    title: "Customization",
+    title: "Premium Craft",
     description:
-      "No templates, no limitations. Every order is built to your exact specifications, from material selection to finishing details.",
+      "We avoid disposable, generic output. Materials, proofs, and production details should create a finished object worth keeping.",
   },
 ];
 
@@ -39,9 +40,9 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Hero */}
         <FadeUpSection className="text-center mb-24">
-          <SectionLabel>About Us</SectionLabel>
+          <SectionLabel>About the Studio</SectionLabel>
           <AnimatedHeading
-            text="Crafted in St. Louis"
+            text="A Creative Fabrication Company With Ambition"
             as="h1"
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
@@ -56,47 +57,38 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-muted leading-relaxed">
                 <p>
-                  St. Louis Creations started with a simple idea: businesses
-                  deserve access to professional-grade laser engraving without
-                  the complexity. What began as a small operation in St. Louis,
-                  Missouri has grown into a trusted partner for businesses
-                  across the country.
+                  St. Louis Creations is a modern digital fabrication studio
+                  built around a simple premise: sophisticated physical products
+                  should be easier to imagine, refine, and produce.
                 </p>
                 <p>
-                  We specialize in custom bulk orders — from corporate gifts
-                  and branded merchandise to sports awards and fundraiser
-                  items. Our team combines cutting-edge laser technology with
-                  hands-on craftsmanship to deliver products that exceed
-                  expectations.
+                  We bring together precision laser engraving, additive
+                  manufacturing, material knowledge, and custom production for
+                  brands, creators, groups, and innovators who need ideas
+                  translated into tangible form.
                 </p>
                 <p>
-                  Whether you need 10 custom tumblers or 10,000 engraved
-                  awards, we bring the same level of precision, care, and
-                  attention to every single piece.
+                  The work can be a prototype, a corporate gift, a recognition
+                  piece, a fundraiser product, or a small-batch production run.
+                  The standard stays the same: technical discipline, creative
+                  polish, and a finished object with purpose.
                 </p>
               </div>
             </div>
 
-            {/* Facility placeholder */}
-            <div className="bg-surface border border-white/5 flex items-center justify-center aspect-[4/3]">
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-10 h-10 text-primary"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z"
-                    />
-                  </svg>
-                </div>
-                <p className="text-muted text-sm">Facility Photo</p>
+            <div className="relative overflow-hidden border border-white/5 bg-surface aspect-[4/3]">
+              <Image
+                src="/images/brand/hero-fabrication-studio.png"
+                alt="Dark digital fabrication studio with laser equipment and precision materials"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-primary text-xs font-display uppercase tracking-[0.22em]">
+                  Creatively Engineered Reality
+                </p>
               </div>
             </div>
           </div>
@@ -107,7 +99,7 @@ export default function AboutPage() {
           <div className="text-center mb-16">
             <SectionLabel>Our Values</SectionLabel>
             <h2 className="font-display text-3xl md:text-4xl font-bold mt-4">
-              What Drives Us
+              What the Brand Stands For
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -135,8 +127,8 @@ export default function AboutPage() {
             Let&apos;s Work Together
           </h2>
           <p className="text-muted max-w-xl mx-auto mb-8">
-            Ready to bring your vision to life? We&apos;d love to hear about
-            your project.
+            Bring the vision, constraints, and deadline. We&apos;ll help shape
+            the physical result.
           </p>
           <GlowButton href="/contact" variant="primary">
             Get in Touch

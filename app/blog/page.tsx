@@ -8,7 +8,7 @@ import { getAllPosts } from "@/lib/blog-posts";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Tips, guides, and insights on laser engraving, custom products, and business gifting from St. Louis Creations.",
+    "Ideas and guides on digital fabrication, laser engraving, materials, branded products, and custom production.",
 };
 
 export default function BlogPage() {
@@ -18,14 +18,15 @@ export default function BlogPage() {
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Blog</SectionLabel>
+          <SectionLabel>Studio Notes</SectionLabel>
           <AnimatedHeading
             text="Insights & Ideas"
             as="h1"
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
           <p className="text-muted mt-4 max-w-xl mx-auto">
-            Tips, guides, and inspiration for custom laser engraving and business gifting.
+            Ideas for digital fabrication, materials, branded products, and
+            physical concepts worth producing.
           </p>
         </FadeUpSection>
 

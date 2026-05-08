@@ -1,103 +1,87 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import GlowButton from "@/components/ui/GlowButton";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient + noise texture */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-surface" />
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
-      }} />
-
-      {/* Orange radial glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
-
-      {/* Logo watermark — large, low-opacity, slow breathing animation */}
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-      >
-        <motion.div
-          animate={{ scale: [1, 1.03, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-[min(90vw,900px)] aspect-square"
-          style={{
-            mixBlendMode: "screen",
-            filter: "drop-shadow(0 0 80px rgba(255,107,0,0.15))",
-          }}
-        >
-          <Image
-            src="/brand/logo.png"
-            alt=""
-            fill
-            priority
-            className="object-contain opacity-[0.10]"
-            sizes="(max-width: 768px) 90vw, 900px"
-          />
-        </motion.div>
-      </motion.div>
-
-      {/* Soft vignette over logo to keep the heading readable */}
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      <Image
+        src="/images/brand/hero-fabrication-studio.png"
+        alt=""
+        fill
+        priority
+        className="object-cover object-center"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/35" />
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(10,10,10,0) 0%, rgba(10,10,10,0.35) 45%, rgba(10,10,10,0.85) 80%)",
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-20">
+        <div className="w-full max-w-[calc(100vw-3rem)] sm:max-w-3xl min-w-0">
         {/* Eyebrow */}
-        <motion.p
-          className="text-primary text-xs font-display uppercase tracking-[0.3em] mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+        <p
+          className="max-w-full text-primary text-[11px] sm:text-xs font-display uppercase tracking-[0.16em] sm:tracking-[0.28em] mb-6 break-words"
         >
-          St. Louis &bull; Precision Crafted
-        </motion.p>
+          St. Louis &bull; Digital Fabrication Studio
+        </p>
 
-        {/* Main Heading */}
-        <AnimatedHeading
-          text="Engrave Your Imagination"
-          as="h1"
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05]"
-          delay={0.3}
-        />
+        <h1 className="max-w-[calc(100vw-3rem)] font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.02] text-left">
+          <span className="block">Creatively</span>
+          <span className="block">Engineered</span>
+          <span className="block">Reality</span>
+        </h1>
 
         {/* Subheading */}
-        <motion.p
-          className="mt-8 text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
+        <p className="mt-8 block w-full max-w-[20rem] text-muted text-lg leading-relaxed sm:hidden">
+          <span className="block">Precision laser engraving,</span>
+          <span className="block">additive manufacturing,</span>
+          <span className="block">and custom production for physical ideas.</span>
+        </p>
+        <p
+          className="mt-8 hidden w-full sm:block sm:max-w-2xl text-muted text-lg md:text-xl leading-relaxed break-words"
         >
-          Custom laser engraving, cutting & 3D printing for businesses
-          that demand precision at scale.
-        </motion.p>
+          Precision laser engraving, additive manufacturing, and custom
+          production for brands, creators, and innovators turning digital
+          concepts into physical form.
+        </p>
+
+        <div
+          className="mt-8 grid w-full max-w-[calc(100vw-3rem)] grid-cols-1 sm:grid-cols-3 gap-3 sm:max-w-2xl"
+        >
+          {["Prototype to Production", "Industrial & Artistic Fabrication", "Crafted With Digital Precision"].map(
+            (item) => (
+              <span
+                key={item}
+                className="min-w-0 border border-white/10 bg-background/50 px-4 py-3 text-[11px] sm:text-xs font-display uppercase tracking-wider text-text/80 backdrop-blur break-words"
+              >
+                {item}
+              </span>
+            )
+          )}
+        </div>
 
         {/* CTAs */}
-        <motion.div
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.9, duration: 0.5 }}
+        <div
+          className="mt-10 flex flex-col sm:flex-row gap-4"
         >
           <GlowButton href="/contact" variant="primary">
-            Request a Quote
+            Engineer a Project
           </GlowButton>
           <GlowButton href="/shop" variant="outline">
             Explore Products
           </GlowButton>
-        </motion.div>
+        </div>
+        </div>
       </div>
 
       <ScrollIndicator />

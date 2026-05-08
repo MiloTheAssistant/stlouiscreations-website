@@ -144,19 +144,20 @@ export default function ShippingPage() {
             <p>
               <span className="font-semibold text-text">Email:</span>{" "}
               <a
-                href="mailto:Contact@StllaserCreations.com"
+                href="mailto:contact@stlouiscreations.com"
                 className="text-primary underline hover:no-underline"
               >
-                Contact@StllaserCreations.com
+                contact@stlouiscreations.com
               </a>
             </p>
             <p>
-              <span className="font-semibold text-text">Phone:</span> (636)
-              628-6737
+              <span className="font-semibold text-text">Phone:</span> (573)
+              500-0064
             </p>
             <p>
-              <span className="font-semibold text-text">Mail:</span> 903
-              Southern Hills Court, Eureka, MO 63025
+              <span className="font-semibold text-text">Mail:</span> St. Louis
+              Creations, 903 Southern Hills Court, Eureka, MO 63025, United
+              States
             </p>
           </div>
           <GlowButton href="/contact" variant="primary">

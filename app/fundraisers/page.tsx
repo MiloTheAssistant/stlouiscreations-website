@@ -8,7 +8,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 export const metadata: Metadata = {
   title: "Fundraisers",
   description:
-    "Custom engraved fundraiser products for schools, teams, clubs, nonprofits, and community groups.",
+    "Custom fabricated and engraved fundraiser products for schools, teams, clubs, nonprofits, and community groups.",
 };
 
 const fundraiserOptions = [
@@ -44,15 +44,16 @@ export default function FundraisersPage() {
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Fundraisers</SectionLabel>
+          <SectionLabel>Community Production</SectionLabel>
           <AnimatedHeading
-            text="Custom Products That Help Groups Raise More"
+            text="Fundraiser Products With Real Polish"
             as="h1"
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
           <p className="text-muted mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
             We support schools, teams, clubs, nonprofits, and local groups with
-            personalized products that feel useful, memorable, and easy to sell.
+            personalized products that feel useful, memorable, and elevated
+            enough for sponsors, donors, and supporters.
           </p>
         </FadeUpSection>
 
@@ -85,9 +86,9 @@ export default function FundraisersPage() {
                 Simple Enough for Volunteers, Polished Enough for Sponsors
               </h2>
               <p className="text-muted leading-relaxed mt-5">
-                Tell us your group, budget, quantity, and deadline. We&apos;ll
-                help narrow the product choices and prepare a quote that works
-                for your campaign.
+                Tell us your group, budget, quantity, artwork, and deadline.
+                We&apos;ll help narrow the product choices and prepare a
+                fabrication quote that works for your campaign.
               </p>
             </div>
             <ol className="space-y-4">

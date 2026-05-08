@@ -11,7 +11,7 @@ import { getMaterialCopy, getMaterialImageSlug } from "@/lib/material-content";
 export const metadata: Metadata = {
   title: "Engraving Materials",
   description:
-    "Acrylic, wood, glass, metal, rubber, fabric, leather, stone, slate, and tile materials for custom laser engraving, cutting, etching, and marking.",
+    "Material options for digital fabrication, precision engraving, cutting, marking, and custom production.",
 };
 
 export default function MaterialsPage() {
@@ -19,16 +19,16 @@ export default function MaterialsPage() {
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Engraving Materials</SectionLabel>
+          <SectionLabel>Material Intelligence</SectionLabel>
           <AnimatedHeading
-            text="Acrylic, Glass, Metal, Wood, Rubber, Fabric, Leather, Stone & Tile"
+            text="Choose the Surface That Carries the Idea"
             as="h1"
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
           <p className="text-muted mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
-            We can cut, etch, engrave, and mark a wide range of materials for
-            awards, gifts, signage, branded merchandise, fundraisers, and
-            business-to-business production runs.
+            We cut, etch, engrave, mark, and produce across materials for
+            awards, gifts, signage, branded merchandise, prototypes,
+            fundraisers, and business-to-business production runs.
           </p>
         </FadeUpSection>
 
@@ -82,9 +82,9 @@ export default function MaterialsPage() {
                 Not sure which material fits your project?
               </h2>
               <p className="text-muted mt-4 max-w-2xl leading-relaxed">
-                Send us the intended use, quantity, artwork, and deadline. We
-                can recommend a material and process that balances durability,
-                appearance, and budget.
+                Send the intended use, quantity, artwork, and deadline. We can
+                recommend a material and process that balances durability,
+                appearance, production time, and budget.
               </p>
             </div>
             <GlowButton href="/contact" variant="primary">

@@ -10,21 +10,21 @@ const placeholderPosts = [
     slug: "custom-tumblers-bulk-orders",
     title: "Why Custom Tumblers Are the #1 Corporate Gift",
     excerpt:
-      "Discover why laser-engraved tumblers have become the go-to choice for corporate gifting, team events, and branded merchandise.",
+      "How precision-engraved drinkware turns practical objects into polished brand touchpoints.",
     date: "2026-03-15",
   },
   {
     slug: "laser-engraving-materials-guide",
     title: "The Ultimate Guide to Laser Engraving Materials",
     excerpt:
-      "From acrylic to stone — learn which materials work best for different laser engraving applications and how to choose the right one.",
+      "From acrylic to stone, choosing the right surface changes the final product before production starts.",
     date: "2026-03-01",
   },
   {
     slug: "sports-awards-season",
     title: "Getting Ready for Awards Season: A Planning Guide",
     excerpt:
-      "Plan ahead for your league or tournament awards. Tips on bulk ordering, customization options, and turnaround times.",
+      "How to plan recognition pieces with the right materials, quantities, proofs, and production timing.",
     date: "2026-02-15",
   },
 ];
@@ -35,7 +35,7 @@ export default function BlogPreview() {
       <div className="max-w-7xl mx-auto px-6">
         <FadeUpSection className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
           <div>
-            <SectionLabel>From the Blog</SectionLabel>
+            <SectionLabel>Studio Notes</SectionLabel>
             <AnimatedHeading
               text="Insights & Ideas"
               as="h2"
