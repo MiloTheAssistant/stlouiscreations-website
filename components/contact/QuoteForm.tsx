@@ -48,17 +48,23 @@ export default function QuoteForm() {
     try {
       const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
       if (!endpoint) {
-        // Fallback: just show success for now
-        await new Promise((r) => setTimeout(r, 1000));
-        setStatus("success");
-        reset();
+        setStatus("error");
         return;
       }
 
       const res = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          _replyto: data.email,
+          _subject: `St. Louis Creations quote request: ${data.productType}`,
+          source: "stlouiscreations.com/contact",
+          submittedAt: new Date().toISOString(),
+        }),
       });
 
       if (res.ok) {
