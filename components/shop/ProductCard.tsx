@@ -2,24 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import type { Product } from "@/lib/products";
+import type { ShopProduct } from "@/lib/shop-product";
 import { formatPrice } from "@/lib/utils";
 import AddToCartButton from "./AddToCartButton";
 
 interface ProductCardProps {
-  product: Product;
+  product: ShopProduct;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <motion.div
-      className="group bg-surface border border-white/5 overflow-hidden"
-      whileHover={{
-        boxShadow: "0 0 30px rgba(255,107,0,0.2)",
-        borderColor: "rgba(255,107,0,0.3)",
-      }}
-      transition={{ duration: 0.3 }}
+    <div
+      className="group overflow-hidden border border-white/5 bg-surface transition-[border-color,box-shadow] duration-300 hover:border-primary/30 hover:shadow-[0_0_30px_rgba(255,107,0,0.2)]"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "420px" }}
     >
       <Link href={`/shop/${product.slug}`}>
         <div className="relative aspect-square bg-white overflow-hidden border-b border-white/10 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)]">
@@ -30,7 +25,6 @@ export default function ProductCard({ product }: ProductCardProps) {
               fill
               sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
               className="object-contain p-7 transition-transform duration-300 group-hover:scale-[1.03]"
-              unoptimized
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -69,6 +63,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           <AddToCartButton product={product} size="sm" />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

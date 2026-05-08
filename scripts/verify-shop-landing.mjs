@@ -48,12 +48,12 @@ for (const snippet of requiredProductSnippets) {
 }
 
 const requiredShopSnippets = [
-  "const isLandingPage = !requestedCategory;",
-  'product.tags?.includes("Featured")',
+  'const isLandingPage = activeCategory === "all" && !isSearching;',
+  "featuredProducts",
   "Holiday, Event, and Special Occasion Specials",
   "4th of July, Easter, Halloween, Thanksgiving",
   "Occasion-ready picks",
-  'cat.slug !== "all"',
+  'selectCategory("all")',
 ];
 
 for (const snippet of requiredShopSnippets) {
@@ -62,8 +62,8 @@ for (const snippet of requiredShopSnippets) {
   }
 }
 
-if (!shopPageSource.includes("Seasonal gifts, event-ready awards")) {
-  throw new Error("Shop page hero copy was not updated for occasion specials.");
+if (!shopPageSource.includes("Customizable Products Ready for Production")) {
+  throw new Error("Shop page hero copy is missing.");
 }
 
 console.log("Shop landing page featured product checks passed.");

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Product } from "@/lib/products";
-import { categories } from "@/lib/products";
+import { categories } from "@/lib/shop-navigation";
 import { formatPrice } from "@/lib/utils";
 import AddToCartButton from "@/components/shop/AddToCartButton";
 import FadeUpSection from "@/components/ui/FadeUpSection";
@@ -45,7 +45,6 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-contain p-8 sm:p-10"
-                  unoptimized
                 />
               ) : (
                 <div className="text-center">

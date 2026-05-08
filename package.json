@@ -5,11 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "db:migrate": "tsx scripts/migrate-db.ts",
+    "db:check": "tsx scripts/check-db.ts",
+    "catalog:seed": "tsx scripts/seed-catalog-db.ts",
+    "stripe:sync-catalog": "tsx scripts/sync-stripe-catalog.ts",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:catalog": "node --import tsx --test tests/stripe-catalog-sync.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@neondatabase/serverless": "^1.1.0",
     "@stripe/stripe-js": "^9.1.0",
     "@tailwindcss/typography": "^0.5.19",
     "clsx": "^2.1.1",
@@ -35,6 +41,8 @@
     "postcss": "^8",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
+

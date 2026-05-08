@@ -4,11 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
-import type { Product } from "@/lib/products";
+import type { ShopProduct } from "@/lib/shop-product";
 import { cn } from "@/lib/utils";
 
 interface AddToCartButtonProps {
-  product: Product;
+  product: ShopProduct;
   size?: "sm" | "lg";
   quantity?: number;
 }
