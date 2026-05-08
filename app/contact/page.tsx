@@ -7,13 +7,13 @@ import QuoteForm from "@/components/contact/QuoteForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Request a quote for custom laser engraving, cutting, or 3D printing. Fast turnaround, competitive pricing, bulk order specialists.",
+    "Start a fabrication quote for laser engraving, additive manufacturing, custom production, branded products, or prototype work.",
 };
 
 const faqs = [
   {
     q: "What is your minimum order quantity?",
-    a: "We have no strict minimums, but our pricing is optimized for orders of 10+ units. For orders under 10, setup fees may apply.",
+    a: "We have no strict minimums, but pricing is usually strongest when there is enough quantity to justify setup, proofing, and production time.",
   },
   {
     q: "What is your typical turnaround time?",
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "What file formats do you accept?",
-    a: "We accept AI, EPS, SVG, PDF, PNG, and JPG files. Vector formats (AI, EPS, SVG) produce the best results for laser engraving.",
+    a: "AI, EPS, SVG, PDF, PNG, and JPG are common. Vector artwork is best for engraving and cutting, while 3D work may need model files or dimensions.",
   },
   {
     q: "Do you offer proofs before production?",
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "Can you match specific colors or materials?",
-    a: "We offer a wide range of materials and finishes. Send us your requirements and we will provide options and samples where possible.",
+    a: "We can recommend materials and finishes based on durability, appearance, use case, and budget. Send any constraints with the quote request.",
   },
 ];
 
@@ -39,15 +39,15 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Hero */}
         <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Contact</SectionLabel>
+          <SectionLabel>Start a Fabrication Quote</SectionLabel>
           <AnimatedHeading
-            text="Start Your Project"
+            text="Tell Us What You Want to Make"
             as="h1"
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
           <p className="text-muted mt-6 max-w-xl mx-auto text-lg">
-            Tell us about your project and we&apos;ll provide a custom quote
-            within 24 hours.
+            Share the idea, quantity, artwork, material direction, deadline,
+            and intended use. We&apos;ll help turn it into a practical path.
           </p>
         </FadeUpSection>
 
@@ -107,7 +107,8 @@ export default function ContactPage() {
                   Response Time
                 </h3>
                 <p className="text-muted text-sm">
-                  We respond to all inquiries within 24 hours during business days.
+                  We respond to fabrication and quote inquiries within 24 hours
+                  during business days.
                 </p>
               </div>
             </div>

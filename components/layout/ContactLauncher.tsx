@@ -17,7 +17,7 @@ const quickActions = [
     ),
   },
   {
-    label: "Request a quote",
+    label: "Fabrication quote",
     description: "Bulk, custom, or deadline-sensitive orders",
     href: contactLinks.quote,
     external: false,
@@ -73,9 +73,9 @@ export default function ContactLauncher() {
             aria-label="Contact options"
           >
             <div className="bg-primary px-5 py-4 text-white">
-              <p className="font-display text-lg font-bold">Chat with us</p>
+              <p className="font-display text-lg font-bold">Start a project</p>
               <p className="mt-1 text-sm text-white/90">
-                Message us or start a quote request.
+                Message us or send a fabrication quote request.
               </p>
             </div>
 

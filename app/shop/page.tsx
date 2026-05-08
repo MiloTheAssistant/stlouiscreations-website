@@ -49,13 +49,13 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         <section className="text-center mb-12">
           <SectionLabel>Shop</SectionLabel>
           <AnimatedHeading
-            text="Our Products"
+            text="Customizable Products Ready for Production"
             as="h1"
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
           <p className="text-muted mt-4 max-w-xl mx-auto">
-            Seasonal gifts, event-ready awards, and personalized specials for holidays,
-            milestones, clients, teams, and hosts.
+            Browse product starting points for engraved gifts, awards,
+            drinkware, campaigns, and branded objects.
           </p>
         </section>
 

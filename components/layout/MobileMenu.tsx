@@ -47,7 +47,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 onClick={onClose}
                 className="mt-4 inline-flex items-center px-8 py-4 bg-primary text-white font-display text-sm uppercase tracking-wider font-bold"
               >
-                Get a Quote
+                Start a Quote
               </Link>
             </motion.div>
           </nav>

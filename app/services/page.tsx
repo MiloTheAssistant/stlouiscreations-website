@@ -21,15 +21,15 @@ const MATERIALS_WITH_IMAGES = new Set([
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Laser engraving, laser cutting, and 3D printing services for businesses. Precision craftsmanship on any material.",
+    "Precision laser engraving, additive manufacturing, and custom production from a modern digital fabrication studio.",
 };
 
 const serviceDetails = [
   {
     id: "engraving",
-    title: "Laser Engraving",
+    title: "Precision Laser Engraving",
     description:
-      "Our precision laser engraving technology creates permanent, detailed markings on virtually any surface. From intricate logos to serialized text, we deliver consistent quality across bulk orders with micrometer-level accuracy.",
+      "Permanent, detailed markings for branded products, awards, materials, and industrial objects. From logos and names to serialized details, we produce crisp results with repeatable control.",
     capabilities: [
       "Photo-quality image engraving",
       "Vector logo and text engraving",
@@ -40,32 +40,32 @@ const serviceDetails = [
     materials: ["Acrylic", "Wood", "Glass", "Metal", "Leather", "Stone", "Fabric", "Rubber"],
   },
   {
-    id: "cutting",
-    title: "Laser Cutting",
-    description:
-      "Clean, precise cuts with smooth edges and no tooling marks. Our laser cutting services handle everything from delicate paper designs to thick acrylic signage, with tight tolerances and zero material waste.",
-    capabilities: [
-      "Intricate die-cut designs",
-      "Custom signage and displays",
-      "Architectural model components",
-      "Gaskets and industrial parts",
-      "Wedding and event invitations",
-    ],
-    materials: ["Acrylic", "Wood", "Fabric", "Rubber", "Paper", "Cardboard"],
-  },
-  {
     id: "printing",
-    title: "3D Printing",
+    title: "Advanced Additive Manufacturing",
     description:
-      "Rapid prototyping and custom part production using professional-grade 3D printing. We work with a range of materials to deliver functional prototypes, custom fixtures, and finished products with exceptional detail.",
+      "Professional 3D printing for prototypes, fixtures, models, and short-run production. We help turn digital geometry into parts and presentation-ready forms.",
     capabilities: [
-      "Rapid prototyping (24-48hr turnaround)",
+      "Rapid prototyping",
       "Functional end-use parts",
       "Custom fixtures and jigs",
-      "Architectural scale models",
-      "Small batch production runs",
+      "Architectural and product models",
+      "Small-batch production runs",
     ],
     materials: ["PLA", "ABS", "PETG", "TPU", "Nylon"],
+  },
+  {
+    id: "production",
+    title: "Custom Design & Production",
+    description:
+      "A guided fabrication path for teams that need more than a one-off print or engraving. We help refine the object, material, finish, quantity, and production approach.",
+    capabilities: [
+      "Digital-to-physical concept support",
+      "Laser cutting for shapes, signage, and displays",
+      "Material and finish recommendations",
+      "Proofing before production",
+      "Small-batch and event-ready fulfillment",
+    ],
+    materials: ["Acrylic", "Wood", "Metal", "Glass", "Leather", "Stone", "Fabric", "Rubber"],
   },
 ];
 
@@ -75,15 +75,15 @@ export default function ServicesPage() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Hero */}
         <FadeUpSection className="text-center mb-24">
-          <SectionLabel>Our Services</SectionLabel>
+          <SectionLabel>Digital Fabrication Studio</SectionLabel>
           <AnimatedHeading
-            text="Precision at Every Scale"
+            text="Engineering Ideas Into Form"
             as="h1"
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
           <p className="text-muted mt-6 max-w-2xl mx-auto text-lg leading-relaxed">
-            From a single prototype to thousands of custom pieces — we deliver
-            consistent quality with fast turnaround times.
+            Precision laser engraving, additive manufacturing, and custom
+            design production for physical ideas that need technical discipline.
           </p>
         </FadeUpSection>
 
@@ -178,7 +178,7 @@ export default function ServicesPage() {
           <div className="text-center mb-12">
             <SectionLabel>Full Materials List</SectionLabel>
             <h2 className="font-display text-3xl md:text-4xl font-bold mt-4">
-              We Work With Everything
+              Material Choices With Purpose
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -214,14 +214,14 @@ export default function ServicesPage() {
         {/* CTA */}
         <FadeUpSection className="mt-24 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-            Have a Project in Mind?
+            Have a Physical Idea in Mind?
           </h2>
           <p className="text-muted max-w-xl mx-auto mb-8">
-            Tell us about your project and we&apos;ll provide a custom quote
-            within 24 hours.
+            Tell us the intended use, material, quantity, and timeline. We&apos;ll
+            help shape the fabrication path.
           </p>
           <GlowButton href="/contact" variant="primary">
-            Request a Quote
+            Start a Fabrication Quote
           </GlowButton>
         </FadeUpSection>
       </div>

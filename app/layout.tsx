@@ -21,11 +21,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "St. Louis Creations | Custom Laser Engraving & 3D Printing",
+    default: "St. Louis Creations | Digital Fabrication Studio",
     template: "%s | St. Louis Creations",
   },
   description:
-    "Custom laser engraving, cutting & 3D printing for businesses that demand precision at scale. Bulk orders, fast turnaround, any material.",
+    "Creatively Engineered Reality. A St. Louis digital fabrication studio for precision laser engraving, additive manufacturing, and custom production.",
   metadataBase: new URL("https://stlouiscreations.com"),
   openGraph: {
     type: "website",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "St. Louis Creations — 3D Design, Printing, Laser Engraving",
+        alt: "St. Louis Creations — Digital Fabrication Studio",
       },
     ],
   },
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "St. Louis Creations",
     description:
-      "Custom laser engraving, cutting & 3D printing for businesses that demand precision at scale.",
+      "Creatively Engineered Reality. Precision laser engraving, additive manufacturing, and custom production.",
     images: ["/og-image.png"],
   },
 };

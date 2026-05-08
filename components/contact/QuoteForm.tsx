@@ -20,14 +20,14 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const productTypes = [
-  "Tumblers & Drinkware",
-  "Wood & Slate Products",
-  "Sports Awards",
+  "Precision Laser Engraving",
+  "Advanced Additive Manufacturing",
+  "Custom Design & Production",
+  "Branded Drinkware",
+  "Awards & Recognition",
   "Corporate Gifts",
   "Fundraiser Items",
-  "Custom Engraving",
   "Laser Cutting",
-  "3D Printing",
   "Other",
 ];
 
@@ -190,7 +190,7 @@ export default function QuoteForm() {
           <div>
             <textarea
               {...register("message")}
-              placeholder="Tell us about your project *"
+            placeholder="Tell us about the idea, material, quantity, deadline, and intended use *"
               rows={5}
               className={cn(
                 inputClasses,
@@ -214,7 +214,7 @@ export default function QuoteForm() {
             disabled={status === "loading"}
             className="w-full px-8 py-4 bg-primary text-white font-display text-xs uppercase tracking-wider font-bold hover:shadow-glow transition-shadow duration-300 disabled:opacity-50"
           >
-            {status === "loading" ? "Sending..." : "Submit Quote Request"}
+            {status === "loading" ? "Sending..." : "Submit Fabrication Quote"}
           </button>
         </motion.form>
       )}

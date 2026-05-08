@@ -8,7 +8,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 export const metadata: Metadata = {
   title: "Catalogs",
   description:
-    "Browse St. Louis Creations catalog resources for sports awards, drinkware, crystal and glass, leatherette gifts, personalized gifts, and corporate awards.",
+    "Browse product catalogs for engravable awards, drinkware, crystal, glass, leatherette gifts, personalized products, and corporate fabrication projects.",
 };
 
 const catalogs = [
@@ -49,16 +49,16 @@ export default function CatalogsPage() {
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Catalogs</SectionLabel>
+          <SectionLabel>Product Sourcebooks</SectionLabel>
           <AnimatedHeading
-            text="Explore Our Engravable Product Catalogs"
+            text="Source the Right Object, Then Make It Yours"
             as="h1"
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
           <p className="text-muted mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
-            These catalog resources show many of the awards, gifts, drinkware,
-            leatherette, crystal, glass, and corporate products we can source,
-            engrave, and customize for your project.
+            These catalogs help identify awards, drinkware, leatherette,
+            crystal, glass, and corporate products we can source, engrave,
+            personalize, and produce for a finished brand experience.
           </p>
         </FadeUpSection>
 
@@ -95,8 +95,9 @@ export default function CatalogsPage() {
                 Found something you like?
               </h2>
               <p className="text-muted leading-relaxed mt-4 max-w-2xl">
-                Send the item name, quantity, engraving details, and deadline.
-                We&apos;ll confirm availability, pricing, and customization options.
+                Send the item name, quantity, artwork, fabrication details, and
+                deadline. We&apos;ll confirm availability, pricing, and the best
+                customization path.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">

@@ -62,9 +62,9 @@ export default function MaterialsShowcase() {
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <SectionLabel>Materials We Work With</SectionLabel>
+            <SectionLabel>Material Intelligence</SectionLabel>
             <h2 className="font-display text-3xl font-bold mt-4">
-              Any Surface. Every Detail.
+              Designed for the Right Surface
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -118,7 +118,7 @@ export default function MaterialsShowcase() {
             <div>
               <SectionLabel>Materials We Work With</SectionLabel>
               <h2 className="font-display text-4xl md:text-6xl font-bold mt-4 leading-[1.05]">
-                Any Surface. Every Detail.
+                Designed for the Right Surface.
               </h2>
             </div>
             <button

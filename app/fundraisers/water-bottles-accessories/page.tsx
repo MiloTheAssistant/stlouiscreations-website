@@ -8,7 +8,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 export const metadata: Metadata = {
   title: "Fundraiser Water Bottles & Accessories",
   description:
-    "Personalized water bottles, drinkware, and accessories for fundraiser campaigns, teams, schools, clubs, and nonprofits.",
+    "Precision-engraved water bottles, drinkware, and accessories for fundraiser campaigns, teams, schools, clubs, and nonprofits.",
 };
 
 const items = [
@@ -33,15 +33,16 @@ export default function WaterBottleFundraiserPage() {
         </nav>
 
         <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Water Bottles & Accessories</SectionLabel>
+          <SectionLabel>Engraved Fundraiser Products</SectionLabel>
           <AnimatedHeading
             text="Useful Fundraiser Products People Actually Keep"
             as="h1"
             className="font-display text-4xl md:text-6xl font-bold mt-4"
           />
           <p className="text-muted mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
-            Custom bottles, drinkware, and accessories make practical fundraiser
-            items for teams, schools, clubs, nonprofits, and community events.
+            Custom bottles, drinkware, and accessories make practical,
+            sponsor-friendly fundraiser products for teams, schools, clubs,
+            nonprofits, and community events.
           </p>
         </FadeUpSection>
 
@@ -59,7 +60,7 @@ export default function WaterBottleFundraiserPage() {
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <GlowButton href="/contact" variant="primary">
-                  Request Pricing
+                  Request Fabrication Pricing
                 </GlowButton>
                 <Link
                   href="/shop?category=drinkware"

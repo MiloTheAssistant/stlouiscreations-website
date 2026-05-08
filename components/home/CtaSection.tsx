@@ -22,17 +22,17 @@ export default function CtaSection() {
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <FadeUpSection>
           <AnimatedHeading
-            text="Ready to Start Your Project?"
+            text="Ready to Engineer the Physical Version?"
             as="h2"
             className="font-display text-3xl md:text-5xl lg:text-6xl font-bold"
           />
           <p className="mt-6 text-muted text-lg max-w-2xl mx-auto leading-relaxed">
-            From 10 units to 10,000 — we handle bulk orders with precision
-            and fast turnaround. Let&apos;s create something extraordinary.
+            Bring the concept, artwork, material question, or production goal.
+            We&apos;ll help translate it into a quote, proof, and fabrication path.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <GlowButton href="/contact" variant="primary">
-              Request a Quote
+              Start a Fabrication Quote
             </GlowButton>
             <GlowButton href="/shop" variant="outline">
               Browse Products
