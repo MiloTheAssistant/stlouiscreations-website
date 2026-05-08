@@ -62,7 +62,7 @@ export const polarCamelProducts: Product[] = [
     name: "Stainless Steel 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2475,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757049/products/images/large/LTM7201--3f29fb3b.png"],
+    images: ["/images/products/polar-camel/ltm7201.png"],
     description: "Personalized stainless steel 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7201",
@@ -101,7 +101,7 @@ export const polarCamelProducts: Product[] = [
     name: "Black 20 oz. Polar Camel Ringneck Tumbler (No Silver Ring) with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1722375935/products/images/large/LTM7202--f20f719b.png"],
+    images: ["/images/products/polar-camel/ltm7202.png"],
     description: "Personalized black 20 oz. polar camel ringneck tumbler (no silver ring) with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7202",
@@ -140,7 +140,7 @@ export const polarCamelProducts: Product[] = [
     name: "Red 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1671130148/products/images/large/LTM7203--9c79e6ac.png"],
+    images: ["/images/products/polar-camel/ltm7203.png"],
     description: "Personalized red 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7203",
@@ -179,7 +179,7 @@ export const polarCamelProducts: Product[] = [
     name: "Royal Blue 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757063/products/images/large/LTM7204--30530084.png"],
+    images: ["/images/products/polar-camel/ltm7204.png"],
     description: "Personalized royal blue 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7204",
@@ -218,7 +218,7 @@ export const polarCamelProducts: Product[] = [
     name: "Pink 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757069/products/images/large/LTM7205--1ed2cd20.png"],
+    images: ["/images/products/polar-camel/ltm7205.png"],
     description: "Personalized pink 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7205",
@@ -257,7 +257,7 @@ export const polarCamelProducts: Product[] = [
     name: "Teal 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1673035263/products/images/large/LTM7206--5194ec4f.png"],
+    images: ["/images/products/polar-camel/ltm7206.png"],
     description: "Personalized teal 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7206",
@@ -296,7 +296,7 @@ export const polarCamelProducts: Product[] = [
     name: "Light Blue 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1673035283/products/images/large/LTM7207--c8c7be1f.png"],
+    images: ["/images/products/polar-camel/ltm7207.png"],
     description: "Personalized light blue 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7207",
@@ -335,7 +335,7 @@ export const polarCamelProducts: Product[] = [
     name: "Light Purple 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757087/products/images/large/LTM7208--e81912b5.png"],
+    images: ["/images/products/polar-camel/ltm7208.png"],
     description: "Personalized light purple 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7208",
@@ -374,7 +374,7 @@ export const polarCamelProducts: Product[] = [
     name: "Purple 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757093/products/images/large/LTM7209--1da1fff7.png"],
+    images: ["/images/products/polar-camel/ltm7209.png"],
     description: "Personalized purple 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7209",
@@ -413,7 +413,7 @@ export const polarCamelProducts: Product[] = [
     name: "Dark Gray 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757097/products/images/large/LTM7210--332b5ede.png"],
+    images: ["/images/products/polar-camel/ltm7210.png"],
     description: "Personalized dark gray 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7210",
@@ -452,7 +452,7 @@ export const polarCamelProducts: Product[] = [
     name: "Navy Blue 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757101/products/images/large/LTM7211--79fa9395.png"],
+    images: ["/images/products/polar-camel/ltm7211.png"],
     description: "Personalized navy blue 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7211",
@@ -491,7 +491,7 @@ export const polarCamelProducts: Product[] = [
     name: "Orange 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757107/products/images/large/LTM7212--03c00575.png"],
+    images: ["/images/products/polar-camel/ltm7212.png"],
     description: "Personalized orange 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7212",
@@ -530,7 +530,7 @@ export const polarCamelProducts: Product[] = [
     name: "Maroon 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1671130194/products/images/large/LTM7213--15a8f966.png"],
+    images: ["/images/products/polar-camel/ltm7213.png"],
     description: "Personalized maroon 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7213",
@@ -569,7 +569,7 @@ export const polarCamelProducts: Product[] = [
     name: "White 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757117/products/images/large/LTM7214--0a7e32f5.png"],
+    images: ["/images/products/polar-camel/ltm7214.png"],
     description: "Personalized white 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7214",
@@ -608,7 +608,7 @@ export const polarCamelProducts: Product[] = [
     name: "Green 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757121/products/images/large/LTM7215--94173ae9.png"],
+    images: ["/images/products/polar-camel/ltm7215.png"],
     description: "Personalized green 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7215",
@@ -647,7 +647,7 @@ export const polarCamelProducts: Product[] = [
     name: "Black 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1722375550/products/images/large/LTM7216--4d697a20.png"],
+    images: ["/images/products/polar-camel/ltm7216.png"],
     description: "Personalized black 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7216",
@@ -686,7 +686,7 @@ export const polarCamelProducts: Product[] = [
     name: "Yellow 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757131/products/images/large/LTM7217--1bd64fdb.png"],
+    images: ["/images/products/polar-camel/ltm7217.png"],
     description: "Personalized yellow 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7217",
@@ -725,7 +725,7 @@ export const polarCamelProducts: Product[] = [
     name: "Coral 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757136/products/images/large/LTM7218--e554c281.png"],
+    images: ["/images/products/polar-camel/ltm7218.png"],
     description: "Personalized coral 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7218",
@@ -764,7 +764,7 @@ export const polarCamelProducts: Product[] = [
     name: "Olive Green 20 oz. Polar Camel Ringneck Tumbler with Standard Lid",
     price: 2700,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669757142/products/images/large/LTM7219--e0f006bd.png"],
+    images: ["/images/products/polar-camel/ltm7219.png"],
     description: "Personalized olive green 20 oz. polar camel ringneck tumbler with standard lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7219",
@@ -803,7 +803,7 @@ export const polarCamelProducts: Product[] = [
     name: "Stainless Steel 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2650,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915306/products/images/large/LTM7251--88e84916.png"],
+    images: ["/images/products/polar-camel/ltm7251.png"],
     description: "Personalized stainless steel 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7251",
@@ -842,7 +842,7 @@ export const polarCamelProducts: Product[] = [
     name: "Black (No Silver Ring) 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1722376101/products/images/large/LTM7252--9b73c164.png"],
+    images: ["/images/products/polar-camel/ltm7252.png"],
     description: "Personalized black (no silver ring) 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7252",
@@ -881,7 +881,7 @@ export const polarCamelProducts: Product[] = [
     name: "Red 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915315/products/images/large/LTM7253--3790346f.png"],
+    images: ["/images/products/polar-camel/ltm7253.png"],
     description: "Personalized red 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7253",
@@ -920,7 +920,7 @@ export const polarCamelProducts: Product[] = [
     name: "Royal Blue 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915319/products/images/large/LTM7254--55a4b7b6.png"],
+    images: ["/images/products/polar-camel/ltm7254.png"],
     description: "Personalized royal blue 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7254",
@@ -959,7 +959,7 @@ export const polarCamelProducts: Product[] = [
     name: "Pink 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915323/products/images/large/LTM7255--551b5405.png"],
+    images: ["/images/products/polar-camel/ltm7255.png"],
     description: "Personalized pink 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7255",
@@ -998,7 +998,7 @@ export const polarCamelProducts: Product[] = [
     name: "Teal 29 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915327/products/images/large/LTM7256--f119d48d.png"],
+    images: ["/images/products/polar-camel/ltm7256.png"],
     description: "Personalized teal 29 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7256",
@@ -1037,7 +1037,7 @@ export const polarCamelProducts: Product[] = [
     name: "Light Blue 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915330/products/images/large/LTM7257--31350d38.png"],
+    images: ["/images/products/polar-camel/ltm7257.png"],
     description: "Personalized light blue 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7257",
@@ -1076,7 +1076,7 @@ export const polarCamelProducts: Product[] = [
     name: "Light Purple 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915334/products/images/large/LTM7258--577b0e98.png"],
+    images: ["/images/products/polar-camel/ltm7258.png"],
     description: "Personalized light purple 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7258",
@@ -1115,7 +1115,7 @@ export const polarCamelProducts: Product[] = [
     name: "Purple 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915337/products/images/large/LTM7259--9cbc836f.png"],
+    images: ["/images/products/polar-camel/ltm7259.png"],
     description: "Personalized purple 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7259",
@@ -1154,7 +1154,7 @@ export const polarCamelProducts: Product[] = [
     name: "Dark Gray 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915340/products/images/large/LTM7260--d2361058.png"],
+    images: ["/images/products/polar-camel/ltm7260.png"],
     description: "Personalized dark gray 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7260",
@@ -1193,7 +1193,7 @@ export const polarCamelProducts: Product[] = [
     name: "Navy Blue 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915345/products/images/large/LTM7261--ca202e85.png"],
+    images: ["/images/products/polar-camel/ltm7261.png"],
     description: "Personalized navy blue 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7261",
@@ -1232,7 +1232,7 @@ export const polarCamelProducts: Product[] = [
     name: "Orange 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915348/products/images/large/LTM7262--4b4b60ce.png"],
+    images: ["/images/products/polar-camel/ltm7262.png"],
     description: "Personalized orange 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7262",
@@ -1271,7 +1271,7 @@ export const polarCamelProducts: Product[] = [
     name: "Maroon 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915351/products/images/large/LTM7263--3539e832.png"],
+    images: ["/images/products/polar-camel/ltm7263.png"],
     description: "Personalized maroon 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7263",
@@ -1310,7 +1310,7 @@ export const polarCamelProducts: Product[] = [
     name: "White 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915355/products/images/large/LTM7264--8969c423.png"],
+    images: ["/images/products/polar-camel/ltm7264.png"],
     description: "Personalized white 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7264",
@@ -1349,7 +1349,7 @@ export const polarCamelProducts: Product[] = [
     name: "Green 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915358/products/images/large/LTM7265--d3e53bf1.png"],
+    images: ["/images/products/polar-camel/ltm7265.png"],
     description: "Personalized green 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7265",
@@ -1388,7 +1388,7 @@ export const polarCamelProducts: Product[] = [
     name: "Black 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1722376449/products/images/large/LTM7266--da43259b.png"],
+    images: ["/images/products/polar-camel/ltm7266.png"],
     description: "Personalized black 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7266",
@@ -1427,7 +1427,7 @@ export const polarCamelProducts: Product[] = [
     name: "Yellow 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915366/products/images/large/LTM7267--fa173d0d.png"],
+    images: ["/images/products/polar-camel/ltm7267.png"],
     description: "Personalized yellow 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7267",
@@ -1466,7 +1466,7 @@ export const polarCamelProducts: Product[] = [
     name: "Coral 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915370/products/images/large/LTM7268--7d7de634.png"],
+    images: ["/images/products/polar-camel/ltm7268.png"],
     description: "Personalized coral 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7268",
@@ -1505,7 +1505,7 @@ export const polarCamelProducts: Product[] = [
     name: "Olive Green 20 oz. Polar Camel Ringneck Tumbler with Slider Lid",
     price: 2900,
     stripePriceId: "quote",
-    images: ["https://res.cloudinary.com/business-products/image/upload/q_auto,c_pad,b_transparent,w_300,h_300/v1669915374/products/images/large/LTM7269--b97a0b67.png"],
+    images: ["/images/products/polar-camel/ltm7269.png"],
     description: "Personalized olive green 20 oz. polar camel ringneck tumbler with slider lid from Polar Camel, available for custom engraving, special occasions, branded gifts, and everyday use.",
     details: [
       "Polar Camel SKU: LTM7269",
@@ -22795,5 +22795,6 @@ export const polarCamelProducts: Product[] = [
     status: "active",
   },
 ];
+
 
 

@@ -44,6 +44,7 @@ interface ShopClientProps {
   pageSize: number;
   products: ShopProduct[];
   searchQuery: string;
+  subcategoryImages: Record<string, string[]>;
   subcategoryCounts: Record<string, number>;
   totalCount: number;
 }
@@ -57,6 +58,7 @@ export default function ShopClient({
   pageSize,
   products,
   searchQuery,
+  subcategoryImages,
   subcategoryCounts,
   totalCount,
 }: ShopClientProps) {
@@ -279,13 +281,25 @@ export default function ShopClient({
                 className="group overflow-hidden border border-white/10 bg-surface/70 text-left transition-colors hover:border-primary/30"
               >
                 <span className="relative block aspect-[16/9] overflow-hidden border-b border-white/10 bg-white">
-                  <Image
-                    src={`/images/product-lines/${subcategory.slug}.svg`}
-                    alt={`${subcategory.label} product line`}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  />
+                  {(subcategoryImages[subcategory.slug] ?? []).slice(0, 3).map((image, index) => (
+                    <span
+                      key={image}
+                      className={cn(
+                        "absolute transition-transform duration-300 group-hover:scale-[1.03]",
+                        index === 0 && "left-[5%] top-[8%] h-[84%] w-[50%]",
+                        index === 1 && "right-[8%] top-[12%] h-[76%] w-[34%]",
+                        index === 2 && "right-[31%] bottom-[10%] h-[46%] w-[24%]"
+                      )}
+                    >
+                      <Image
+                        src={image}
+                        alt={`${subcategory.label} product`}
+                        fill
+                        sizes="(min-width: 1024px) 18vw, (min-width: 640px) 25vw, 48vw"
+                        className="object-contain drop-shadow-[0_18px_22px_rgba(0,0,0,0.18)]"
+                      />
+                    </span>
+                  ))}
                 </span>
                 <span className="block p-5">
                   <span className="font-display text-sm font-bold uppercase tracking-wider text-text">

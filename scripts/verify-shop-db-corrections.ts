@@ -7,6 +7,7 @@ interface CorrectionRow {
   sku: string;
   category: string;
   subcategory: string | null;
+  images: string[];
 }
 
 interface CountRow {
@@ -18,7 +19,7 @@ async function main() {
   const sql = getSql();
 
   const rows = (await sql.query(
-    `select sku, category, subcategory
+    `select sku, category, subcategory, images
      from product_catalog
      where sku in ('STLLC-SLT030','STLLC-SLT042','STLLC-SLT051','LTM7201','LTM7219','LTM7251','LTM7269')
      order by sku`,
@@ -42,6 +43,13 @@ async function main() {
   for (const sku of ["LTM7251", "LTM7269"]) {
     if (bySku.get(sku)?.subcategory !== "20-oz-ringneck-tumblers-slider-lid") {
       throw new Error(`${sku} is not in the slider-lid 20 oz. Ringneck line.`);
+    }
+  }
+
+  for (const sku of ["LTM7201", "LTM7219", "LTM7251", "LTM7269"]) {
+    const expectedImage = `/images/products/polar-camel/${sku.toLowerCase()}.png`;
+    if (bySku.get(sku)?.images?.[0] !== expectedImage) {
+      throw new Error(`${sku} is not using its local product image.`);
     }
   }
 

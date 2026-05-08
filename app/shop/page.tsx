@@ -71,6 +71,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
               pageSize={catalog.pageSize}
               products={catalog.products}
               searchQuery={searchQuery}
+              subcategoryImages={catalog.subcategoryImages}
               subcategoryCounts={catalog.subcategoryCounts}
               totalCount={catalog.totalCount}
             />
