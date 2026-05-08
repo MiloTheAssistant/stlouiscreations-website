@@ -21,7 +21,7 @@ type FormData = z.infer<typeof schema>;
 
 const productTypes = [
   "Precision Laser Engraving",
-  "Advanced Additive Manufacturing",
+  "3D Printing / Design Services",
   "Custom Design & Production",
   "Branded Drinkware",
   "Awards & Recognition",
