@@ -2,6 +2,10 @@ import { products, type Product } from "@/lib/products";
 import type { CatalogProductRecord } from "@/lib/stripe/catalog-sync";
 
 function sourceCatalogForProduct(product: Product): string {
+  if (product.category === "3d-prints" || product.supplier === "STLFlix") {
+    return "stlflix_3d_prints_catalog";
+  }
+
   if (product.supplier === "Polar Camel") {
     return "polar_camel_catalog";
   }
@@ -38,8 +42,11 @@ export function toCatalogProductRecord(product: Product): CatalogProductRecord {
     subcategory: product.subcategory ?? null,
     supplier: product.supplier ?? "St. Louis Creations",
     images: product.images,
+    videos: product.videos ?? [],
     tags: product.tags ?? [],
     basePrice: product.price,
+    inventoryQuantity: product.inventoryQuantity ?? 0,
+    availabilityQuantity: product.availabilityQuantity ?? 0,
     quoteRequired,
     personalizationAvailable: Boolean(personalizationNote),
     personalizationNote,

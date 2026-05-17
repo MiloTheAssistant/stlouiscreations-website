@@ -20,6 +20,8 @@
 .DS_Store
 *.pem
 .agents/
+.codex-temp-*/
+.superpowers/
 
 # debug
 npm-debug.log*

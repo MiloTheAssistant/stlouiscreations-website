@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import GlowButton from "@/components/ui/GlowButton";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { BrandHeroPanel, StampedPageHero } from "@/components/brand/BrandVisuals";
 
 export const metadata: Metadata = {
   title: "Fundraiser Water Bottles & Accessories",
@@ -32,23 +32,29 @@ export default function WaterBottleFundraiserPage() {
           <span className="text-text">Water Bottles & Accessories</span>
         </nav>
 
-        <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Engraved Fundraiser Products</SectionLabel>
-          <AnimatedHeading
-            text="Useful Fundraiser Products People Actually Keep"
-            as="h1"
-            className="font-display text-4xl md:text-6xl font-bold mt-4"
-          />
-          <p className="text-muted mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
+        <StampedPageHero
+          label="Engraved Fundraiser Products"
+          heading="Useful Fundraiser Products People Actually Keep"
+          source="material-craft"
+          visualLabel="Engraved Campaigns"
+          visualCaption="Drinkware and accessories with durable personalization for groups and sponsors."
+        >
+          <p>
             Custom bottles, drinkware, and accessories make practical,
             sponsor-friendly fundraiser products for teams, schools, clubs,
             nonprofits, and community events.
           </p>
-        </FadeUpSection>
+        </StampedPageHero>
 
         <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1fr] gap-10">
           <FadeUpSection>
             <div className="bg-surface border border-white/5 p-8 md:p-10 h-full">
+              <BrandHeroPanel
+                source="local-maker"
+                label="Fundraiser Ready"
+                caption="A practical product path for teams, schools, clubs, and local campaigns."
+                className="mb-8 min-h-[220px]"
+              />
               <SectionLabel>Campaign Fit</SectionLabel>
               <h2 className="font-display text-3xl font-bold mt-4">
                 Built for Groups, Sponsors, and Repeat Orders

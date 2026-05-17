@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import GlowButton from "@/components/ui/GlowButton";
-import SectionLabel from "@/components/ui/SectionLabel";
+import { StampedPageHero } from "@/components/brand/BrandVisuals";
 import { materials } from "@/lib/constants";
 import { getMaterialCopy, getMaterialImageSlug } from "@/lib/material-content";
 
@@ -18,19 +17,19 @@ export default function MaterialsPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Material Intelligence</SectionLabel>
-          <AnimatedHeading
-            text="Choose the Surface That Carries the Idea"
-            as="h1"
-            className="font-display text-4xl md:text-6xl font-bold mt-4"
-          />
-          <p className="text-muted mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
+        <StampedPageHero
+          label="Material Intelligence"
+          heading="Choose the Surface That Carries the Idea"
+          source="material-craft"
+          visualLabel="Real Materials"
+          visualCaption="Wood grain, slate, metal, acrylic, glass, and leather each carry the mark differently."
+        >
+          <p>
             We cut, etch, engrave, mark, and produce across materials for
             awards, gifts, signage, branded merchandise, prototypes,
             fundraisers, and business-to-business production runs.
           </p>
-        </FadeUpSection>
+        </StampedPageHero>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
           {materials.map((material, index) => {

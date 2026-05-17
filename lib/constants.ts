@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "A digital fabrication studio engineering ideas into precision-crafted physical products for brands, creators, and innovators.",
   url: "https://stlouiscreations.com",
-  tagline: "Creatively Engineered Reality",
+  tagline: "Local Craft. Real Materials. Studio Precision.",
 };
 
 export const navLinks = [

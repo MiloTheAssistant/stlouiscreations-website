@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import GlowButton from "@/components/ui/GlowButton";
-import SectionLabel from "@/components/ui/SectionLabel";
+import { StampedPageHero } from "@/components/brand/BrandVisuals";
 
 export const metadata: Metadata = {
   title: "Catalogs",
@@ -48,19 +47,19 @@ export default function CatalogsPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Product Sourcebooks</SectionLabel>
-          <AnimatedHeading
-            text="Source the Right Object, Then Make It Yours"
-            as="h1"
-            className="font-display text-4xl md:text-6xl font-bold mt-4"
-          />
-          <p className="text-muted mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
+        <StampedPageHero
+          label="Product Sourcebooks"
+          heading="Source the Right Object, Then Make It Yours"
+          source="local-maker"
+          visualLabel="Sourced + Finished"
+          visualCaption="Start with the right physical object, then finish it with engraving, personalization, and production polish."
+        >
+          <p>
             These catalogs help identify awards, drinkware, leatherette,
             crystal, glass, and corporate products we can source, engrave,
             personalize, and produce for a finished brand experience.
           </p>
-        </FadeUpSection>
+        </StampedPageHero>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
           {catalogs.map((catalog, index) => (

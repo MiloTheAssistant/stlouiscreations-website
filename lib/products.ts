@@ -6,6 +6,7 @@ export interface Product {
   price: number; // cents
   stripePriceId: string;
   images: string[];
+  videos?: string[];
   description: string;
   details: string[];
   category: string;
@@ -13,6 +14,8 @@ export interface Product {
   tags?: string[];
   supplier?: string;
   supplierSku?: string;
+  inventoryQuantity?: number;
+  availabilityQuantity?: number;
   purchaseMode?: "cart" | "quote";
   seo?: {
     title: string;
@@ -29,7 +32,7 @@ export {
   drinkwareSubcategories,
   polarCamelSubcategoryGroups,
   polarCamelSubcategories,
-} from "./polar-camel-products";
+} from "./shop-navigation";
 
 const featuredProductSlugs = new Set([
   "polar-camel-ltm7201-stainless-steel-20oz-ringneck-tumbler-standard-lid",
@@ -42,8 +45,244 @@ const featuredProductSlugs = new Set([
   "stllc-slt001",
 ]);
 
+const stlflix3dPrintDetails = [
+  "3D printed product placeholder listing",
+  "Placeholder price: $0.00",
+  "Inventory placeholder: 0 available",
+  "Availability placeholder: 0 available",
+  "Final material, color, finish, lead time, and price to be confirmed before production",
+];
+
+const stlflix3dPrintTags = [
+  "3D Print",
+  "STLFlix",
+  "Placeholder Price",
+  "Inventory: 0",
+];
+
+function normalizeShopCategory(product: Product): Product {
+  if (product.category !== "glassware") {
+    return product;
+  }
+
+  return {
+    ...product,
+    category: "home-goods",
+  };
+}
+
+interface Stlflix3dPrintInput {
+  slug: string;
+  name: string;
+  supplierSku: string;
+  folder: string;
+  images: string[];
+  video: string;
+}
+
+function wackyWeeniesProduct({
+  slug,
+  name,
+  supplierSku,
+  folder,
+  images,
+  video,
+}: Stlflix3dPrintInput): Product {
+  const basePath = `/images/products/3d-prints/wacky-weenies/${folder}`;
+
+  return {
+    slug,
+    name,
+    price: 0,
+    stripePriceId: "quote",
+    images: images.map((image) => `${basePath}/${image}`),
+    videos: [`${basePath}/${video}`],
+    description:
+      "STLFlix Wacky Weenies 3D print with placeholder pricing while final print settings and availability are confirmed.",
+    details: stlflix3dPrintDetails,
+    category: "3d-prints",
+    subcategory: "wacky-weenies",
+    tags: stlflix3dPrintTags,
+    supplier: "STLFlix",
+    supplierSku,
+    inventoryQuantity: 0,
+    availabilityQuantity: 0,
+    purchaseMode: "quote",
+    status: "active",
+  };
+}
+
+const stlflix3dPrintProducts: Product[] = [
+  {
+    slug: "feline-sphere-table-lamp",
+    name: "Feline Sphere Table Lamp",
+    price: 0,
+    stripePriceId: "quote",
+    images: [
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_Table_Lamp_1_7022effbf5.png",
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_Table_Lamp_2_5d1d51d374.png",
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_Table_Lamp_3_32615f28ae.png",
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_Table_Lamp_4_a147be8561.png",
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_Table_Lamp_5_6c7ba53c9c.png",
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_Table_Lamp_6_67ce78b5b6.png",
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_Table_Lamp_7_af60e9a703.png",
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_Table_Lamp_8_24c5805b38.png",
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_Table_Lamp_9_4787cb442f.png",
+    ],
+    videos: [
+      "/images/products/3d-prints/feline-sphere-table-lamp/Feline_Sphere_WEBM_5ce5b00f53.webm",
+    ],
+    description:
+      "STLFlix 3D printed table lamp concept with placeholder pricing while final print settings and availability are confirmed.",
+    details: stlflix3dPrintDetails,
+    category: "3d-prints",
+    tags: stlflix3dPrintTags,
+    supplier: "STLFlix",
+    supplierSku: "STLFLIX-FELINE-SPHERE-LAMP",
+    inventoryQuantity: 0,
+    availabilityQuantity: 0,
+    purchaseMode: "quote",
+    status: "active",
+  },
+  wackyWeeniesProduct({
+    slug: "burnt-ween",
+    name: "Burnt Ween",
+    supplierSku: "STLFLIX-BURNT-WEEN",
+    folder: "burnt-ween",
+    images: [
+      "Burnt_Ween1_939f854778.png",
+      "Burnt_Ween2_b475bae0f5.png",
+      "Burnt_Ween3_c9c2b61dac.png",
+      "Burnt_Ween4_8ef70fd208.png",
+      "Burnt_Ween5_b61ddc5454.png",
+      "Burnt_Ween6_720e90d042.png",
+    ],
+    video: "Burnt_Ween_WEBM_b8bb0a50d4.webm",
+  }),
+  wackyWeeniesProduct({
+    slug: "done-ween",
+    name: "Done Ween",
+    supplierSku: "STLFLIX-DONE-WEEN",
+    folder: "done-ween",
+    images: [
+      "Done_Ween1_f9e18f8333.png",
+      "Done_Ween2_8b40d4e0f5.png",
+      "Done_Ween3_aaed522301.png",
+      "Done_Ween4_3beb87c2d5.png",
+      "Done_Ween5_ba803e93d5.png",
+      "Done_Ween6_20c5ba8cf6.png",
+    ],
+    video: "Done_Ween_WEBM_e7c0672c5e.webm",
+  }),
+  wackyWeeniesProduct({
+    slug: "golden-ween",
+    name: "Golden Ween",
+    supplierSku: "STLFLIX-GOLDEN-WEEN",
+    folder: "golden-ween",
+    images: [
+      "Golden_Ween1_c6e89f6f97.png",
+      "Golden_Ween2_42ee23890d.png",
+      "Golden_Ween3_a9d6dea527.png",
+      "Golden_Ween4_c99d49a315.png",
+      "Golden_Ween5_37de9417a5.png",
+      "Golden_Ween6_1bfcc2bd02.png",
+    ],
+    video: "Golden_Ween_WEBM_396c02b076.webm",
+  }),
+  wackyWeeniesProduct({
+    slug: "raw-ween",
+    name: "Raw Ween",
+    supplierSku: "STLFLIX-RAW-WEEN",
+    folder: "raw-ween",
+    images: [
+      "Raw_Ween1_f2c83768e8.png",
+      "Raw_Ween2_d73645b561.png",
+      "Raw_Ween3_71965c26e4.png",
+      "Raw_Ween4_61c3def0ad.png",
+      "Raw_Ween5_7504014506.png",
+      "Raw_Ween6_8fbd183be4.png",
+    ],
+    video: "Raw_Ween_WEBM_20975a7ad7.webm",
+  }),
+  wackyWeeniesProduct({
+    slug: "simmering-ween",
+    name: "Simmering Ween",
+    supplierSku: "STLFLIX-SIMMERING-WEEN",
+    folder: "simmering-ween",
+    images: [
+      "Simmering_Ween1_01871df78f.png",
+      "Simmering_Ween2_26fcde576d.png",
+      "Simmering_Ween3_d51b1594b4.png",
+      "Simmering_Ween4_a3827f55b0.png",
+      "Simmering_Ween5_ae8e4d5787.png",
+      "Simmering_Ween6_d02d23f3ca.png",
+    ],
+    video: "Simmering_Ween_WEBM_b7ab5a2a76.webm",
+  }),
+  wackyWeeniesProduct({
+    slug: "sizzled-ween",
+    name: "Sizzled Ween",
+    supplierSku: "STLFLIX-SIZZLED-WEEN",
+    folder: "sizzled-ween",
+    images: [
+      "Sizzled_Ween1_91f1be1cd5.png",
+      "Sizzled_Ween2_3f31d8df65.png",
+      "Sizzled_Ween3_445bb661f9.png",
+      "Sizzled_Ween4_39de39400c.png",
+      "Sizzled_Ween5_68e8dcafb9.png",
+      "Sizzled_Ween6_fed8c1aa25.png",
+    ],
+    video: "Sizzled_Ween_WEBM_e38bc8e45b.webm",
+  }),
+  wackyWeeniesProduct({
+    slug: "smoking-ween",
+    name: "Smoking Ween",
+    supplierSku: "STLFLIX-SMOKING-WEEN",
+    folder: "smoking-ween",
+    images: [
+      "Smoking_Ween_1_a545f64beb.png",
+      "Smoking_Ween_2_5a93ace484.png",
+      "Smoking_Ween_3_9b0ced1d35.png",
+      "Smoking_Ween_4_e72c728c6a.png",
+      "Smoking_Ween_5_aba2b045e1.png",
+      "Smoking_Ween_6_aed9f05bb3.png",
+    ],
+    video: "Smoking_Ween_WEBM_8d374a7880.webm",
+  }),
+  wackyWeeniesProduct({
+    slug: "the-skewer",
+    name: "The Skewer",
+    supplierSku: "STLFLIX-THE-SKEWER",
+    folder: "the-skewer",
+    images: [
+      "The_Skewer_1_be301a64ec.png",
+      "The_Skewer_2_8f61143657.png",
+      "The_Skewer_3_ebe9a8cdc4.png",
+      "The_Skewer_4_86c4b4c97a.png",
+      "The_Skewer_5_fc0f513e65.png",
+    ],
+    video: "The_Skewer_WEBM_3dec63809f.webm",
+  }),
+  wackyWeeniesProduct({
+    slug: "thirsty-ween",
+    name: "Thirsty Ween",
+    supplierSku: "STLFLIX-THIRSTY-WEEN",
+    folder: "thirsty-ween",
+    images: [
+      "Thirsty_Ween1_6a657d9d0b.png",
+      "Thirsty_Ween2_ccc9952201.png",
+      "Thirsty_Ween3_37d647424f.png",
+      "Thirsty_Ween4_afdcb5493a.png",
+      "Thirsty_Ween5_5dd7635f4e.png",
+      "Thirsty_Ween6_717ff594d8.png",
+    ],
+    video: "Thirsty_Ween_WEBM_1d97ae074e.webm",
+  }),
+];
+
 const baseProducts: Product[] = [
   ...polarCamelProducts,
+  ...stlflix3dPrintProducts,
   {
     slug: "airflyte-p5473-rosewood-gold-sunburst-plaque",
     name: "Airflyte P5473 Rosewood Gold Sunburst Plaque",
@@ -309,16 +548,18 @@ const baseProducts: Product[] = [
 ];
 
 export const products: Product[] = baseProducts.map((product) => {
-  if (!featuredProductSlugs.has(product.slug)) {
-    return product;
+  const normalizedProduct = normalizeShopCategory(product);
+
+  if (!featuredProductSlugs.has(normalizedProduct.slug)) {
+    return normalizedProduct;
   }
 
-  const tags = product.tags?.includes("Featured")
-    ? product.tags
-    : ["Featured", ...(product.tags ?? [])];
+  const tags = normalizedProduct.tags?.includes("Featured")
+    ? normalizedProduct.tags
+    : ["Featured", ...(normalizedProduct.tags ?? [])];
 
   return {
-    ...product,
+    ...normalizedProduct,
     tags,
     featured: true,
   };
@@ -326,11 +567,10 @@ export const products: Product[] = baseProducts.map((product) => {
 
 export const categories = [
   { slug: "drinkware", label: "Drinkware" },
-  { slug: "glassware", label: "Glassware" },
   { slug: "home-goods", label: "Home Goods" },
   { slug: "wood-slate", label: "Wood & Slate" },
   { slug: "awards", label: "Awards" },
-  { slug: "corporate", label: "Corporate" },
+  { slug: "3d-prints", label: "3D Prints" },
   { slug: "fundraiser", label: "Fundraiser" },
   { slug: "digital", label: "Digital Products" },
   { slug: "other", label: "Other" },

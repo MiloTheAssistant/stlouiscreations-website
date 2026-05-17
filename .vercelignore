@@ -1,1 +1,12 @@
-.agents/
+node_modules
+.next
+out
+build
+coverage
+.codex-*
+.superpowers
+.agents
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

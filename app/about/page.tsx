@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
-import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import GlowButton from "@/components/ui/GlowButton";
+import { StampedPageHero } from "@/components/brand/BrandVisuals";
 
 export const metadata: Metadata = {
   title: "About",
@@ -38,15 +38,19 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Hero */}
-        <FadeUpSection className="text-center mb-24">
-          <SectionLabel>About the Studio</SectionLabel>
-          <AnimatedHeading
-            text="A Creative Fabrication Company With Ambition"
-            as="h1"
-            className="font-display text-4xl md:text-6xl font-bold mt-4"
-          />
-        </FadeUpSection>
+        <StampedPageHero
+          label="About the Studio"
+          heading="A Local Maker Studio With Production Discipline"
+          source="local-maker"
+          visualLabel="Veteran-Owned Studio"
+          visualCaption="Creatively scrappy, totally real, and built around useful physical things."
+          className="mb-24"
+        >
+          <p>
+            We combine laser engraving, additive manufacturing, and material
+            craft to turn practical ideas into finished objects.
+          </p>
+        </StampedPageHero>
 
         {/* Story */}
         <FadeUpSection>
@@ -87,7 +91,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-primary text-xs font-display uppercase tracking-[0.22em]">
-                  Creatively Engineered Reality
+                  Local Craft. Real Materials. Studio Precision.
                 </p>
               </div>
             </div>

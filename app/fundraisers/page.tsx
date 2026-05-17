@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import GlowButton from "@/components/ui/GlowButton";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { StampedPageHero } from "@/components/brand/BrandVisuals";
 
 export const metadata: Metadata = {
   title: "Fundraisers",
@@ -43,19 +43,19 @@ export default function FundraisersPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Community Production</SectionLabel>
-          <AnimatedHeading
-            text="Fundraiser Products With Real Polish"
-            as="h1"
-            className="font-display text-4xl md:text-6xl font-bold mt-4"
-          />
-          <p className="text-muted mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
+        <StampedPageHero
+          label="Community Production"
+          heading="Fundraiser Products With Real Polish"
+          source="material-craft"
+          visualLabel="Community Runs"
+          visualCaption="Useful objects, engraved details, and repeatable production for local groups."
+        >
+          <p>
             We support schools, teams, clubs, nonprofits, and local groups with
             personalized products that feel useful, memorable, and elevated
             enough for sponsors, donors, and supporters.
           </p>
-        </FadeUpSection>
+        </StampedPageHero>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-20">
           {fundraiserOptions.map((option, index) => (

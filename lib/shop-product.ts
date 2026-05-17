@@ -4,6 +4,7 @@ export interface ShopProduct {
   price: number;
   stripePriceId: string;
   images: string[];
+  videos?: string[];
   description: string;
   tags?: string[];
   purchaseMode?: "cart" | "quote";

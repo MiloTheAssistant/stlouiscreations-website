@@ -17,6 +17,7 @@ export interface ShopCatalogResult {
   pageSize: number;
   subcategoryCounts: Record<string, number>;
   subcategoryImages: Record<string, string[]>;
+  subcategoryVideos: Record<string, string>;
   categoryProductCount: number;
 }
 
@@ -25,6 +26,7 @@ interface ProductRow {
   title: string;
   description: string;
   images: string[] | null;
+  videos: string[] | null;
   tags: string[] | null;
   base_price: number;
   quote_required: boolean;
@@ -45,6 +47,11 @@ interface SubcategoryImageRow {
   image: string | null;
 }
 
+interface SubcategoryVideoRow {
+  subcategory: string | null;
+  video: string | null;
+}
+
 function normalizeCount(value: string | number): number {
   return typeof value === "number" ? value : Number.parseInt(value, 10);
 }
@@ -56,6 +63,7 @@ function mapProduct(row: ProductRow): ShopProduct {
     price: row.base_price,
     stripePriceId: row.stripe_price_id ?? (row.quote_required ? "quote" : ""),
     images: row.images ?? [],
+    videos: row.videos ?? [],
     description: row.description,
     tags: row.tags ?? [],
     purchaseMode: row.quote_required ? "quote" : "cart",
@@ -83,6 +91,20 @@ function mapSubcategoryImages(rows: SubcategoryImageRow[]): Record<string, strin
   return images;
 }
 
+function mapSubcategoryVideos(rows: SubcategoryVideoRow[]): Record<string, string> {
+  const videos: Record<string, string> = {};
+
+  for (const row of rows) {
+    if (!row.subcategory || !row.video || videos[row.subcategory]) {
+      continue;
+    }
+
+    videos[row.subcategory] = row.video;
+  }
+
+  return videos;
+}
+
 async function getSubcategoryImages(
   sql: ReturnType<typeof getSql>,
   category: string
@@ -105,6 +127,28 @@ async function getSubcategoryImages(
   return mapSubcategoryImages(rows as SubcategoryImageRow[]);
 }
 
+async function getSubcategoryVideos(
+  sql: ReturnType<typeof getSql>,
+  category: string
+): Promise<Record<string, string>> {
+  if (!category) {
+    return {};
+  }
+
+  const rows = await sql.query(
+    `select subcategory, videos->>0 as video
+     from product_catalog
+     where status = 'active'
+       and category = $1
+       and subcategory is not null
+       and jsonb_array_length(videos) > 0
+     order by subcategory asc, title asc`,
+    [category]
+  );
+
+  return mapSubcategoryVideos(rows as SubcategoryVideoRow[]);
+}
+
 export async function getShopCatalog({
   category,
   subcategory,
@@ -121,9 +165,16 @@ export async function getShopCatalog({
   const offset = Math.max(page - 1, 0) * limit;
 
   if (activeCategory && activeSubcategory && search) {
-    const [products, totalRows, subcategoryRows, categoryRows, subcategoryImages] = await Promise.all([
+    const [
+      products,
+      totalRows,
+      subcategoryRows,
+      categoryRows,
+      subcategoryImages,
+      subcategoryVideos,
+    ] = await Promise.all([
       sql.query(
-        `select slug, title, description, images, tags, base_price, quote_required, stripe_price_id
+        `select slug, title, description, images, videos, tags, base_price, quote_required, stripe_price_id
          from product_catalog
          where status = 'active'
            and category = $1
@@ -168,6 +219,7 @@ export async function getShopCatalog({
         [activeCategory]
       ),
       getSubcategoryImages(sql, activeCategory),
+      getSubcategoryVideos(sql, activeCategory),
     ]);
 
     return {
@@ -180,6 +232,7 @@ export async function getShopCatalog({
           .map((row) => [row.subcategory, normalizeCount(row.count)])
       ),
       subcategoryImages,
+      subcategoryVideos,
       categoryProductCount: normalizeCount((categoryRows as CountRow[])[0]?.count ?? 0),
     };
   }
@@ -209,9 +262,16 @@ export async function getShopCatalog({
   }
 
   const whereClause = conditions.join(" and ");
-  const [products, totalRows, subcategoryRows, categoryRows, subcategoryImages] = await Promise.all([
+  const [
+    products,
+    totalRows,
+    subcategoryRows,
+    categoryRows,
+    subcategoryImages,
+    subcategoryVideos,
+  ] = await Promise.all([
     sql.query(
-      `select slug, title, description, images, tags, base_price, quote_required, stripe_price_id
+      `select slug, title, description, images, videos, tags, base_price, quote_required, stripe_price_id
        from product_catalog
        where ${whereClause}
        order by title asc
@@ -243,8 +303,9 @@ export async function getShopCatalog({
            from product_catalog
            where status = 'active'`,
           []
-        ),
+    ),
     getSubcategoryImages(sql, activeCategory),
+    getSubcategoryVideos(sql, activeCategory),
   ]);
 
   return {
@@ -257,6 +318,7 @@ export async function getShopCatalog({
         .map((row) => [row.subcategory, normalizeCount(row.count)])
     ),
     subcategoryImages,
+    subcategoryVideos,
     categoryProductCount: normalizeCount((categoryRows as CountRow[])[0]?.count ?? 0),
   };
 }
@@ -266,7 +328,7 @@ export async function getFeaturedShopProducts(): Promise<ShopProduct[]> {
 
   const sql = getSql();
   const rows = await sql.query(
-    `select slug, title, description, images, tags, base_price, quote_required, stripe_price_id
+    `select slug, title, description, images, videos, tags, base_price, quote_required, stripe_price_id
      from product_catalog
      where status = 'active'
        and tags ? 'Featured'

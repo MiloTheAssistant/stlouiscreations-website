@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Product } from "@/lib/products";
@@ -13,9 +14,14 @@ interface ProductDetailClientProps {
 }
 
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
+  const [selectedImage, setSelectedImage] = useState(product.images[0] ?? "");
   const categoryLabel =
     categories.find((category) => category.slug === product.category)?.label ??
     product.category;
+
+  useEffect(() => {
+    setSelectedImage(product.images[0] ?? "");
+  }, [product.images]);
 
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
@@ -37,24 +43,74 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           <FadeUpSection>
-            <div className="relative aspect-square bg-white border border-white/10 flex items-center justify-center overflow-hidden shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06),0_24px_70px_rgba(0,0,0,0.24)]">
-              {product.images[0] ? (
-                <Image
-                  src={product.images[0]}
-                  alt={product.name}
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-contain p-8 sm:p-10"
-                />
-              ) : (
-                <div className="text-center">
-                  <div className="w-32 h-32 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <span className="font-display text-5xl font-bold text-primary">
-                      {product.name[0]}
-                    </span>
+            <div className="space-y-5">
+              <div className="relative flex aspect-square items-center justify-center overflow-hidden border border-primary/15 bg-[radial-gradient(circle_at_50%_24%,rgba(255,107,0,0.18),rgba(255,107,0,0.04)_34%,rgba(6,6,6,0.98)_72%)] shadow-[0_24px_70px_rgba(0,0,0,0.32),inset_0_0_46px_rgba(255,107,0,0.08)]">
+                <div className="absolute inset-5 border border-white/5 bg-black/25" />
+                {selectedImage ? (
+                  <Image
+                    src={selectedImage}
+                    alt={product.name}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-contain p-8 drop-shadow-[0_24px_34px_rgba(0,0,0,0.45)] sm:p-10"
+                  />
+                ) : (
+                  <div className="text-center">
+                    <div className="w-32 h-32 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                      <span className="font-display text-5xl font-bold text-primary">
+                        {product.name[0]}
+                      </span>
+                    </div>
+                    <p className="text-muted text-sm">Product Image</p>
                   </div>
-                  <p className="text-muted text-sm">Product Image</p>
+                )}
+              </div>
+
+              {product.images.length > 1 && (
+                <div className="overflow-x-auto pb-2">
+                  <div className="flex min-w-max gap-3">
+                    {product.images.map((image, index) => {
+                      const isSelected = image === selectedImage;
+
+                      return (
+                        <button
+                          key={image}
+                          type="button"
+                          onClick={() => setSelectedImage(image)}
+                          aria-label={`View ${product.name} image ${index + 1}`}
+                          aria-pressed={isSelected}
+                          className={`relative h-20 w-20 flex-none overflow-hidden border bg-[radial-gradient(circle_at_50%_24%,rgba(255,107,0,0.14),rgba(6,6,6,0.98)_70%)] transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-primary/50 ${
+                            isSelected
+                              ? "border-primary shadow-[0_0_18px_rgba(255,107,0,0.25)]"
+                              : "border-white/10"
+                          }`}
+                        >
+                          <Image
+                            src={image}
+                            alt={`${product.name} view ${index + 1}`}
+                            fill
+                            sizes="80px"
+                            className="object-contain p-2"
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
+              )}
+
+              {product.videos?.[0] && (
+                <video
+                  className="aspect-video w-full border border-white/10 bg-black object-contain shadow-[0_20px_60px_rgba(0,0,0,0.22)]"
+                  controls
+                  loop
+                  muted
+                  playsInline
+                  poster={product.images[0]}
+                  preload="metadata"
+                >
+                  <source src={product.videos[0]} type="video/webm" />
+                </video>
               )}
             </div>
           </FadeUpSection>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { navLinks, siteConfig, socialLinks } from "@/lib/constants";
 
 export default function Footer() {
@@ -22,11 +23,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link href="/" aria-label={`${siteConfig.name} home`} className="inline-block">
-              <h3 className="font-display text-2xl font-bold text-text tracking-tight leading-none">
-                St. Louis<span className="text-primary">.</span> Creations
-              </h3>
-              <p className="font-body italic text-sm text-muted mt-2 tracking-wide">
+            <Link
+              href="/"
+              aria-label={`${siteConfig.name} home`}
+              className="inline-block"
+            >
+              <div className="relative h-32 w-32 sm:h-36 sm:w-36">
+                <Image
+                  src="/brand/masters/profile-stamp-combined.png"
+                  alt="St. Louis Creations combined laser and 3D printing profile stamp"
+                  fill
+                  sizes="144px"
+                  className="object-contain drop-shadow-[0_18px_34px_rgba(255,107,0,0.2)]"
+                />
+              </div>
+              <p className="font-body italic text-sm text-muted mt-4 tracking-wide">
                 {siteConfig.tagline}
               </p>
               <p className="font-display text-[11px] uppercase tracking-[0.22em] text-primary mt-2">

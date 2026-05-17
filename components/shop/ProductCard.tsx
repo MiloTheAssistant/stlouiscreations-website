@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { ShopProduct } from "@/lib/shop-product";
@@ -11,20 +12,47 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const previewVideo = product.videos?.[0];
+
+  function playPreview() {
+    if (!videoRef.current) {
+      return;
+    }
+
+    void videoRef.current.play().catch(() => {
+      // Some browsers can still block programmatic playback; the image remains the fallback.
+    });
+  }
+
+  function resetPreview() {
+    if (!videoRef.current) {
+      return;
+    }
+
+    videoRef.current.pause();
+    videoRef.current.currentTime = 0;
+  }
+
   return (
     <div
-      className="group overflow-hidden border border-white/5 bg-surface transition-[border-color,box-shadow] duration-300 hover:border-primary/30 hover:shadow-[0_0_30px_rgba(255,107,0,0.2)]"
+      className="group overflow-hidden border border-white/10 bg-[#101010] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_22px_55px_rgba(0,0,0,0.38),0_0_28px_rgba(255,107,0,0.16)]"
+      onMouseEnter={playPreview}
+      onMouseLeave={resetPreview}
+      onFocus={playPreview}
+      onBlur={resetPreview}
       style={{ contentVisibility: "auto", containIntrinsicSize: "420px" }}
     >
       <Link href={`/shop/${product.slug}`}>
-        <div className="relative aspect-square bg-white overflow-hidden border-b border-white/10 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)]">
+        <div className="relative aspect-square overflow-hidden border-b border-primary/10 bg-[radial-gradient(circle_at_50%_24%,rgba(255,107,0,0.18),rgba(255,107,0,0.04)_34%,rgba(6,6,6,0.98)_72%)]">
+          <div className="absolute inset-4 border border-white/5 bg-black/30 shadow-[inset_0_0_36px_rgba(255,107,0,0.08)] transition-colors duration-300 group-hover:border-primary/20" />
           {product.images[0] ? (
             <Image
               src={product.images[0]}
               alt={product.name}
               fill
               sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-              className="object-contain p-7 transition-transform duration-300 group-hover:scale-[1.03]"
+              className="object-contain p-8 drop-shadow-[0_20px_28px_rgba(0,0,0,0.45)] transition-transform duration-500 group-hover:scale-[1.04]"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -34,6 +62,20 @@ export default function ProductCard({ product }: ProductCardProps) {
                 </span>
               </div>
             </div>
+          )}
+          {previewVideo && (
+            <video
+              ref={videoRef}
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full bg-black object-contain p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100"
+              loop
+              muted
+              playsInline
+              poster={product.images[0]}
+              preload="metadata"
+            >
+              <source src={previewVideo} type="video/webm" />
+            </video>
           )}
         </div>
       </Link>
@@ -54,8 +96,8 @@ export default function ProductCard({ product }: ProductCardProps) {
             ))}
           </div>
         )}
-        <div className="flex items-center justify-between mt-4">
-          <span className="font-display text-lg font-bold text-primary">
+        <div className="mt-5 flex items-end justify-between gap-4">
+          <span className="font-display text-lg font-bold leading-tight text-primary">
             {product.purchaseMode === "quote"
               ? `From ${formatPrice(product.price)}`
               : formatPrice(product.price)}

@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import FadeUpSection from "@/components/ui/FadeUpSection";
-import SectionLabel from "@/components/ui/SectionLabel";
-import AnimatedHeading from "@/components/ui/AnimatedHeading";
+import { StampedPageHero } from "@/components/brand/BrandVisuals";
 import { getAllPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
@@ -17,18 +16,18 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Studio Notes</SectionLabel>
-          <AnimatedHeading
-            text="Insights & Ideas"
-            as="h1"
-            className="font-display text-4xl md:text-6xl font-bold mt-4"
-          />
-          <p className="text-muted mt-4 max-w-xl mx-auto">
+        <StampedPageHero
+          label="Studio Notes"
+          heading="Insights & Ideas"
+          source="studio-precision"
+          visualLabel="Maker Notes"
+          visualCaption="Practical ideas from the overlap of engraving, additive manufacturing, and material craft."
+        >
+          <p>
             Ideas for digital fabrication, materials, branded products, and
             physical concepts worth producing.
           </p>
-        </FadeUpSection>
+        </StampedPageHero>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post, i) => (

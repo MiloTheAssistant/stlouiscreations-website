@@ -40,20 +40,22 @@ export default function BlogPostPage({ params }: PageProps) {
 
           {/* Header */}
           <div className="mb-12">
-            <div className="flex items-center gap-4 text-muted text-xs font-display uppercase tracking-wider mb-4">
-              <time>
-                {new Intl.DateTimeFormat("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                }).format(new Date(post.date))}
-              </time>
-              <span>&bull;</span>
-              <span>{post.readTime} read</span>
+            <div>
+              <div className="flex items-center gap-4 text-muted text-xs font-display uppercase tracking-wider mb-4">
+                <time>
+                  {new Intl.DateTimeFormat("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  }).format(new Date(post.date))}
+                </time>
+                <span>&bull;</span>
+                <span>{post.readTime} read</span>
+              </div>
+              <h1 className="font-display text-3xl md:text-5xl font-bold leading-tight">
+                {post.title}
+              </h1>
             </div>
-            <h1 className="font-display text-3xl md:text-5xl font-bold leading-tight">
-              {post.title}
-            </h1>
           </div>
 
           {/* Content */}

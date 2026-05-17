@@ -14,8 +14,11 @@ export interface CatalogProductRecord {
   subcategory?: string | null;
   supplier: string;
   images: string[];
+  videos?: string[];
   tags: string[];
   basePrice: number;
+  inventoryQuantity?: number;
+  availabilityQuantity?: number;
   quoteRequired: boolean;
   personalizationAvailable: boolean;
   personalizationNote: string | null;
@@ -119,6 +122,8 @@ function productMetadata(product: CatalogProductRecord): Stripe.MetadataParam {
     category: product.category,
     source_catalog: product.sourceCatalog,
     quote_required: String(product.quoteRequired),
+    inventory_quantity: String(product.inventoryQuantity ?? 0),
+    availability_quantity: String(product.availabilityQuantity ?? 0),
     personalization_available: String(product.personalizationAvailable),
     personalization_cost_extra: String(product.personalizationCostExtra),
   };

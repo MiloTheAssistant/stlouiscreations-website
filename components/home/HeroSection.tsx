@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       <Image
-        src="/images/brand/hero-fabrication-studio.png"
+        src="/brand/masters/source-family-studio-precision.png"
         alt=""
         fill
         priority
@@ -36,9 +36,9 @@ export default function HeroSection() {
         </p>
 
         <h1 className="max-w-[calc(100vw-3rem)] font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.02] text-left">
-          <span className="block">Creatively</span>
-          <span className="block">Engineered</span>
-          <span className="block">Reality</span>
+          <span className="block">Local Craft.</span>
+          <span className="block">Real Materials.</span>
+          <span className="block">Studio Precision.</span>
         </h1>
 
         {/* Subheading */}

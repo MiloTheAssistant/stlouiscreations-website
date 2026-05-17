@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useEffect, useMemo, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
@@ -45,6 +45,7 @@ interface ShopClientProps {
   products: ShopProduct[];
   searchQuery: string;
   subcategoryImages: Record<string, string[]>;
+  subcategoryVideos: Record<string, string>;
   subcategoryCounts: Record<string, number>;
   totalCount: number;
 }
@@ -59,6 +60,7 @@ export default function ShopClient({
   products,
   searchQuery,
   subcategoryImages,
+  subcategoryVideos,
   subcategoryCounts,
   totalCount,
 }: ShopClientProps) {
@@ -275,41 +277,18 @@ export default function ShopClient({
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {activeCategorySubcategories.map((subcategory) => (
-              <button
+              <ProductLineCard
                 key={subcategory.slug}
-                onClick={() => selectSubcategory(subcategory.slug)}
-                className="group overflow-hidden border border-white/10 bg-surface/70 text-left transition-colors hover:border-primary/30"
-              >
-                <span className="relative block aspect-[16/9] overflow-hidden border-b border-white/10 bg-white">
-                  {(subcategoryImages[subcategory.slug] ?? []).slice(0, 3).map((image, index) => (
-                    <span
-                      key={image}
-                      className={cn(
-                        "absolute transition-transform duration-300 group-hover:scale-[1.03]",
-                        index === 0 && "left-[5%] top-[8%] h-[84%] w-[50%]",
-                        index === 1 && "right-[8%] top-[12%] h-[76%] w-[34%]",
-                        index === 2 && "right-[31%] bottom-[10%] h-[46%] w-[24%]"
-                      )}
-                    >
-                      <Image
-                        src={image}
-                        alt={`${subcategory.label} product`}
-                        fill
-                        sizes="(min-width: 1024px) 18vw, (min-width: 640px) 25vw, 48vw"
-                        className="object-contain drop-shadow-[0_18px_22px_rgba(0,0,0,0.18)]"
-                      />
-                    </span>
-                  ))}
-                </span>
-                <span className="block p-5">
-                  <span className="font-display text-sm font-bold uppercase tracking-wider text-text">
-                    {subcategory.label}
-                  </span>
-                  <span className="mt-3 block text-xs text-muted">
-                    {subcategoryCounts[subcategory.slug] ?? 0} products
-                  </span>
-                </span>
-              </button>
+                imageSources={
+                  subcategory.image
+                    ? [subcategory.image]
+                    : subcategoryImages[subcategory.slug] ?? []
+                }
+                productCount={subcategoryCounts[subcategory.slug] ?? 0}
+                subcategory={subcategory}
+                video={subcategoryVideos[subcategory.slug]}
+                onSelect={selectSubcategory}
+              />
             ))}
           </div>
         </section>
@@ -395,6 +374,100 @@ export default function ShopClient({
         </div>
       )}
     </>
+  );
+}
+
+interface ProductLineCardProps {
+  imageSources: string[];
+  productCount: number;
+  subcategory: (typeof polarCamelSubcategories)[number];
+  video?: string;
+  onSelect: (subcategory: string) => void;
+}
+
+function ProductLineCard({
+  imageSources,
+  productCount,
+  subcategory,
+  video,
+  onSelect,
+}: ProductLineCardProps) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  function playPreview() {
+    if (!videoRef.current) {
+      return;
+    }
+
+    void videoRef.current.play().catch(() => {
+      // The category art remains visible if a browser blocks hover playback.
+    });
+  }
+
+  function resetPreview() {
+    if (!videoRef.current) {
+      return;
+    }
+
+    videoRef.current.pause();
+    videoRef.current.currentTime = 0;
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(subcategory.slug)}
+      onMouseEnter={playPreview}
+      onMouseLeave={resetPreview}
+      onFocus={playPreview}
+      onBlur={resetPreview}
+      className="group overflow-hidden border border-white/10 bg-[#101010] text-left transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_22px_55px_rgba(0,0,0,0.38),0_0_28px_rgba(255,107,0,0.16)]"
+    >
+      <span className="relative block aspect-[16/9] overflow-hidden border-b border-primary/10 bg-[radial-gradient(circle_at_50%_24%,rgba(255,107,0,0.18),rgba(255,107,0,0.04)_34%,rgba(6,6,6,0.98)_72%)]">
+        <span className="absolute inset-4 border border-white/5 bg-black/30 shadow-[inset_0_0_36px_rgba(255,107,0,0.08)] transition-colors duration-300 group-hover:border-primary/20" />
+        {imageSources.slice(0, 3).map((image, index) => (
+          <span
+            key={image}
+            className={cn(
+              "absolute transition-transform duration-500 group-hover:scale-[1.04]",
+              index === 0 && "left-[8%] top-[12%] h-[76%] w-[84%]",
+              index === 1 && "right-[8%] top-[12%] h-[76%] w-[34%]",
+              index === 2 && "right-[31%] bottom-[10%] h-[46%] w-[24%]"
+            )}
+          >
+            <Image
+              src={image}
+              alt={`${subcategory.label} product`}
+              fill
+              sizes="(min-width: 1024px) 28vw, (min-width: 640px) 44vw, 92vw"
+              className="object-contain p-3 drop-shadow-[0_20px_28px_rgba(0,0,0,0.45)]"
+            />
+          </span>
+        ))}
+        {video && (
+          <video
+            ref={videoRef}
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full bg-black object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus:opacity-100"
+            loop
+            muted
+            playsInline
+            poster={imageSources[0]}
+            preload="metadata"
+          >
+            <source src={video} type="video/webm" />
+          </video>
+        )}
+      </span>
+      <span className="block p-5">
+        <span className="font-display text-sm font-bold uppercase tracking-wider text-text transition-colors group-hover:text-primary">
+          {subcategory.label}
+        </span>
+        <span className="mt-3 block text-xs text-muted">
+          {productCount} products
+        </span>
+      </span>
+    </button>
   );
 }
 

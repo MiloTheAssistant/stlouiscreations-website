@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
-import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import GlowButton from "@/components/ui/GlowButton";
+import { BrandHeroPanel, StampedPageHero } from "@/components/brand/BrandVisuals";
 import { materials } from "@/lib/constants";
 
 // Materials with real photograph thumbnails in /public/images/materials/
@@ -38,6 +38,9 @@ const serviceDetails = [
       "Color-fill engraving available",
     ],
     materials: ["Acrylic", "Wood", "Glass", "Metal", "Leather", "Stone", "Fabric", "Rubber"],
+    source: "material-craft",
+    visualLabel: "Laser Engraving",
+    visualCaption: "Permanent marks, warm materials, and controlled production details.",
   },
   {
     id: "printing",
@@ -52,6 +55,9 @@ const serviceDetails = [
       "Small-batch production runs",
     ],
     materials: ["PLA", "ABS", "PETG", "TPU", "Nylon"],
+    source: "3d-printing-studio",
+    visualLabel: "3D Printing",
+    visualCaption: "Additive manufacturing for prototypes, fixtures, and finished parts.",
   },
   {
     id: "production",
@@ -66,26 +72,29 @@ const serviceDetails = [
       "Small-batch and event-ready fulfillment",
     ],
     materials: ["Acrylic", "Wood", "Metal", "Glass", "Leather", "Stone", "Fabric", "Rubber"],
+    source: "studio-precision",
+    visualLabel: "Studio Production",
+    visualCaption: "Laser, print, material, and finish choices shaped under one roof.",
   },
-];
+] as const;
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Hero */}
-        <FadeUpSection className="text-center mb-24">
-          <SectionLabel>Digital Fabrication Studio</SectionLabel>
-          <AnimatedHeading
-            text="Engineering Ideas Into Form"
-            as="h1"
-            className="font-display text-4xl md:text-6xl font-bold mt-4"
-          />
-          <p className="text-muted mt-6 max-w-2xl mx-auto text-lg leading-relaxed">
+        <StampedPageHero
+          label="Digital Fabrication Studio"
+          heading="Engineering Ideas Into Form"
+          source="studio-precision"
+          visualLabel="Laser + Additive"
+          visualCaption="A local maker studio for real materials, finished details, and practical production."
+          className="mb-24"
+        >
+          <p>
             Precision laser engraving, additive manufacturing, and custom
             design production for physical ideas that need technical discipline.
           </p>
-        </FadeUpSection>
+        </StampedPageHero>
 
         {/* Service Details */}
         <div className="space-y-32">
@@ -131,7 +140,14 @@ export default function ServicesPage() {
 
                 {/* Materials compatibility */}
                 <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                  <div className="bg-surface border border-white/5 p-8 h-full">
+                  <div className="bg-surface border border-white/5 p-5 h-full">
+                    <BrandHeroPanel
+                      source={service.source}
+                      label={service.visualLabel}
+                      caption={service.visualCaption}
+                      className="mb-6 min-h-[240px]"
+                    />
+                    <div className="px-3 pb-3">
                     <h3 className="font-display text-sm uppercase tracking-wider mb-6">
                       Compatible Materials
                     </h3>
@@ -165,6 +181,7 @@ export default function ServicesPage() {
                           </div>
                         );
                       })}
+                    </div>
                     </div>
                   </div>
                 </div>

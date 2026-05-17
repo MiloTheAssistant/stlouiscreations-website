@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
-import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import QuoteForm from "@/components/contact/QuoteForm";
+import { BrandHeroPanel, StampedPageHero } from "@/components/brand/BrandVisuals";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -37,19 +37,18 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Hero */}
-        <FadeUpSection className="text-center mb-16">
-          <SectionLabel>Start a Fabrication Quote</SectionLabel>
-          <AnimatedHeading
-            text="Tell Us What You Want to Make"
-            as="h1"
-            className="font-display text-4xl md:text-6xl font-bold mt-4"
-          />
-          <p className="text-muted mt-6 max-w-xl mx-auto text-lg">
+        <StampedPageHero
+          label="Start a Fabrication Quote"
+          heading="Tell Us What You Want to Make"
+          source="studio-precision"
+          visualLabel="Quote Intake"
+          visualCaption="Laser, 3D print, material, quantity, and deadline details all start here."
+        >
+          <p>
             Share the idea, quantity, artwork, material direction, deadline,
             and intended use. We&apos;ll help turn it into a practical path.
           </p>
-        </FadeUpSection>
+        </StampedPageHero>
 
         {/* Form + Contact Info */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 mb-32">
@@ -61,6 +60,13 @@ export default function ContactPage() {
           {/* Contact Info */}
           <FadeUpSection delay={0.2} className="lg:col-span-2">
             <div className="bg-surface border border-white/5 p-8 space-y-8">
+              <BrandHeroPanel
+                source="local-maker"
+                label="St. Louis Studio"
+                caption="Local craft, real materials, and practical quote guidance."
+                className="min-h-[220px]"
+              />
+
               <div>
                 <h3 className="font-display text-sm uppercase tracking-wider mb-3">
                   Location

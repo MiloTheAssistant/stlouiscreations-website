@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { navLinks, siteConfig } from "@/lib/constants";
 import { useCart } from "@/lib/cart-context";
@@ -32,16 +33,23 @@ export default function Navbar() {
         }}
       >
         <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Wordmark + Tagline */}
+          {/* Brand stamp + tagline */}
           <Link
             href="/"
-            className="flex flex-col leading-none"
+            className="flex min-w-[7rem] flex-col items-center leading-none"
             aria-label={`${siteConfig.name} home`}
           >
-            <span className="font-display text-xl md:text-2xl font-bold text-text tracking-tight">
-              St. Louis<span className="text-primary">.</span> Creations
+            <span className="relative h-11 w-11 md:h-12 md:w-12">
+              <Image
+                src="/brand/masters/profile-stamp-combined.png"
+                alt="St. Louis Creations combined laser and 3D printing profile stamp"
+                fill
+                sizes="48px"
+                priority
+                className="object-contain drop-shadow-[0_0_16px_rgba(255,107,0,0.18)]"
+              />
             </span>
-            <span className="hidden sm:block font-body italic text-[11px] md:text-xs text-muted mt-1 tracking-wide">
+            <span className="mt-1 block max-w-[8rem] text-center font-body text-[10px] italic tracking-wide text-muted">
               {siteConfig.descriptor}
             </span>
           </Link>

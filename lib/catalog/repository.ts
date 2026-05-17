@@ -10,8 +10,11 @@ interface CatalogProductRow {
   subcategory: string | null;
   supplier: string;
   images: string[] | null;
+  videos: string[] | null;
   tags: string[] | null;
   base_price: number;
+  inventory_quantity: number;
+  availability_quantity: number;
   quote_required: boolean;
   personalization_available: boolean;
   personalization_note: string | null;
@@ -45,8 +48,11 @@ export async function upsertCatalogProduct(
       subcategory,
       supplier,
       images,
+      videos,
       tags,
       base_price,
+      inventory_quantity,
+      availability_quantity,
       quote_required,
       personalization_available,
       personalization_note,
@@ -64,8 +70,11 @@ export async function upsertCatalogProduct(
       ${product.subcategory ?? null},
       ${product.supplier},
       ${JSON.stringify(product.images)}::jsonb,
+      ${JSON.stringify(product.videos ?? [])}::jsonb,
       ${JSON.stringify(product.tags)}::jsonb,
       ${product.basePrice},
+      ${product.inventoryQuantity ?? 0},
+      ${product.availabilityQuantity ?? 0},
       ${product.quoteRequired},
       ${product.personalizationAvailable},
       ${product.personalizationNote},
@@ -83,8 +92,11 @@ export async function upsertCatalogProduct(
       subcategory = excluded.subcategory,
       supplier = excluded.supplier,
       images = excluded.images,
+      videos = excluded.videos,
       tags = excluded.tags,
       base_price = excluded.base_price,
+      inventory_quantity = excluded.inventory_quantity,
+      availability_quantity = excluded.availability_quantity,
       quote_required = excluded.quote_required,
       personalization_available = excluded.personalization_available,
       personalization_note = excluded.personalization_note,
@@ -119,8 +131,11 @@ export async function getCatalogProductsForStripeSync(): Promise<
       subcategory,
       supplier,
       images,
+      videos,
       tags,
       base_price,
+      inventory_quantity,
+      availability_quantity,
       quote_required,
       personalization_available,
       personalization_note,
@@ -144,8 +159,11 @@ export async function getCatalogProductsForStripeSync(): Promise<
     subcategory: row.subcategory,
     supplier: row.supplier,
     images: row.images ?? [],
+    videos: row.videos ?? [],
     tags: row.tags ?? [],
     basePrice: row.base_price,
+    inventoryQuantity: row.inventory_quantity,
+    availabilityQuantity: row.availability_quantity,
     quoteRequired: row.quote_required,
     personalizationAvailable: row.personalization_available,
     personalizationNote: row.personalization_note,

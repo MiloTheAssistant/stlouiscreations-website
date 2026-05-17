@@ -9,8 +9,11 @@ create table if not exists product_catalog (
   subcategory text,
   supplier text not null default 'St. Louis Creations',
   images jsonb not null default '[]'::jsonb,
+  videos jsonb not null default '[]'::jsonb,
   tags jsonb not null default '[]'::jsonb,
   base_price integer not null check (base_price >= 0),
+  inventory_quantity integer not null default 0 check (inventory_quantity >= 0),
+  availability_quantity integer not null default 0 check (availability_quantity >= 0),
   quote_required boolean not null default false,
   personalization_available boolean not null default false,
   personalization_note text,
@@ -32,6 +35,15 @@ create index if not exists product_catalog_source_catalog_idx
 
 alter table product_catalog
   add column if not exists subcategory text;
+
+alter table product_catalog
+  add column if not exists videos jsonb not null default '[]'::jsonb;
+
+alter table product_catalog
+  add column if not exists inventory_quantity integer not null default 0 check (inventory_quantity >= 0);
+
+alter table product_catalog
+  add column if not exists availability_quantity integer not null default 0 check (availability_quantity >= 0);
 
 create table if not exists quote_requests (
   id uuid primary key default gen_random_uuid(),
