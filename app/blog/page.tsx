@@ -40,6 +40,7 @@ export default function BlogPage() {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
+                        timeZone: "UTC",
                       }).format(new Date(post.date))}
                     </time>
                     <span>&bull;</span>

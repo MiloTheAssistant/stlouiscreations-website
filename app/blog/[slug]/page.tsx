@@ -47,6 +47,7 @@ export default function BlogPostPage({ params }: PageProps) {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
+                    timeZone: "UTC",
                   }).format(new Date(post.date))}
                 </time>
                 <span>&bull;</span>
@@ -57,59 +58,59 @@ export default function BlogPostPage({ params }: PageProps) {
               </h1>
             </div>
           </div>
+        </FadeUpSection>
 
-          {/* Content */}
-          <div className="prose prose-invert prose-lg max-w-none prose-headings:font-display prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-p:text-muted prose-p:leading-relaxed prose-li:text-muted prose-strong:text-text prose-a:text-primary hover:prose-a:underline">
-            {post.content.split("\n\n").map((paragraph, i) => {
-              if (paragraph.startsWith("## ")) {
-                return <h2 key={i}>{paragraph.replace("## ", "")}</h2>;
-              }
-              if (paragraph.startsWith("- ")) {
-                const items = paragraph
-                  .split("\n")
-                  .map((line) => line.replace("- ", ""));
-                return (
-                  <ul key={i}>
-                    {items.map((item, j) => (
-                      <li
-                        key={j}
-                        dangerouslySetInnerHTML={{
-                          __html: item.replace(
-                            /\*\*(.*?)\*\*/g,
-                            "<strong>$1</strong>"
-                          ),
-                        }}
-                      />
-                    ))}
-                  </ul>
-                );
-              }
+        {/* Content */}
+        <div className="prose prose-invert prose-lg max-w-none prose-headings:font-display prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-p:text-muted prose-p:leading-relaxed prose-li:text-muted prose-strong:text-text prose-a:text-primary hover:prose-a:underline">
+          {post.content.split("\n\n").map((paragraph, i) => {
+            if (paragraph.startsWith("## ")) {
+              return <h2 key={i}>{paragraph.replace("## ", "")}</h2>;
+            }
+            if (paragraph.startsWith("- ")) {
+              const items = paragraph
+                .split("\n")
+                .map((line) => line.replace("- ", ""));
               return (
-                <p
-                  key={i}
-                  dangerouslySetInnerHTML={{
-                    __html: paragraph.replace(
-                      /\*\*(.*?)\*\*/g,
-                      "<strong>$1</strong>"
-                    ),
-                  }}
-                />
+                <ul key={i}>
+                  {items.map((item, j) => (
+                    <li
+                      key={j}
+                      dangerouslySetInnerHTML={{
+                        __html: item.replace(
+                          /\*\*(.*?)\*\*/g,
+                          "<strong>$1</strong>"
+                        ),
+                      }}
+                    />
+                  ))}
+                </ul>
               );
-            })}
-          </div>
+            }
+            return (
+              <p
+                key={i}
+                dangerouslySetInnerHTML={{
+                  __html: paragraph.replace(
+                    /\*\*(.*?)\*\*/g,
+                    "<strong>$1</strong>"
+                  ),
+                }}
+              />
+            );
+          })}
+        </div>
 
-          {/* CTA */}
-          <div className="mt-16 pt-12 border-t border-white/5 text-center">
-            <h3 className="font-display text-2xl font-bold mb-4">
-              Have a Project in Mind?
-            </h3>
-            <p className="text-muted mb-6">
-              Let&apos;s bring your vision to life with precision laser engraving.
-            </p>
-            <GlowButton href="/contact" variant="primary">
-              Request a Quote
-            </GlowButton>
-          </div>
+        {/* CTA */}
+        <FadeUpSection className="mt-16 pt-12 border-t border-white/5 text-center">
+          <h3 className="font-display text-2xl font-bold mb-4">
+            Have a Project in Mind?
+          </h3>
+          <p className="text-muted mb-6">
+            Let&apos;s bring your vision to life with precision laser engraving.
+          </p>
+          <GlowButton href="/contact" variant="primary">
+            Request a Quote
+          </GlowButton>
         </FadeUpSection>
       </article>
     </div>
