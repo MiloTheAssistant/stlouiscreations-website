@@ -108,6 +108,22 @@ export default function TopicHubPage({ params }: PageProps) {
             Related St. Louis Creations Pages
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
+            {hub.proofPages ? (
+              <>
+                <Link
+                  href={`/topics/${hub.slug}/faq`}
+                  className="bg-surface border border-white/5 p-4 text-sm text-primary hover:border-primary/30 transition-colors"
+                >
+                  {hub.proofPages.faq.title}
+                </Link>
+                <Link
+                  href={`/topics/${hub.slug}/use-case`}
+                  className="bg-surface border border-white/5 p-4 text-sm text-primary hover:border-primary/30 transition-colors"
+                >
+                  {hub.proofPages.useCase.title}
+                </Link>
+              </>
+            ) : null}
             {hub.links.map((link) => (
               <Link
                 key={link.href}

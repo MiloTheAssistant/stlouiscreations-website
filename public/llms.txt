@@ -33,7 +33,20 @@
 ## Guides And Ideas
 - [Blog](https://stlouiscreations.com/blog): Guides and ideas for digital fabrication, laser engraving, materials, branded products, and production planning.
 - [Custom Laser Engraving For Businesses In St. Louis](https://stlouiscreations.com/topics/business-laser-engraving-st-louis): Guide for business engraving buyers comparing materials, artwork, bulk orders, QR codes, asset tags, awards, and branded products.
+- [Business Laser Engraving FAQ](https://stlouiscreations.com/topics/business-laser-engraving-st-louis/faq): FAQ for artwork, material, personalization, proofing, and bulk engraving questions.
+- [Business Laser Engraving Use Case](https://stlouiscreations.com/topics/business-laser-engraving-st-louis/use-case): Use-case page for planning engraved recognition kits, sponsor gifts, and business event products.
 - [3D Printing Services For Businesses In St. Louis](https://stlouiscreations.com/topics/business-3d-printing-st-louis): Guide for companies planning prototypes, fixtures, custom parts, models, and short-run additive manufacturing.
+- [Business 3D Printing FAQ](https://stlouiscreations.com/topics/business-3d-printing-st-louis/faq): FAQ for prototypes, replacement parts, jigs, fixtures, files, materials, and production limits.
+- [Business 3D Printing Use Case](https://stlouiscreations.com/topics/business-3d-printing-st-louis/use-case): Use-case page for replacing a low-volume fixture or workflow aid with a reviewed printed part.
+- [Consumer 3D Printing Guide](https://stlouiscreations.com/topics/consumer-3d-printing-custom-gifts-repair-parts): Guide for custom gifts, household repair parts, cosplay accessories, tabletop pieces, and hobby projects.
+- [Consumer 3D Printing FAQ](https://stlouiscreations.com/topics/consumer-3d-printing-custom-gifts-repair-parts/faq): FAQ for consumer printability, downloaded files, sketches, safety limits, and finishing.
+- [Consumer 3D Printing Use Case](https://stlouiscreations.com/topics/consumer-3d-printing-custom-gifts-repair-parts/use-case): Use-case page for turning a small household repair idea into a reviewed printed part.
+- [Laser Engraving vs 3D Printing](https://stlouiscreations.com/topics/laser-engraving-vs-3d-printing): Comparison guide for choosing surface marking, personalization, prototyping, custom parts, or a combined process.
+- [Laser Engraving vs 3D Printing FAQ](https://stlouiscreations.com/topics/laser-engraving-vs-3d-printing/faq): FAQ for buyers comparing marking an existing item with creating a new object.
+- [Laser Engraving vs 3D Printing Use Case](https://stlouiscreations.com/topics/laser-engraving-vs-3d-printing/use-case): Use-case page for choosing the right process for a branded product idea.
+- [Materials Guide For Laser Engraving And 3D Printing](https://stlouiscreations.com/topics/materials-guide-laser-engraving-3d-printing): Guide for matching wood, acrylic, glass, metal, leatherette, slate, PLA, PETG, TPU, ABS, ASA, resin, and specialty materials to real jobs.
+- [Materials FAQ](https://stlouiscreations.com/topics/materials-guide-laser-engraving-3d-printing/faq): FAQ for material choice, contrast, strength, heat, flexibility, detail, and print orientation.
+- [Materials Use Case](https://stlouiscreations.com/topics/materials-guide-laser-engraving-3d-printing/use-case): Use-case page for choosing materials across engraved gifts, signage, and 3D printed display parts.
 - [Custom Awards, Recognition, And Corporate Gifts](https://stlouiscreations.com/topics/custom-awards-recognition-corporate-gifts): Guide for awards, plaques, branded drinkware, sponsor gifts, donor gifts, and employee recognition.
 - [Laser Engraving vs Screen Printing vs Vinyl](https://stlouiscreations.com/blog/laser-engraving-vs-screen-printing-vs-vinyl): Business comparison guide for choosing a branding method.
 - [How To Prepare Artwork For Laser Engraving](https://stlouiscreations.com/blog/how-to-prepare-artwork-for-laser-engraving): Artwork, file format, QR code, and variable data checklist for engraving projects.

@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog-posts";
 import { materials } from "@/lib/constants";
 import { products } from "@/lib/products";
-import { topicHubs } from "@/lib/topic-hubs";
+import { getTopicProofRoutes, topicHubs } from "@/lib/topic-hubs";
 
 const baseUrl = "https://stlouiscreations.com";
 
@@ -54,5 +54,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticPages, ...materialPages, ...productPages, ...topicPages, ...blogPages];
+  const topicProofPages = getTopicProofRoutes().map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+  }));
+
+  return [
+    ...staticPages,
+    ...materialPages,
+    ...productPages,
+    ...topicPages,
+    ...topicProofPages,
+    ...blogPages,
+  ];
 }

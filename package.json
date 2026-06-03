@@ -11,7 +11,7 @@
     "stripe:sync-catalog": "tsx scripts/sync-stripe-catalog.ts",
     "start": "next start",
     "lint": "next lint",
-    "test:catalog": "node --import tsx --test tests/stripe-catalog-sync.test.ts tests/admin-jds-import.test.ts"
+    "test:catalog": "node --import tsx --test tests/stripe-catalog-sync.test.ts tests/admin-jds-import.test.ts tests/topic-hubs.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
