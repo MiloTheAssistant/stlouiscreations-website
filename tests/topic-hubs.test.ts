@@ -17,20 +17,73 @@ const forbiddenSlop = [
   "elevate your brand",
 ];
 
+const evidenceSignalPattern =
+  /\b(\d+|AI|EPS|SVG|PDF|STL|STEP|OBJ|3MF|CAD|PLA|PETG|TPU|ABS|ASA|resin|wood|acrylic|glass|metal|slate|leatherette|QR|proof|deadline|quantity|tolerance|infill|layer|orientation)\b/i;
+
+function wordCount(value: string) {
+  return value.trim().split(/\s+/).filter(Boolean).length;
+}
+
 test("publishes five core cite-ready topic hubs with proof pages", () => {
   assert.equal(coreTopicHubs.length, 5);
 
   for (const hub of coreTopicHubs) {
     assert.equal(getTopicHubBySlug(hub.slug)?.slug, hub.slug);
-    assert.ok(hub.answer.split(/\s+/).length >= 90, `${hub.slug} has a thin answer block`);
+    assert.ok(
+      wordCount(hub.answer) >= 120 && wordCount(hub.answer) <= 180,
+      `${hub.slug} answer should be 120-180 words`
+    );
+    assert.ok(
+      hub.evidenceBlocks && hub.evidenceBlocks.length >= 2,
+      `${hub.slug} needs at least two evidence blocks`
+    );
+
+    for (const block of hub.evidenceBlocks ?? []) {
+      assert.ok(
+        wordCount(block.body) >= 120 && wordCount(block.body) <= 180,
+        `${hub.slug} evidence block "${block.title}" should be 120-180 words`
+      );
+      assert.ok(
+        block.facts.length >= 3,
+        `${hub.slug} evidence block "${block.title}" needs at least three facts`
+      );
+      assert.match(
+        `${block.body} ${block.facts.join(" ")}`,
+        evidenceSignalPattern,
+        `${hub.slug} evidence block "${block.title}" needs concrete evidence signals`
+      );
+    }
+
     assert.ok(hub.proofPages?.faq, `${hub.slug} is missing a FAQ proof page`);
     assert.ok(hub.proofPages?.useCase, `${hub.slug} is missing a use-case proof page`);
     assert.ok(hub.faqs.length >= 3, `${hub.slug} needs visible FAQ answers`);
+    assert.ok(
+      wordCount(hub.proofPages.faq.intro) >= 120 &&
+        wordCount(hub.proofPages.faq.intro) <= 180,
+      `${hub.slug} FAQ intro should be 120-180 words`
+    );
+    assert.ok(
+      wordCount(hub.proofPages.useCase.summary) >= 120 &&
+        wordCount(hub.proofPages.useCase.summary) <= 180,
+      `${hub.slug} use-case summary should be 120-180 words`
+    );
+
+    for (const faq of hub.proofPages.faq.questions) {
+      assert.ok(
+        wordCount(faq.a) >= 60,
+        `${hub.slug} FAQ answer "${faq.q}" should be at least 60 words`
+      );
+    }
 
     const combinedCopy = [
       hub.title,
       hub.description,
       hub.answer,
+      ...(hub.evidenceBlocks ?? []).flatMap((block) => [
+        block.title,
+        block.body,
+        ...block.facts,
+      ]),
       ...hub.sections.flatMap((section) => [section.title, section.body, ...(section.bullets ?? [])]),
       ...hub.faqs.flatMap((faq) => [faq.q, faq.a]),
       hub.proofPages?.faq.intro ?? "",

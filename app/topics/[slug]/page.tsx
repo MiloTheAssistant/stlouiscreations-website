@@ -78,14 +78,35 @@ export default function TopicHubPage({ params }: PageProps) {
             What should buyers know about {hub.title}?
           </h2>
           <p className="text-muted leading-relaxed mt-4">
-            {hub.answer} In 2026, St. Louis Creations uses this page as one of
-            five core buyer guides for professional laser engraving and 3D
-            printing decisions. The guide is written for quote planning: it
-            separates best-fit use cases, material limits, file requirements,
-            proofing needs, and production tradeoffs so a buyer can decide what
-            to send before a project is reviewed.
+            {hub.answer}
           </p>
         </FadeUpSection>
+
+        {hub.evidenceBlocks ? (
+          <div className="mt-8 grid grid-cols-1 gap-5">
+            {hub.evidenceBlocks.map((block) => (
+              <FadeUpSection
+                key={block.title}
+                className="bg-surface border border-white/5 p-7"
+              >
+                <h2 className="font-display text-2xl font-bold">
+                  {block.title}
+                </h2>
+                <p className="text-muted leading-relaxed mt-4">{block.body}</p>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6">
+                  {block.facts.map((fact) => (
+                    <li
+                      key={fact}
+                      className="border border-white/5 bg-background/40 p-4 text-sm text-muted leading-relaxed"
+                    >
+                      {fact}
+                    </li>
+                  ))}
+                </ul>
+              </FadeUpSection>
+            ))}
+          </div>
+        ) : null}
 
         <div className="mt-14 space-y-12">
           {hub.sections.map((section) => (
