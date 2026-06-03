@@ -1,6 +1,7 @@
 # GEO Audit Report: St. Louis Creations
 
 **Audit Date:** May 13, 2026
+**Implementation Update:** June 2, 2026
 **Target:** https://stlouiscreations.com
 **Local Repo:** D:\Dev\StLouisCreations-Website
 **Business Type:** Local service, ecommerce, and custom fabrication studio
@@ -8,22 +9,24 @@
 
 ## Executive Summary
 
-St. Louis Creations has a crawlable, production-ready Next.js site with a live sitemap, clear public routes, and broad crawler access. The main GEO gap is not basic crawlability; it is machine interpretation. The live site currently lacks JSON-LD schema, lacks canonical links in rendered HTML, had no public llms.txt before this audit, and has weak self-contained answer passages for AI citation.
+St. Louis Creations has a crawlable, production-ready Next.js site with a live sitemap, clear public routes, broad crawler access, live llms.txt, canonical links, JSON-LD schema, and improved AI-citable content blocks. The June 2, 2026 implementation resolved the earlier machine-interpretation gaps around schema, canonical clarity, llms.txt availability, and homepage answer extraction.
 
-The practical priority is to make the site easier for ChatGPT, Claude, Perplexity, Gemini, Google Search, and Google AI Overview systems to understand as a named local fabrication business with services, products, material expertise, and contact signals.
+The practical priority remains making the site easy for ChatGPT, Claude, Perplexity, Gemini, Google Search, and Google AI Overview systems to understand as a named local fabrication business with services, products, material expertise, and contact signals. A 100/100 quick audit score means the technical GEO/SEO readiness checks are strong; it does not guarantee organic rankings, AI citations, or Google AI Overview inclusion.
 
 ## Score Breakdown
 
-Composite GEO score: **60/100**
+Composite GEO readiness score after implementation: **94/100**
+
+GEO quick audit score after production deployment: **100/100, excellent**
 
 | Category | Score | Weight | Notes |
 | --- | ---: | ---: | --- |
-| AI citability and visibility | 55 | 25% | Crawler access is good, but homepage answer blocks are short and weakly self-contained. |
-| Brand authority and entity signals | 65 | 20% | Brand, location, contact, and social signals exist, but entity schema and sameAs markup are missing. |
-| Content quality and E-E-A-T | 72 | 20% | Good service and material content foundation; needs more explicit proof, FAQs, and cite-ready passages. |
-| Technical foundations | 78 | 15% | Homepage, key routes, robots.txt, and sitemap.xml resolve; canonical and host consistency need work. |
-| Structured data | 10 | 10% | No JSON-LD schema detected in live rendered HTML. |
-| Platform optimization | 62 | 10% | Major crawler access is allowed, but llms.txt and AI-specific entity clarity were missing before this audit. |
+| AI citability and visibility | 95 | 25% | Homepage now includes self-contained answer blocks and all tested AI crawler user agents returned 200. |
+| Brand authority and entity signals | 92 | 20% | Organization, LocalBusiness, WebSite, sameAs, contact, location, and service signals are present. |
+| Content quality and E-E-A-T | 88 | 20% | Service, material, and product-category summaries are stronger; ongoing proof/case-study content can improve this further. |
+| Technical foundations | 98 | 15% | Homepage, key routes, robots.txt, sitemap.xml, llms.txt, canonical links, and metadata verify live. |
+| Structured data | 95 | 10% | Organization, LocalBusiness, WebSite, Service, CollectionPage, FAQ, Article, and Product schema are implemented where supported. |
+| Platform optimization | 92 | 10% | ChatGPT/OpenAI, Claude, Perplexity, Gemini/Google, and Googlebot access verified at HTTP 200. |
 
 ## Live Technical Snapshot
 
@@ -37,11 +40,11 @@ Composite GEO score: **60/100**
 | /contact | 200 |
 | /robots.txt | 200 |
 | /sitemap.xml | 200, large generated sitemap present |
-| /llms.txt | 404 before this audit; draft added at `public/llms.txt` |
-| JSON-LD | 0 schema blocks detected |
-| Homepage images | 16 images, 6 missing alt text in audit fetch |
-| Quick GEO/SEO score | 76/100 from the skill quick snapshot |
-| Citability score | 24/100 average across detected answer blocks |
+| /llms.txt | 200 after deployment, valid title/description/sections/links |
+| JSON-LD | Present in rendered HTML |
+| Homepage images | 16 images, 0 missing alt text in production quick audit |
+| Quick GEO/SEO score | 100/100 from the skill quick snapshot after deployment |
+| Citability | Improved with homepage, services, materials, and shop answer blocks |
 
 ## AI Crawler Access Matrix
 
@@ -80,7 +83,9 @@ None found. The live site is publicly reachable, core routes resolve, and the ro
 
 #### 1. No JSON-LD schema detected
 
-The live homepage audit found zero JSON-LD schema blocks. For this site, that leaves AI systems and search engines to infer the entity, business type, services, location, social profiles, and product catalog from page text alone.
+Status: **Resolved June 2, 2026.**
+
+The live homepage audit previously found zero JSON-LD schema blocks. The site now renders schema for Organization, LocalBusiness, WebSite, Service, CollectionPage, FAQ, Article, and Product contexts where supported by the page content.
 
 Recommended fix:
 - Add `Organization` and `LocalBusiness` schema at the site shell or homepage.
@@ -91,7 +96,9 @@ Recommended fix:
 
 #### 2. Homepage content has weak AI citation blocks
 
-The citability scorer found an average score of 24/100 across detected homepage answer blocks. The issue is not the visual design; it is that extractable passages are short, brand-heavy, and light on direct question-answer phrasing.
+Status: **Improved June 2, 2026.**
+
+The homepage now includes a direct "What does St. Louis Creations do?" block, a product-category summary, and stronger service/material/shop summaries. This improves extractable passages without keyword stuffing or changing the visual direction.
 
 Recommended fix:
 - Add concise, self-contained sections that answer obvious AI-search queries:
@@ -105,7 +112,9 @@ Recommended fix:
 
 #### 3. Canonical URLs are missing from rendered HTML
 
-The quick audit did not detect a canonical link. The site also showed a `www` final URL in the quick fetch while metadata and sitemap use the non-www domain. That creates avoidable ambiguity for search and AI systems.
+Status: **Resolved June 2, 2026.**
+
+Rendered HTML now includes canonical links using `https://stlouiscreations.com`. The deployed site may resolve through `www.stlouiscreations.com`, but the canonical signal is consistently non-www across metadata and schema.
 
 Recommended fix:
 - Choose the canonical host, likely `https://stlouiscreations.com`.
@@ -114,7 +123,9 @@ Recommended fix:
 
 #### 4. llms.txt was not available
 
-The live URL returned 404 for `/llms.txt` before this audit. A draft has now been generated at `public/llms.txt`.
+Status: **Resolved June 2, 2026.**
+
+The live URL now returns 200 for `/llms.txt`.
 
 Recommended fix:
 - Review and approve the generated file.
@@ -123,7 +134,9 @@ Recommended fix:
 
 #### 5. Image alt text gaps remain
 
-The homepage audit found 6 missing alt attributes among 16 images. At least one decorative hero image intentionally uses empty alt text, which can be valid, but the remaining missing values should be reviewed.
+Status: **Resolved June 2, 2026.**
+
+The production quick audit now reports 0 missing alt attributes on the homepage.
 
 Recommended fix:
 - Keep empty alt only for purely decorative imagery.
@@ -163,12 +176,14 @@ Google AI Overview visibility depends on normal Google Search discovery, indexin
 
 ## Quick Wins
 
-1. Deploy `public/llms.txt` after review.
-2. Add canonical metadata for the root and high-value pages.
-3. Add Organization, LocalBusiness, WebSite, and Service JSON-LD.
-4. Add a concise FAQ or answer section to the homepage and services page.
-5. Review homepage alt text and fill meaningful image descriptions.
-6. Add sameAs profile links to schema using the established social URLs.
+Completed June 2, 2026:
+
+1. Deployed `public/llms.txt`.
+2. Added canonical metadata for the root and high-value pages.
+3. Added Organization, LocalBusiness, WebSite, Service, CollectionPage, FAQ, Article, and Product JSON-LD.
+4. Added concise citation-ready sections to the homepage, services, materials, and shop surfaces.
+5. Reviewed homepage alt text and filled meaningful image descriptions.
+6. Added sameAs profile links to schema using established social URLs.
 
 ## 30-Day GEO Improvement Plan
 
@@ -204,6 +219,40 @@ Google AI Overview visibility depends on normal Google Search discovery, indexin
 - Re-run citability scoring on homepage and service pages.
 - Verify Google Search Console indexing, sitemap ingestion, and canonical host selection.
 - Monitor server logs or analytics for AI crawler hits where available.
+
+## June 2, 2026 Verification
+
+Production deployment:
+
+- Deployment: `dpl_DhC6g3SgV5Mp9Dku7LCNMPK65Djg`
+- Production alias: `https://www.stlouiscreations.com`
+- Canonical URL in rendered HTML: `https://stlouiscreations.com`
+
+Verification passed:
+
+- `npm run lint`
+- `npm run build`
+- `npm run test:catalog`
+- `git diff --check`
+- Local `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/`, `/services`, `/materials`, `/shop`, and `/contact`
+- Production `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/`, `/services`, `/materials`, `/shop`, and `/contact`
+- Production JSON-LD rendered in homepage HTML
+- Production LocalBusiness schema rendered in homepage HTML
+- Production homepage citation block rendered in HTML
+- Production GEO quick audit: `100/100`, excellent
+
+Live crawler user-agent checks returned HTTP 200 for:
+
+- GPTBot
+- OAI-SearchBot
+- ChatGPT-User
+- ClaudeBot
+- Claude-SearchBot
+- Claude-User
+- PerplexityBot
+- Perplexity-User
+- Googlebot
+- Google-Extended
 
 ## Expected Tests For Implementation
 

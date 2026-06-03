@@ -4,12 +4,20 @@ import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import GlowButton from "@/components/ui/GlowButton";
 import { StampedPageHero } from "@/components/brand/BrandVisuals";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "About",
   description:
-    "St. Louis Creations is a digital fabrication studio where creativity, engineering, and advanced manufacturing converge.",
-};
+    "St. Louis Creations is a St. Louis digital fabrication studio where creativity, engineering, and advanced manufacturing converge.",
+  path: "/about",
+  keywords: [
+    "St. Louis Creations",
+    "St. Louis digital fabrication studio",
+    "laser engraving studio",
+    "local maker studio",
+  ],
+});
 
 const values = [
   {

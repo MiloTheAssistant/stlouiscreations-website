@@ -3,12 +3,21 @@ import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import QuoteForm from "@/components/contact/QuoteForm";
 import { BrandHeroPanel, StampedPageHero } from "@/components/brand/BrandVisuals";
+import JsonLd from "@/components/seo/JsonLd";
+import { createPageMetadata, getFaqJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Contact",
   description:
     "Start a fabrication quote for laser engraving, additive manufacturing, custom production, branded products, or prototype work.",
-};
+  path: "/contact",
+  keywords: [
+    "St. Louis Creations contact",
+    "laser engraving quote",
+    "custom fabrication quote",
+    "3D printing quote St. Louis",
+  ],
+});
 
 const faqs = [
   {
@@ -36,6 +45,7 @@ const faqs = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
+      <JsonLd data={getFaqJsonLd(faqs)} />
       <div className="max-w-7xl mx-auto px-6">
         <StampedPageHero
           label="Start a Fabrication Quote"

@@ -1,10 +1,14 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import GlowButton from "@/components/ui/GlowButton";
 import { BrandHeroPanel, StampedPageHero } from "@/components/brand/BrandVisuals";
 import { materials } from "@/lib/constants";
+import JsonLd from "@/components/seo/JsonLd";
+import { createPageMetadata, getServiceJsonLd } from "@/lib/seo";
+import { topicHubs } from "@/lib/topic-hubs";
 
 // Materials with real photograph thumbnails in /public/images/materials/
 const MATERIALS_WITH_IMAGES = new Set([
@@ -19,9 +23,19 @@ const MATERIALS_WITH_IMAGES = new Set([
 ]);
 
 export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Precision laser engraving, additive manufacturing, and custom production from a modern digital fabrication studio.",
+  ...createPageMetadata({
+    title: "Services",
+    description:
+      "Precision laser engraving, additive manufacturing, and custom production from a modern St. Louis digital fabrication studio.",
+    path: "/services",
+    keywords: [
+      "St. Louis laser engraving",
+      "custom engraving St. Louis",
+      "3D printing St. Louis",
+      "custom awards St. Louis",
+      "digital fabrication studio",
+    ],
+  }),
 };
 
 const serviceDetails = [
@@ -81,6 +95,7 @@ const serviceDetails = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
+      <JsonLd data={getServiceJsonLd()} />
       <div className="max-w-7xl mx-auto px-6">
         <StampedPageHero
           label="Digital Fabrication Studio"
@@ -189,6 +204,42 @@ export default function ServicesPage() {
             </FadeUpSection>
           ))}
         </div>
+
+        <FadeUpSection className="mt-24 bg-surface border border-white/5 p-8 md:p-12">
+          <SectionLabel>Service Summary</SectionLabel>
+          <h2 className="font-display text-3xl md:text-4xl font-bold mt-4">
+            Laser engraving, 3D printing, and custom production in St. Louis
+          </h2>
+          <p className="text-muted leading-relaxed mt-5">
+            St. Louis Creations provides local fabrication services for
+            customers who need durable engraving, additive-manufactured parts,
+            branded products, awards, fundraiser items, and short-run physical
+            goods. Projects can start from artwork, a product catalog item, a
+            prototype file, a material question, or a finished production goal.
+          </p>
+        </FadeUpSection>
+
+        <FadeUpSection className="mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {topicHubs.map((hub) => (
+              <Link
+                key={hub.slug}
+                href={`/topics/${hub.slug}`}
+                className="bg-surface border border-white/5 p-5 hover:border-primary/30 transition-colors"
+              >
+                <span className="text-primary text-xs font-display uppercase tracking-[0.2em]">
+                  {hub.eyebrow}
+                </span>
+                <h3 className="font-display text-lg font-bold mt-3">
+                  {hub.title}
+                </h3>
+                <p className="text-muted text-sm leading-relaxed mt-3">
+                  {hub.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </FadeUpSection>
 
         {/* Materials Grid */}
         <FadeUpSection className="mt-32">

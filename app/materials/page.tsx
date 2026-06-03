@@ -6,12 +6,22 @@ import GlowButton from "@/components/ui/GlowButton";
 import { StampedPageHero } from "@/components/brand/BrandVisuals";
 import { materials } from "@/lib/constants";
 import { getMaterialCopy, getMaterialImageSlug } from "@/lib/material-content";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Engraving Materials",
   description:
-    "Material options for digital fabrication, precision engraving, cutting, marking, and custom production.",
-};
+    "Material options for digital fabrication, precision engraving, cutting, marking, and custom production in St. Louis.",
+  path: "/materials",
+  keywords: [
+    "laser engraving materials",
+    "engraved acrylic",
+    "engraved wood",
+    "engraved glass",
+    "engraved metal",
+    "custom fabrication materials",
+  ],
+});
 
 export default function MaterialsPage() {
   return (
@@ -90,6 +100,20 @@ export default function MaterialsPage() {
               Ask About Materials
             </GlowButton>
           </div>
+        </FadeUpSection>
+
+        <FadeUpSection className="mt-10 bg-surface border border-white/5 p-8 md:p-12">
+          <h2 className="font-display text-2xl md:text-3xl font-bold">
+            Materials St. Louis Creations can engrave, cut, mark, or fabricate
+          </h2>
+          <p className="text-muted mt-4 leading-relaxed">
+            St. Louis Creations works with acrylic, wood, glass, metal, leather,
+            stone, slate, tile, fabric, and rubber for custom engraving,
+            marking, cutting, awards, gifts, signage, branded products,
+            fundraiser items, and production parts. Material recommendations
+            are based on durability, appearance, intended use, artwork detail,
+            production quantity, and budget.
+          </p>
         </FadeUpSection>
       </div>
     </div>

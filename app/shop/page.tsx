@@ -6,8 +6,24 @@ import {
   StampedPageHero,
   type BrandSourceKind,
 } from "@/components/brand/BrandVisuals";
+import JsonLd from "@/components/seo/JsonLd";
+import { createPageMetadata, getProductCategoryJsonLd } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
+
+export const metadata = createPageMetadata({
+  title: "Shop",
+  description:
+    "Shop customizable engraved products, drinkware, awards, fundraiser items, corporate gifts, and 3D printed products from St. Louis Creations.",
+  path: "/shop",
+  keywords: [
+    "custom engraved products",
+    "branded drinkware",
+    "custom awards",
+    "fundraiser products",
+    "3D printed products",
+  ],
+});
 
 interface ShopPageProps {
   searchParams?: {
@@ -53,6 +69,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
 
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
+      <JsonLd data={getProductCategoryJsonLd()} />
       <div className="max-w-7xl mx-auto px-6">
         <StampedPageHero
           label="Shop"
@@ -90,6 +107,19 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
               totalCount={catalog.totalCount}
             />
           </Suspense>
+        </section>
+
+        <section className="bg-surface border border-white/5 p-8 md:p-12">
+          <h2 className="font-display text-2xl md:text-3xl font-bold">
+            Customizable products for gifts, campaigns, and production runs
+          </h2>
+          <p className="text-muted leading-relaxed mt-4">
+            The St. Louis Creations shop includes product starting points for
+            engraved drinkware, awards, corporate gifts, fundraiser products,
+            wood and slate goods, home items, and 3D printed designs. Many
+            items can be personalized with names, logos, sponsor marks,
+            artwork, campaign details, or production-specific finishes.
+          </p>
         </section>
       </div>
     </div>

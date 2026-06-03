@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/products";
 import ProductDetailClient from "./ProductDetailClient";
+import JsonLd from "@/components/seo/JsonLd";
+import { createPageMetadata, getProductJsonLd } from "@/lib/seo";
 
 interface ProductDetailPageProps {
   params: {
@@ -22,15 +24,13 @@ export function generateMetadata({ params }: ProductDetailPageProps): Metadata {
   const description = product.seo?.description ?? product.description;
 
   return {
-    title,
-    description,
-    keywords: product.seo?.keywords ?? product.tags,
-    openGraph: {
+    ...createPageMetadata({
       title,
       description,
-      type: "website",
-      images: product.images[0] ? [{ url: product.images[0], alt: product.name }] : [],
-    },
+      path: `/shop/${product.slug}`,
+      keywords: product.seo?.keywords ?? product.tags,
+      images: product.images[0] ? [{ url: product.images[0], alt: product.name }] : undefined,
+    }),
   };
 }
 
@@ -41,5 +41,10 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
     notFound();
   }
 
-  return <ProductDetailClient product={product} />;
+  return (
+    <>
+      <JsonLd data={getProductJsonLd(product)} />
+      <ProductDetailClient product={product} />
+    </>
+  );
 }

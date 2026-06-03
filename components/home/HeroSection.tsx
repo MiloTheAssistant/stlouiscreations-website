@@ -9,7 +9,7 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       <Image
         src="/brand/masters/source-family-studio-precision.png"
-        alt=""
+        alt="St. Louis Creations fabrication studio visual with precision materials and maker tools"
         fill
         priority
         className="object-cover object-center"

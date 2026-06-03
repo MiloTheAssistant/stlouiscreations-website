@@ -4,12 +4,20 @@ import FadeUpSection from "@/components/ui/FadeUpSection";
 import GlowButton from "@/components/ui/GlowButton";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { BrandHeroPanel, StampedPageHero } from "@/components/brand/BrandVisuals";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Fundraiser Water Bottles & Accessories",
   description:
     "Precision-engraved water bottles, drinkware, and accessories for fundraiser campaigns, teams, schools, clubs, and nonprofits.",
-};
+  path: "/fundraisers/water-bottles-accessories",
+  keywords: [
+    "fundraiser water bottles",
+    "engraved water bottles",
+    "team drinkware fundraiser",
+    "school fundraiser drinkware",
+  ],
+});
 
 const items = [
   "Reusable water bottles",

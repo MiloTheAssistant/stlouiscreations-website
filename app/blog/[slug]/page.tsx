@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import GlowButton from "@/components/ui/GlowButton";
 import { blogPosts, getPostBySlug } from "@/lib/blog-posts";
+import JsonLd from "@/components/seo/JsonLd";
+import { createPageMetadata, getArticleJsonLd } from "@/lib/seo";
 
 interface PageProps {
   params: { slug: string };
@@ -15,10 +17,11 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps) {
   const post = getPostBySlug(params.slug);
   if (!post) return { title: "Post Not Found" };
-  return {
+  return createPageMetadata({
     title: post.title,
     description: post.excerpt,
-  };
+    path: `/blog/${post.slug}`,
+  });
 }
 
 export default function BlogPostPage({ params }: PageProps) {
@@ -27,6 +30,14 @@ export default function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
+      <JsonLd
+        data={getArticleJsonLd({
+          title: post.title,
+          description: post.excerpt,
+          path: `/blog/${post.slug}`,
+          datePublished: post.date,
+        })}
+      />
       <article className="max-w-3xl mx-auto px-6">
         <FadeUpSection>
           {/* Breadcrumb */}

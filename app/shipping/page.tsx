@@ -3,12 +3,14 @@ import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import GlowButton from "@/components/ui/GlowButton";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Shipping Policy",
   description:
-    "Shipping details for St. Louis Creations — where we ship from, carriers, transit times, and more.",
-};
+    "Shipping details for St. Louis Creations - where we ship from, carriers, transit times, and more.",
+  path: "/shipping",
+});
 
 const carriers = [
   {

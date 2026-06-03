@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog-posts";
 import { materials } from "@/lib/constants";
 import { products } from "@/lib/products";
+import { topicHubs } from "@/lib/topic-hubs";
 
 const baseUrl = "https://stlouiscreations.com";
 
@@ -18,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.7 },
+    { url: `${baseUrl}/topics`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${baseUrl}/terms`, lastModified: now, changeFrequency: "yearly" as const, priority: 0.4 },
     { url: `${baseUrl}/privacy-policy`, lastModified: now, changeFrequency: "yearly" as const, priority: 0.4 },
     { url: `${baseUrl}/refund-policy`, lastModified: now, changeFrequency: "yearly" as const, priority: 0.4 },
@@ -45,5 +47,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...materialPages, ...productPages, ...blogPages];
+  const topicPages = topicHubs.map((hub) => ({
+    url: `${baseUrl}/topics/${hub.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticPages, ...materialPages, ...productPages, ...topicPages, ...blogPages];
 }

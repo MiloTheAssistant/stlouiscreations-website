@@ -4,12 +4,21 @@ import FadeUpSection from "@/components/ui/FadeUpSection";
 import GlowButton from "@/components/ui/GlowButton";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { StampedPageHero } from "@/components/brand/BrandVisuals";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Fundraisers",
   description:
     "Custom fabricated and engraved fundraiser products for schools, teams, clubs, nonprofits, and community groups.",
-};
+  path: "/fundraisers",
+  keywords: [
+    "fundraiser products",
+    "school fundraiser products",
+    "team fundraiser products",
+    "custom engraved fundraisers",
+    "St. Louis fundraiser products",
+  ],
+});
 
 const fundraiserOptions = [
   {

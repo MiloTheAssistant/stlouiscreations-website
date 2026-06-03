@@ -42,7 +42,7 @@ export default function ProductsSection() {
 
                   <Image
                     src={cat.image}
-                    alt=""
+                    alt={`${cat.title} from St. Louis Creations`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover opacity-70 transition-transform duration-700 group-hover:scale-110"
@@ -61,6 +61,21 @@ export default function ProductsSection() {
             </FadeUpSection>
           ))}
         </div>
+
+        <FadeUpSection className="mt-12 border border-white/5 bg-background p-8">
+          <h2 className="font-display text-2xl font-bold">
+            Product categories for branded and local production
+          </h2>
+          <p className="mt-4 text-muted leading-relaxed">
+            The St. Louis Creations product catalog focuses on customizable
+            drinkware, awards, recognition pieces, corporate gifts, fundraiser
+            products, wood and slate goods, and 3D printed products. Each
+            product path is selected around the intended use, material, finish,
+            artwork, quantity, and deadline so the final object can work as a
+            gift, campaign item, brand touchpoint, prototype, or finished
+            production piece.
+          </p>
+        </FadeUpSection>
       </div>
     </section>
   );

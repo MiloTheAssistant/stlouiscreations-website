@@ -3,12 +3,21 @@ import Link from "next/link";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import { StampedPageHero } from "@/components/brand/BrandVisuals";
 import { getAllPosts } from "@/lib/blog-posts";
+import { createPageMetadata } from "@/lib/seo";
+import { topicHubs } from "@/lib/topic-hubs";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Blog",
   description:
     "Ideas and guides on digital fabrication, laser engraving, materials, branded products, and custom production.",
-};
+  path: "/blog",
+  keywords: [
+    "laser engraving guide",
+    "digital fabrication ideas",
+    "custom product planning",
+    "engraving materials",
+  ],
+});
 
 export default function BlogPage() {
   const posts = getAllPosts();
@@ -28,6 +37,25 @@ export default function BlogPage() {
             physical concepts worth producing.
           </p>
         </StampedPageHero>
+
+        <FadeUpSection className="mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {topicHubs.map((hub) => (
+              <Link
+                key={hub.slug}
+                href={`/topics/${hub.slug}`}
+                className="bg-surface border border-white/5 p-5 hover:border-primary/30 transition-colors"
+              >
+                <span className="text-primary text-xs font-display uppercase tracking-[0.2em]">
+                  {hub.eyebrow}
+                </span>
+                <h2 className="font-display text-lg font-bold leading-tight mt-3">
+                  {hub.title}
+                </h2>
+              </Link>
+            ))}
+          </div>
+        </FadeUpSection>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post, i) => (

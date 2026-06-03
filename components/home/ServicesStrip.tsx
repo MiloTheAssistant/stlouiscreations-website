@@ -67,6 +67,21 @@ export default function ServicesStrip() {
             </FadeUpSection>
           ))}
         </div>
+
+        <FadeUpSection className="mt-12 border border-white/5 bg-background p-8">
+          <h2 className="font-display text-2xl font-bold">
+            What does St. Louis Creations do?
+          </h2>
+          <p className="mt-4 text-muted leading-relaxed">
+            St. Louis Creations is a St. Louis digital fabrication studio that
+            produces precision laser engraving, advanced 3D printing, and
+            custom physical products for brands, teams, schools, nonprofits,
+            creators, and local organizations. The studio helps customers move
+            from artwork, product ideas, or prototypes into finished engraved
+            gifts, awards, fundraiser products, branded drinkware, displays,
+            and small-batch production runs.
+          </p>
+        </FadeUpSection>
       </div>
     </section>
   );

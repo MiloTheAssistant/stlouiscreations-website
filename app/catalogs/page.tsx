@@ -3,12 +3,21 @@ import Link from "next/link";
 import FadeUpSection from "@/components/ui/FadeUpSection";
 import GlowButton from "@/components/ui/GlowButton";
 import { StampedPageHero } from "@/components/brand/BrandVisuals";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Catalogs",
   description:
     "Browse product catalogs for engravable awards, drinkware, crystal, glass, leatherette gifts, personalized products, and corporate fabrication projects.",
-};
+  path: "/catalogs",
+  keywords: [
+    "engraving catalogs",
+    "award catalogs",
+    "drinkware catalogs",
+    "corporate gifts",
+    "personalized gifts",
+  ],
+});
 
 const catalogs = [
   {

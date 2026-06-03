@@ -11,6 +11,7 @@ import {
   getMaterialCopy,
   getMaterialImageSlug,
 } from "@/lib/material-content";
+import { createPageMetadata } from "@/lib/seo";
 
 interface PageProps {
   params: { slug: string };
@@ -29,8 +30,17 @@ export function generateMetadata({ params }: PageProps): Metadata {
   }
 
   return {
-    title: copy.title,
-    description: copy.overview,
+    ...createPageMetadata({
+      title: copy.title,
+      description: copy.overview,
+      path: `/materials/${material.slug}`,
+      keywords: [
+        `${material.name} engraving`,
+        `${material.name} fabrication`,
+        `${material.name} material sample`,
+        "St. Louis custom engraving",
+      ],
+    }),
   };
 }
 
