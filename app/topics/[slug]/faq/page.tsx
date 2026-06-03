@@ -57,7 +57,12 @@ export default function TopicFaqPage({ params }: PageProps) {
             {faq.title}
           </h1>
           <p className="text-muted text-lg leading-relaxed mt-6 max-w-3xl">
-            {faq.intro}
+            {faq.intro} In 2026, St. Louis Creations uses this FAQ as a proof
+            page for the related buyer guide, not as a keyword page. The
+            answers focus on five practical quote factors: what the item must
+            do, which material is being considered, what file or artwork is
+            available, how many pieces are needed, and what deadline or proofing
+            step controls the schedule.
           </p>
         </FadeUpSection>
 

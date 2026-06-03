@@ -82,7 +82,12 @@ export default function TopicUseCasePage({ params }: PageProps) {
             {useCase.title}
           </h1>
           <p className="text-muted text-lg leading-relaxed mt-6 max-w-3xl">
-            {useCase.summary}
+            {useCase.summary} In 2026, St. Louis Creations uses this use-case
+            page to show professional project reasoning without inventing a
+            customer testimonial. The example explains the scenario, why the
+            production method fits, which inputs are needed for a quote, what
+            process steps reduce risk, and which decision notes should be
+            resolved before production.
           </p>
         </FadeUpSection>
 
