@@ -10,6 +10,16 @@ export interface TopicHub {
     body: string;
     facts: string[];
   }>;
+  comparisonTables?: Array<{
+    title: string;
+    description: string;
+    columns: string[];
+    rows: Array<{
+      label: string;
+      cells: string[];
+    }>;
+    note?: string;
+  }>;
   sections: Array<{
     title: string;
     body: string;
@@ -121,6 +131,192 @@ const materialsFaq = [
   },
 ];
 
+const decorationMethodTable = {
+  title: "Laser engraving vs screen printing vs vinyl",
+  description:
+    "Use this table when a business is choosing how to brand awards, drinkware, signs, gifts, labels, or event merchandise.",
+  columns: ["Best fit", "Useful constraints", "Quote inputs"],
+  rows: [
+    {
+      label: "Laser engraving",
+      cells: [
+        "Durable logos, names, QR codes, serial numbers, plaques, coated drinkware, wood, acrylic, glass, slate, and leatherette.",
+        "Limited by material response, surface coating, contrast, curvature, artwork detail, and proof approval for 12, 24, or 50+ item runs.",
+        "Vector artwork, product or material, quantity, personalization data, deadline, and whether a proof is required.",
+      ],
+    },
+    {
+      label: "Screen printing",
+      cells: [
+        "Full-color or repeat-color graphics on compatible apparel, bags, flat goods, and promotional products.",
+        "Depends on product compatibility, color count, setup needs, artwork separation, and whether the surface accepts ink cleanly.",
+        "Artwork colors, item type, quantity, print area, deadline, and brand-color expectations.",
+      ],
+    },
+    {
+      label: "Vinyl",
+      cells: [
+        "Signs, decals, lettering, temporary graphics, event markings, and simple one-off visual applications.",
+        "May not feel as permanent as engraving and can depend on adhesive, surface prep, weather, handling, and edge detail.",
+        "Size, surface, indoor or outdoor use, color, quantity, installation needs, and expected service life.",
+      ],
+    },
+  ],
+  note: "The right method follows the item surface, design goal, quantity, durability expectation, and deadline.",
+};
+
+const printingProcessTable = {
+  title: "FDM vs resin 3D printing",
+  description:
+    "Use this table when a buyer needs to decide whether the project is mainly functional, visual, detailed, or display-oriented.",
+  columns: ["Best fit", "Useful constraints", "Quote inputs"],
+  rows: [
+    {
+      label: "FDM printing",
+      cells: [
+        "Prototypes, brackets, holders, fixtures, display stands, organizers, and larger practical parts.",
+        "Layer lines, orientation, wall thickness, infill, support cleanup, tolerance, heat, and load direction affect the result.",
+        "STL, STEP, 3MF, or CAD file, quantity, size, material expectation, fit points, deadline, and use environment.",
+      ],
+    },
+    {
+      label: "Resin printing",
+      cells: [
+        "Small high-detail models, display pieces, miniatures, masters, and visual parts when resin handling fits the use.",
+        "Part size, brittleness, post-processing, handling limits, support marks, and exposure needs can change suitability.",
+        "Model file, detail priority, approximate size, quantity, handling expectations, finish needs, and deadline.",
+      ],
+    },
+    {
+      label: "Other path",
+      cells: [
+        "Machining, commercial sourcing, laser cutting, or redesign when printing is not the right production method.",
+        "Tight tolerances, metal requirements, certified material needs, food contact, safety loads, and high heat can rule out printing.",
+        "Critical dimensions, load, temperature, compliance needs, mating parts, and whether a test print is acceptable.",
+      ],
+    },
+  ],
+  note: "FDM and resin are process choices, not quality rankings; the project use should decide the path.",
+};
+
+const printingMaterialTable = {
+  title: "PLA vs PETG vs TPU vs ABS, ASA, and resin",
+  description:
+    "Use this table to compare common 3D printing material families before a quote is treated as print-ready.",
+  columns: ["Best fit", "Useful constraints", "Quote inputs"],
+  rows: [
+    {
+      label: "PLA",
+      cells: [
+        "Visual models, gifts, decor, desk items, display pieces, and lower-stress indoor parts.",
+        "Heat and sun exposure can be concerns, especially in cars, windows, outdoor use, or warm equipment areas.",
+        "Size, color, quantity, finish expectations, indoor use, and whether the item is decorative or functional.",
+      ],
+    },
+    {
+      label: "PETG",
+      cells: [
+        "Tougher functional parts, organizers, brackets, holders, and utility pieces when the design supports the load.",
+        "Still needs review for tolerance, layer direction, wall thickness, heat, flexing, and surface finish.",
+        "Load direction, mating surfaces, deadline, quantity, file type, and whether a test print should happen first.",
+      ],
+    },
+    {
+      label: "TPU",
+      cells: [
+        "Flexible bumpers, grips, feet, pads, covers, and parts where controlled flex is part of the job.",
+        "Not a universal rubber replacement; geometry, thickness, flex direction, and durability expectations matter.",
+        "Flex need, part thickness, use environment, quantity, color, and what the flexible part must touch or protect.",
+      ],
+    },
+    {
+      label: "ABS, ASA, or resin",
+      cells: [
+        "Selected heat, outdoor, or high-detail display needs when the process and handling limits fit the project.",
+        "Material behavior varies widely; brittleness, fumes, post-processing, UV, heat, and support marks may matter.",
+        "Exposure, detail level, strength direction, surface finish, size, quantity, and handling expectations.",
+      ],
+    },
+  ],
+  note: "Material choice should start with heat, load, sunlight, flex, detail, and handling needs rather than color alone.",
+};
+
+const processDecisionTable = {
+  title: "Laser engraving vs 3D printing decision table",
+  description:
+    "Use this table when a buyer is deciding whether the project needs a mark on an existing item, a new object, or both.",
+  columns: ["Choose this when", "Useful constraints", "Quote inputs"],
+  rows: [
+    {
+      label: "Laser engraving",
+      cells: [
+        "The item already exists and needs a durable logo, name, date, QR code, serial number, message, tag, or award mark.",
+        "Material response, coating, contrast, curvature, layout, personalization data, and proofing determine the final mark.",
+        "Artwork file, item or material, quantity, variable data, deadline, packaging, and proof requirements.",
+      ],
+    },
+    {
+      label: "3D printing",
+      cells: [
+        "The object does not exist yet and needs a prototype, replacement part, holder, fixture, model, or short-run component.",
+        "File quality, material, layer orientation, wall thickness, tolerance, heat, load, and fit points affect suitability.",
+        "STL, STEP, OBJ, 3MF, or CAD file, dimensions, use case, quantity, material expectation, and deadline.",
+      ],
+    },
+    {
+      label: "Combined project",
+      cells: [
+        "A custom printed object also needs an engraved plate, base, sign, tag, sponsor mark, or branded companion piece.",
+        "Attachment, finish, color, size, proofing, schedule, and packaging should be planned together.",
+        "Artwork, model files, dimensions, material choices, quantity, deadline, and how the finished pieces connect.",
+      ],
+    },
+  ],
+  note: "The production method should follow the physical job, not the tool name.",
+};
+
+const engravingMaterialTable = {
+  title: "Wood vs acrylic vs metal vs glass, slate, and leatherette",
+  description:
+    "Use this table to compare common engraving material families before a business selects products or blanks.",
+  columns: ["Best fit", "Useful constraints", "Quote inputs"],
+  rows: [
+    {
+      label: "Wood",
+      cells: [
+        "Warm gifts, signs, plaques, bases, serving pieces, donor pieces, and natural-looking recognition items.",
+        "Grain, finish, species, stain, and piece-to-piece variation can change contrast and uniformity.",
+        "Wood type, size, quantity, artwork, finish preference, deadline, and whether natural variation is acceptable.",
+      ],
+    },
+    {
+      label: "Acrylic",
+      cells: [
+        "Awards, signs, labels, displays, ornaments, product inserts, and clean modern presentation pieces.",
+        "Clear, colored, cast, coated, and mirrored acrylic can mark or cut differently and may need proofing.",
+        "Acrylic type, thickness, color, size, artwork, quantity, edge expectations, and handling needs.",
+      ],
+    },
+    {
+      label: "Metal",
+      cells: [
+        "Coated drinkware, anodized tags, asset plates, equipment labels, serial numbers, and selected branded products.",
+        "Bare metal, coated metal, anodized aluminum, and curved drinkware need different marking assumptions.",
+        "Metal or product type, coating, mark size, quantity, QR or serial data, deadline, and durability expectation.",
+      ],
+    },
+    {
+      label: "Glass, slate, or leatherette",
+      cells: [
+        "Premium gifts, awards, coasters, keepsakes, recognition items, portfolios, patches, and event pieces.",
+        "Curvature, texture, thickness, heat response, surface variation, and handling risk can affect results.",
+        "Material, item shape, quantity, artwork, personalization data, packaging needs, and proof preference.",
+      ],
+    },
+  ],
+  note: "For batch work, material proofing helps prevent contrast or readability issues before production.",
+};
+
 export const topicHubs: TopicHub[] = [
   {
     slug: "business-laser-engraving-st-louis",
@@ -154,7 +350,30 @@ export const topicHubs: TopicHub[] = [
           "Bare metal and coated metal may require different marking recommendations.",
         ],
       },
+      {
+        title: "What should a business include for engraved QR codes and asset tags?",
+        body:
+          "QR codes, serial numbers, and asset tags need more review than ordinary logo engraving because readability is part of the deliverable. A buyer should provide the exact URL or data string, preferred code size, material, item shape, quantity, deadline, and the expected scanning distance. A flat anodized tag, coated metal plate, acrylic label, and curved drinkware item do not create the same readability conditions. For a 12 or 24 item pilot, the safest path is to proof the code at final size, scan it with a phone or scanner, and then approve the larger run. For 50+ pieces, variable serial numbers should arrive in a clean spreadsheet so each code, label, or asset ID can be checked before production starts. The quote should separate artwork cleanup from production engraving time.",
+        facts: [
+          "QR codes need final-size scanning before larger runs.",
+          "12 or 24 item pilots can reduce readability risk.",
+          "50+ variable asset tags need clean serial or URL data.",
+          "Flat tags and curved items create different scanning conditions.",
+        ],
+      },
+      {
+        title: "How do rush deadlines change a business engraving order?",
+        body:
+          "Rush engraving is not only a question of machine time. The schedule depends on whether the product is already available, whether the logo file is production-ready, whether names or dates vary by item, and whether the buyer needs a proof before the batch starts. A simple logo on 12 in-stock items can be evaluated differently from 50 personalized awards with a late spreadsheet and multiple sponsor marks. Artwork conversion, spelling review, product handling, fixture setup, engraving time, cleanup, packaging, and pickup or shipping all compete for the same deadline. Buyers should submit AI, EPS, SVG, or PDF artwork when possible, state the event date, and identify the person who can approve the proof quickly. St. Louis Creations should frame any accelerated timeline as subject to material, artwork, and approval readiness.",
+        facts: [
+          "Rush feasibility depends on stock, artwork, proofing, and variable data.",
+          "AI, EPS, SVG, or PDF artwork can reduce setup friction.",
+          "12 logo-only items and 50 personalized awards carry different schedule risk.",
+          "Event date and proof approver should be included in the quote request.",
+        ],
+      },
     ],
+    comparisonTables: [decorationMethodTable, engravingMaterialTable],
     sections: [
       {
         title: "Best business uses",
@@ -278,7 +497,30 @@ export const topicHubs: TopicHub[] = [
           "Wall count, infill, supports, and print direction should match the part's job.",
         ],
       },
+      {
+        title: "What should a business define before ordering short-run printed parts?",
+        body:
+          "A short-run 3D printed part order should define the part's job before the quantity is scheduled. For example, 10 holders for a sales display, 24 cable guides for a workbench, or 50 small brackets for an internal fixture all need different assumptions about strength, finish, tolerance, and repeatability. The buyer should identify which surfaces must fit another part, which dimensions are critical, what load or heat the item will see, and whether visible layer lines are acceptable. If the design has not been tested, the first unit should be treated as a prototype rather than final production. A quote should include STL, STEP, 3MF, OBJ, or CAD files, quantity, deadline, color, material expectations, and whether 1 test print or 2 to 5 fit iterations are acceptable before the batch.",
+        facts: [
+          "10, 24, and 50 piece runs need different repeatability review.",
+          "Critical dimensions and mating surfaces should be named before quoting.",
+          "1 test print can prevent a full batch from repeating a fit issue.",
+          "STL, STEP, 3MF, OBJ, or CAD files help define print readiness.",
+        ],
+      },
+      {
+        title: "How do tolerance and strength limits affect a business print?",
+        body:
+          "3D printing can be useful for business parts, but tolerance and strength should be treated as design constraints, not afterthoughts. A bracket, jig, holder, fixture, or replacement component may need clearance for screws, clips, bearings, tabs, or mating parts. Small differences in wall thickness, layer orientation, infill, support placement, and print direction can affect whether the part fits or cracks under use. Heat, sunlight, chemicals, vibration, repeated flexing, and load direction can also change the recommendation. Buyers should state whether the item is a visual model, fit test, temporary shop aid, or end-use component. If the part needs metal strength, certified material behavior, food contact, or tight machining tolerance, printing may be a prototype step rather than the final production method.",
+        facts: [
+          "Tolerance depends on fit points, wall thickness, and print orientation.",
+          "Layer direction, infill, and support placement affect strength.",
+          "Heat, sunlight, chemicals, vibration, and flexing can change material choice.",
+          "Some parts should use printing as a prototype before another production method.",
+        ],
+      },
     ],
+    comparisonTables: [printingProcessTable, printingMaterialTable],
     sections: [
       {
         title: "Where business 3D printing fits",
@@ -402,7 +644,30 @@ export const topicHubs: TopicHub[] = [
           "Downloaded or character-style files may have copyright or licensing limits.",
         ],
       },
+      {
+        title: "How should consumers describe a custom 3D printed gift?",
+        body:
+          "A custom 3D printed gift is easiest to evaluate when the buyer explains the occasion, recipient, size, color preference, quantity, deadline, and whether names, dates, initials, or display details are needed. One desk accessory, 2 matching ornaments, a small family set, or a few tabletop pieces can all be reasonable projects if the geometry is printable and the use is low-risk. The buyer should say whether the item is decorative, handled daily, exposed to sunlight, used by children, or expected to hold weight. If the idea is based on a downloaded STL, 3MF, or OBJ file, the file still needs review for licensing, scale, wall thickness, supports, and print orientation. A good gift request also states whether visible layer lines are acceptable or whether sanding, paint, or assembly should be considered.",
+        facts: [
+          "Gift requests should include occasion, size, color, quantity, and deadline.",
+          "STL, 3MF, and OBJ files still need scale and licensing review.",
+          "Child use, sunlight, and load expectations change suitability.",
+          "Finish expectations should identify visible layer lines, paint, or assembly.",
+        ],
+      },
+      {
+        title: "What makes a consumer repair part a good print candidate?",
+        body:
+          "A consumer repair part is a better 3D printing candidate when the risk is low, the broken part can be measured, and the buyer can explain how the part is used. Useful examples include a knob, cover, clip, spacer, guide, organizer insert, or light-duty bracket. The request should include photos of the broken part, the mating surface, approximate dimensions, quantity, color, and whether the part snaps, screws, flexes, slides, or carries weight. If fit is uncertain, 1 test print and 1 or 2 revisions may be more practical than expecting the first version to be final. Heat, food contact, child use, pet use, electrical parts, and safety-critical loads should be disclosed early because they may require redesign, a different material, commercial replacement, or declining the print.",
+        facts: [
+          "Low-risk clips, knobs, covers, spacers, and guides can be good candidates.",
+          "Photos, dimensions, and mating surfaces help repair review.",
+          "1 test print plus 1 or 2 revisions can resolve uncertain fit.",
+          "Heat, food, child, pet, electrical, and safety uses need caution.",
+        ],
+      },
     ],
+    comparisonTables: [printingMaterialTable, printingProcessTable],
     sections: [
       {
         title: "Best consumer uses",
@@ -520,7 +785,30 @@ export const topicHubs: TopicHub[] = [
           "Artwork, model files, dimensions, quantity, and deadline should be reviewed together.",
         ],
       },
+      {
+        title: "When is laser engraving the better first quote path?",
+        body:
+          "Laser engraving is the better first quote path when the buyer already has the physical item or material and the project is mainly about marking it accurately. Common examples include 24 tumblers with a logo, 50 asset tags with serial numbers, a set of acrylic awards with recipient names, or a wood sign with a sponsor mark. The quote should focus on the product surface, artwork quality, mark size, quantity, personalization data, deadline, and proof preference. Engraving can also support cutting or etching when the material fits the process. It is not the right first path if the object itself still needs to be designed or manufactured. In that case, the buyer may need 3D printing, laser cutting, sourcing, or design work before engraving becomes relevant.",
+        facts: [
+          "Engraving starts with an existing item or compatible material.",
+          "24 tumblers, 50 asset tags, and acrylic awards are planning examples.",
+          "Artwork quality, mark size, and personalization data drive review.",
+          "New objects may need printing, cutting, sourcing, or design before engraving.",
+        ],
+      },
+      {
+        title: "When is 3D printing the better first quote path?",
+        body:
+          "3D printing is the better first quote path when the buyer needs a new object made from a model or concept. Examples include 1 prototype for a product review, 2 to 5 fit-test versions of a replacement part, 10 display holders for a sales kit, or a small batch of custom brackets for internal use. The quote should focus on STL, STEP, OBJ, 3MF, or CAD files, dimensions, material expectations, critical fit points, quantity, deadline, and whether a test print is acceptable. Printing is not automatically the final answer for every part. Heat, load, tolerance, food contact, safety use, outdoor exposure, and certified material requirements can make printing a prototype step before machining, molding, commercial sourcing, or redesign. The buyer should also say whether visible layer lines, support marks, or material color are acceptable.",
+        facts: [
+          "Printing starts with a new object, model, prototype, or replacement part.",
+          "1 prototype, 2 to 5 fit tests, and 10 display holders are planning examples.",
+          "STL, STEP, OBJ, 3MF, and CAD files help define scope.",
+          "Heat, load, tolerance, and safety needs can make printing a prototype step.",
+        ],
+      },
     ],
+    comparisonTables: [processDecisionTable, decorationMethodTable],
     sections: [
       {
         title: "Choose laser engraving when",
@@ -643,7 +931,30 @@ export const topicHubs: TopicHub[] = [
           "Decorative and functional parts need different material assumptions.",
         ],
       },
+      {
+        title: "How should buyers compare material risk before a batch order?",
+        body:
+          "Material risk increases when a project moves from 1 sample to a batch such as 12, 24, or 50+ pieces. For engraving, the risk may be contrast, readability, chipping, surface variation, or whether a QR code remains scannable at final size. For 3D printing, the risk may be fit, layer direction, heat, load, flexibility, support cleanup, or whether a part repeats consistently across the quantity. Buyers should identify what would make the batch unacceptable before production begins. Examples include a logo that is too low contrast, a serial number that is unreadable, a bracket that softens in heat, or a display part with visible surfaces in the wrong orientation. Proofs, test prints, and material review help catch those risks early.",
+        facts: [
+          "1 sample and 12, 24, or 50+ pieces carry different material risk.",
+          "Engraving risk can include contrast, chipping, and QR readability.",
+          "Printing risk can include fit, heat, load, support cleanup, and repeatability.",
+          "Proofs and test prints help catch unacceptable batch outcomes early.",
+        ],
+      },
+      {
+        title: "Which quote details help match material to the real use?",
+        body:
+          "The best material recommendation comes from how the item will be used, not from a generic preference list. A quote should state whether the item is decorative, functional, indoor, outdoor, handled daily, exposed to heat or sunlight, expected to flex, required to hold weight, or used near food, children, pets, equipment, or customers. Engraving buyers should include the product or blank, mark size, artwork, quantity, finish preference, and whether names, dates, QR codes, or serial numbers vary by piece. 3D printing buyers should include STL, STEP, OBJ, 3MF, or CAD files, dimensions, material expectations, tolerance needs, load direction, and whether 1 test print is acceptable. These details let the project be screened for material fit before cost, schedule, and finish decisions are finalized.",
+        facts: [
+          "Decorative and functional use cases need different material review.",
+          "Heat, sunlight, flex, food, children, pets, and load should be disclosed.",
+          "Engraving quotes need product, mark size, artwork, quantity, and variable data.",
+          "3D printing quotes need files, dimensions, tolerance, load direction, and test-print expectations.",
+        ],
+      },
     ],
+    comparisonTables: [engravingMaterialTable, printingMaterialTable],
     sections: [
       {
         title: "Laser engraving material factors",

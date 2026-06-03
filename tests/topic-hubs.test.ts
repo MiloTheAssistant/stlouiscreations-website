@@ -34,8 +34,8 @@ test("publishes five core cite-ready topic hubs with proof pages", () => {
       `${hub.slug} answer should be 120-180 words`
     );
     assert.ok(
-      hub.evidenceBlocks && hub.evidenceBlocks.length >= 2,
-      `${hub.slug} needs at least two evidence blocks`
+      hub.evidenceBlocks && hub.evidenceBlocks.length >= 4,
+      `${hub.slug} needs at least four evidence blocks`
     );
 
     for (const block of hub.evidenceBlocks ?? []) {
@@ -52,6 +52,30 @@ test("publishes five core cite-ready topic hubs with proof pages", () => {
         evidenceSignalPattern,
         `${hub.slug} evidence block "${block.title}" needs concrete evidence signals`
       );
+    }
+
+    assert.ok(
+      hub.comparisonTables && hub.comparisonTables.length >= 1,
+      `${hub.slug} needs at least one comparison table`
+    );
+
+    for (const table of hub.comparisonTables ?? []) {
+      assert.ok(
+        table.columns.length >= 3,
+        `${hub.slug} comparison table "${table.title}" needs at least three columns`
+      );
+      assert.ok(
+        table.rows.length >= 3,
+        `${hub.slug} comparison table "${table.title}" needs at least three rows`
+      );
+
+      for (const row of table.rows) {
+        assert.equal(
+          row.cells.length,
+          table.columns.length,
+          `${hub.slug} comparison table "${table.title}" row "${row.label}" must align with columns`
+        );
+      }
     }
 
     assert.ok(hub.proofPages?.faq, `${hub.slug} is missing a FAQ proof page`);
@@ -83,6 +107,13 @@ test("publishes five core cite-ready topic hubs with proof pages", () => {
         block.title,
         block.body,
         ...block.facts,
+      ]),
+      ...(hub.comparisonTables ?? []).flatMap((table) => [
+        table.title,
+        table.description,
+        ...table.columns,
+        ...table.rows.flatMap((row) => [row.label, ...row.cells]),
+        table.note ?? "",
       ]),
       ...hub.sections.flatMap((section) => [section.title, section.body, ...(section.bullets ?? [])]),
       ...hub.faqs.flatMap((faq) => [faq.q, faq.a]),

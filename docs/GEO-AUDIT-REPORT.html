@@ -197,6 +197,11 @@
         color: var(--good);
       }
 
+      .pill.warn {
+        border-color: rgba(255, 209, 102, 0.45);
+        color: var(--warn);
+      }
+
       .section {
         margin-top: 24px;
       }
@@ -379,7 +384,8 @@
           <p class="hero-copy">
             A browser-ready summary of the post-implementation GEO readiness work:
             crawler access, canonical clarity, llms.txt, JSON-LD, AI-citable content,
-            production verification, and the June 3 evidence-density sprint.
+            production verification, the June 3 evidence-density sprint, and the
+            local comparison-table sprint now awaiting deployment.
           </p>
           <div class="meta-grid">
             <div class="meta">
@@ -401,6 +407,7 @@
             <span class="pill good">Canonical live</span>
             <span class="pill good">Crawler access verified</span>
             <span class="pill good">Production evidence blocks verified</span>
+            <span class="pill warn">Local comparison tables ready</span>
           </div>
         </div>
 
@@ -438,14 +445,14 @@
 
       <section class="section grid-3">
         <div class="metric">
-          <span class="label">Latest Production Sprint</span>
-          <span class="value">Evidence</span>
-          <p>Evidence blocks are deployed and verified on the live topic hubs.</p>
+          <span class="label">Latest Local Sprint</span>
+          <span class="value">Tables</span>
+          <p>Comparison tables and 20 total evidence blocks are built locally and ready for deployment.</p>
         </div>
         <div class="metric">
           <span class="label">Last Production Deploy</span>
-          <span class="value">dpl_3Tn</span>
-          <p>Latest verified production deployment: <code>dpl_3TnhSytiixzP2N92VM1KzJFKoLFF</code>.</p>
+          <span class="value">dpl_H9Q</span>
+          <p>Latest verified production deployment: <code>dpl_H9QUjFE913dCPeVehNFegJfaEVMG</code>.</p>
         </div>
         <div class="metric">
           <span class="label">Static Pages</span>
@@ -469,6 +476,9 @@
           The latest production evidence sprint adds two source-driven evidence blocks
           to each core topic hub with 120-180 word answer sections, concrete
           quantity examples, process constraints, material limits, and quote inputs.
+          The latest local sprint expands that to four evidence blocks per core hub
+          and adds semantic comparison tables for decoration methods, 3D printing
+          processes, 3D printing materials, process selection, and engraving materials.
         </p>
         <p>
           The practical priority remains making the site easy for ChatGPT, Claude,
@@ -480,7 +490,9 @@
           true statistics, original measured data, sourced proof, and question-style
           standalone passages more than schema or internal-link context. The
           production hub pages now produce multiple B-grade best blocks after
-          deployment <code>dpl_3TnhSytiixzP2N92VM1KzJFKoLFF</code>.
+          deployment <code>dpl_H9QUjFE913dCPeVehNFegJfaEVMG</code>. The new comparison
+          tables are verified in local build output but have not yet been production
+          scored because this implementation request did not include deployment.
         </p>
       </section>
 
@@ -724,7 +736,8 @@ Sitemap: https://stlouiscreations.com/sitemap.xml</pre>
             <li>Added FAQ and use-case proof pages for each core topic hub.</li>
             <li>Added first-sprint blog content for laser engraving, artwork prep, business 3D printing, 3D model prep, and consumer 3D printed gifts.</li>
             <li>Expanded <code>llms.txt</code> to 52 factual links.</li>
-            <li>Added 10 evidence blocks across the five core topic hubs.</li>
+            <li>Added 20 evidence blocks across the five core topic hubs.</li>
+            <li>Added semantic comparison tables to the core topic hubs for decoration methods, 3D printing processes, 3D printing materials, process selection, and engraving materials.</li>
             <li>Expanded core hub answers, FAQ intros, use-case summaries, and FAQ answers with test-enforced depth.</li>
           </ol>
         </div>
@@ -735,14 +748,15 @@ Sitemap: https://stlouiscreations.com/sitemap.xml</pre>
             <li><code>npm run lint</code></li>
             <li><code>npm run build</code></li>
             <li><code>npm run test:catalog</code></li>
+            <li>Local build output includes the new comparison table text on generated topic pages.</li>
             <li>Production route checks on <code>https://stlouiscreations.com</code></li>
             <li>Production <code>/robots.txt</code>, <code>/sitemap.xml</code>, and <code>/llms.txt</code> returned 200</li>
             <li>Production JSON-LD and LocalBusiness schema checks</li>
             <li>Production GEO quick audit: <strong>100/100, excellent</strong></li>
             <li>Production <code>llms.txt</code> validation: <strong>valid, 6 sections, 52 links</strong></li>
             <li>Production citability best blocks: laser hub <strong>68 B</strong>, B2B 3D hub <strong>72 B</strong>, comparison hub <strong>70 B</strong>, materials hub <strong>66 B</strong></li>
-            <li>Final production deployment: <strong>dpl_3TnhSytiixzP2N92VM1KzJFKoLFF</strong></li>
-            <li>Final deployed commit: <strong>56728b0</strong></li>
+            <li>Final production deployment: <strong>dpl_H9QUjFE913dCPeVehNFegJfaEVMG</strong></li>
+            <li>Final deployed commit before this local sprint: <strong>b95355c</strong></li>
             <li>Production build generated <strong>73</strong> static pages.</li>
           </ul>
         </div>
@@ -762,8 +776,8 @@ Sitemap: https://stlouiscreations.com/sitemap.xml</pre>
           <div>
             <h3>Service And Product Clarity</h3>
             <ul>
-              <li>Expand remaining short support sections now that the evidence-density sprint is live.</li>
-              <li>Convert the remaining short support sections into answer-ready passages where they matter most.</li>
+              <li>Deploy the local comparison-table sprint, then rerun production citability checks.</li>
+              <li>Convert any remaining short support sections into answer-ready passages where they matter most.</li>
               <li>Add real project examples for fundraiser products, drinkware, awards, recognition, and small-batch 3D printing.</li>
             </ul>
           </div>
@@ -798,7 +812,7 @@ Sitemap: https://stlouiscreations.com/sitemap.xml</pre>
       </section>
 
       <p class="footer">
-        Browser report updated June 3, 2026 from production evidence-density sprint verification.
+        Browser report updated June 3, 2026 from local comparison-table sprint validation and production GEO verification.
       </p>
     </main>
   </body>

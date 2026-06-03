@@ -108,6 +108,68 @@ export default function TopicHubPage({ params }: PageProps) {
           </div>
         ) : null}
 
+        {hub.comparisonTables ? (
+          <div className="mt-10 space-y-6">
+            {hub.comparisonTables.map((table) => (
+              <FadeUpSection
+                key={table.title}
+                className="bg-surface border border-white/5 p-7"
+              >
+                <h2 className="font-display text-2xl md:text-3xl font-bold">
+                  {table.title}
+                </h2>
+                <p className="text-muted leading-relaxed mt-4">
+                  {table.description}
+                </p>
+                <div className="mt-6 overflow-x-auto">
+                  <table className="min-w-[760px] w-full border-collapse text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-white/10">
+                        <th className="w-44 py-3 pr-4 text-text font-display">
+                          Option
+                        </th>
+                        {table.columns.map((column) => (
+                          <th
+                            key={column}
+                            className="py-3 px-4 text-text font-display"
+                          >
+                            {column}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {table.rows.map((row) => (
+                        <tr key={row.label} className="border-b border-white/5">
+                          <th
+                            scope="row"
+                            className="align-top py-4 pr-4 text-text font-semibold"
+                          >
+                            {row.label}
+                          </th>
+                          {row.cells.map((cell, index) => (
+                            <td
+                              key={`${row.label}-${table.columns[index]}`}
+                              className="align-top py-4 px-4 text-muted leading-relaxed"
+                            >
+                              {cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {table.note ? (
+                  <p className="text-muted leading-relaxed mt-5 text-sm">
+                    {table.note}
+                  </p>
+                ) : null}
+              </FadeUpSection>
+            ))}
+          </div>
+        ) : null}
+
         <div className="mt-14 space-y-12">
           {hub.sections.map((section) => (
             <FadeUpSection key={section.title}>
