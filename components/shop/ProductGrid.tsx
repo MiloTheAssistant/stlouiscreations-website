@@ -10,6 +10,7 @@ interface ProductGridProps {
   emptyMessage?: string;
   totalCount?: number;
   onLoadMore?: () => void;
+  loadMoreAnalyticsAttributes?: Record<string, string>;
 }
 
 export default function ProductGrid({
@@ -18,6 +19,7 @@ export default function ProductGrid({
   emptyMessage = "No products found.",
   totalCount,
   onLoadMore,
+  loadMoreAnalyticsAttributes,
 }: ProductGridProps) {
   const [visibleCount, setVisibleCount] = useState(initialLimit);
   const isServerPaged = typeof totalCount === "number" && Boolean(onLoadMore);
@@ -56,6 +58,7 @@ export default function ProductGrid({
         <div className="mt-8 flex justify-center">
           <button
             type="button"
+            {...loadMoreAnalyticsAttributes}
             onClick={
               isServerPaged && onLoadMore
                 ? onLoadMore
