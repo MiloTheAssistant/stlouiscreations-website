@@ -68,6 +68,7 @@ export default function ShopClient({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [searchInput, setSearchInput] = useState(searchQuery);
+  const [menuOpen, setMenuOpen] = useState(false);
   const isSearching = searchQuery.length > 0;
   const isLandingPage = activeCategory === "all" && !isSearching;
   const activeCategoryHasSubcategories = polarCamelSubcategories.some(
@@ -137,6 +138,7 @@ export default function ShopClient({
   }
 
   function selectSubcategory(subcategory: string) {
+    setMenuOpen(false);
     replaceParams((params) => {
       params.set("category", activeCategory);
       params.delete("page");
@@ -314,7 +316,11 @@ export default function ShopClient({
                   </p>
                 </div>
 
-                <details className="group lg:hidden">
+                <details
+                  open={menuOpen}
+                  onToggle={(event) => setMenuOpen(event.currentTarget.open)}
+                  className="group lg:hidden"
+                >
                   <summary className="flex cursor-pointer list-none items-center justify-between border-b border-white/10 px-5 py-4 font-display text-xs uppercase tracking-wider text-text">
                     {activeSubcategoryLabel}
                     <span className="text-primary transition-transform group-open:rotate-180">
