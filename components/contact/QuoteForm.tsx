@@ -5,6 +5,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  ANALYTICS_EVENTS,
+  analyticsEventAttributes,
+  trackAnalyticsEvent,
+} from "@/lib/analytics-events";
 import { cn } from "@/lib/utils";
 
 const schema = z.object({
@@ -52,6 +57,11 @@ export default function QuoteForm() {
         return;
       }
 
+      trackAnalyticsEvent(ANALYTICS_EVENTS.quoteFormSubmit, {
+        productType: data.productType,
+        quantity: data.quantity,
+      });
+
       const res = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -80,6 +90,7 @@ export default function QuoteForm() {
 
   const inputClasses =
     "w-full bg-background border border-white/10 px-4 py-3 text-sm text-text placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors";
+  const productTypeField = register("productType");
 
   return (
     <AnimatePresence mode="wait">
@@ -161,7 +172,14 @@ export default function QuoteForm() {
             <div>
               <div className="relative">
                 <select
-                  {...register("productType")}
+                  {...productTypeField}
+                  {...analyticsEventAttributes(ANALYTICS_EVENTS.quoteProductTypeSelect)}
+                  onChange={(event) => {
+                    productTypeField.onChange(event);
+                    trackAnalyticsEvent(ANALYTICS_EVENTS.quoteProductTypeSelect, {
+                      productType: event.target.value,
+                    });
+                  }}
                   className={cn(
                     inputClasses,
                     "appearance-none pr-10",
@@ -234,6 +252,7 @@ export default function QuoteForm() {
           <button
             type="submit"
             disabled={status === "loading"}
+            {...analyticsEventAttributes(ANALYTICS_EVENTS.quoteFormSubmit)}
             className="w-full px-8 py-4 bg-primary text-white font-display text-xs uppercase tracking-wider font-bold hover:shadow-glow transition-shadow duration-300 disabled:opacity-50"
           >
             {status === "loading" ? "Sending..." : "Submit Fabrication Quote"}

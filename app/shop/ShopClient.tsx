@@ -10,6 +10,11 @@ import {
 } from "@/lib/shop-navigation";
 import type { ShopProduct } from "@/lib/shop-product";
 import ProductGrid from "@/components/shop/ProductGrid";
+import {
+  ANALYTICS_EVENTS,
+  analyticsEventAttributes,
+  trackAnalyticsEvent,
+} from "@/lib/analytics-events";
 import { cn } from "@/lib/utils";
 
 const occasionSpecials = [
@@ -107,6 +112,11 @@ export default function ShopClient({
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    trackAnalyticsEvent(ANALYTICS_EVENTS.shopSearchSubmit, {
+      query: searchInput.trim(),
+      category: activeCategory,
+      subcategory: activeSubcategory || null,
+    });
     replaceParams((params) => {
       const query = searchInput.trim();
       params.delete("page");
@@ -126,6 +136,7 @@ export default function ShopClient({
   }
 
   function selectCategory(category: string) {
+    trackAnalyticsEvent(ANALYTICS_EVENTS.shopCategorySelect, { category });
     replaceParams((params) => {
       params.delete("subcategory");
       params.delete("page");
@@ -139,6 +150,10 @@ export default function ShopClient({
 
   function selectSubcategory(subcategory: string) {
     setMenuOpen(false);
+    trackAnalyticsEvent(ANALYTICS_EVENTS.shopSubcategorySelect, {
+      category: activeCategory,
+      subcategory: subcategory || null,
+    });
     replaceParams((params) => {
       params.set("category", activeCategory);
       params.delete("page");
@@ -151,6 +166,11 @@ export default function ShopClient({
   }
 
   function loadMore() {
+    trackAnalyticsEvent(ANALYTICS_EVENTS.shopLoadMore, {
+      category: activeCategory,
+      subcategory: activeSubcategory || null,
+      nextPage: page + 1,
+    });
     replaceParams((params) => {
       params.set("page", String(page + 1));
     });
@@ -161,6 +181,7 @@ export default function ShopClient({
       <div className="flex flex-wrap justify-center gap-2 border-y border-white/10 py-4">
         <button
           onClick={() => selectCategory("all")}
+          {...analyticsEventAttributes(ANALYTICS_EVENTS.shopCategorySelect)}
           className={cn(
             "px-4 py-2 text-[11px] font-display uppercase tracking-wider transition-all duration-300 border",
             activeCategory === "all"
@@ -174,6 +195,7 @@ export default function ShopClient({
           <button
             key={cat.slug}
             onClick={() => selectCategory(cat.slug)}
+            {...analyticsEventAttributes(ANALYTICS_EVENTS.shopCategorySelect)}
             className={cn(
               "px-4 py-2 text-[11px] font-display uppercase tracking-wider transition-all duration-300 border",
               activeCategory === cat.slug
@@ -188,6 +210,7 @@ export default function ShopClient({
 
       <form
         onSubmit={submitSearch}
+        {...analyticsEventAttributes(ANALYTICS_EVENTS.shopSearchSubmit)}
         className="mt-6 grid gap-3 border-b border-white/10 pb-6 sm:grid-cols-[minmax(0,1fr)_auto_auto]"
       >
         <input
@@ -199,6 +222,7 @@ export default function ShopClient({
         />
         <button
           type="submit"
+          {...analyticsEventAttributes(ANALYTICS_EVENTS.shopSearchSubmit)}
           className="min-h-12 border border-primary bg-primary px-6 font-display text-xs font-bold uppercase tracking-wider text-white transition-shadow hover:shadow-glow-sm"
         >
           Search
@@ -290,6 +314,9 @@ export default function ShopClient({
                 subcategory={subcategory}
                 video={subcategoryVideos[subcategory.slug]}
                 onSelect={selectSubcategory}
+                analyticsAttributes={analyticsEventAttributes(
+                  ANALYTICS_EVENTS.shopSubcategorySelect
+                )}
               />
             ))}
           </div>
@@ -375,6 +402,9 @@ export default function ShopClient({
               onLoadMore={loadMore}
               initialLimit={pageSize}
               emptyMessage="No products found. Try a broader search or choose another category."
+              loadMoreAnalyticsAttributes={analyticsEventAttributes(
+                ANALYTICS_EVENTS.shopLoadMore
+              )}
             />
           </section>
         </div>
@@ -389,6 +419,7 @@ interface ProductLineCardProps {
   subcategory: (typeof polarCamelSubcategories)[number];
   video?: string;
   onSelect: (subcategory: string) => void;
+  analyticsAttributes?: Record<string, string>;
 }
 
 function ProductLineCard({
@@ -397,6 +428,7 @@ function ProductLineCard({
   subcategory,
   video,
   onSelect,
+  analyticsAttributes,
 }: ProductLineCardProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -422,6 +454,7 @@ function ProductLineCard({
   return (
     <button
       type="button"
+      {...analyticsAttributes}
       onClick={() => onSelect(subcategory.slug)}
       onMouseEnter={playPreview}
       onMouseLeave={resetPreview}
@@ -498,6 +531,7 @@ function CatalogLineNav({
     <nav className="max-h-[70vh] overflow-y-auto p-4">
       <button
         onClick={() => selectSubcategory("")}
+        {...analyticsEventAttributes(ANALYTICS_EVENTS.shopSubcategorySelect)}
         className={cn(
           "mb-4 flex w-full items-center justify-between border px-3 py-2.5 text-left font-display text-xs uppercase tracking-wider transition-colors",
           activeSubcategory === ""
@@ -522,6 +556,9 @@ function CatalogLineNav({
                   <button
                     key={subcat.slug}
                     onClick={() => selectSubcategory(subcat.slug)}
+                    {...analyticsEventAttributes(
+                      ANALYTICS_EVENTS.shopSubcategorySelect
+                    )}
                     className={cn(
                       "flex w-full items-center justify-between border px-3 py-2 text-left text-xs transition-colors",
                       activeSubcategory === subcat.slug
