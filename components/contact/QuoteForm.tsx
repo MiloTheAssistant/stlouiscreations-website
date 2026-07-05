@@ -159,24 +159,40 @@ export default function QuoteForm() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <select
-                {...register("productType")}
-                className={cn(
-                  inputClasses,
-                  "appearance-none",
-                  errors.productType && "border-red-500"
-                )}
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  Product Type *
-                </option>
-                {productTypes.map((type) => (
-                  <option key={type} value={type}>
-                    {type}
+              <div className="relative">
+                <select
+                  {...register("productType")}
+                  className={cn(
+                    inputClasses,
+                    "appearance-none pr-10",
+                    errors.productType && "border-red-500"
+                  )}
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Product Type *
                   </option>
-                ))}
-              </select>
+                  {productTypes.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-muted">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-4 h-4"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </div>
+              </div>
               {errors.productType && (
                 <p className="text-red-500 text-xs mt-1">{errors.productType.message}</p>
               )}
