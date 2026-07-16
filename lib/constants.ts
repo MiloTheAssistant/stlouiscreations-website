@@ -174,3 +174,26 @@ export const contactLinks = {
   orderSupport:
     "mailto:contact@stlouiscreations.com?subject=Order%20Status%20Request",
 };
+
+export const businessFacts = {
+  location: {
+    label: "St. Louis, MO",
+    locality: "St. Louis",
+    region: "MO",
+    country: "US",
+  },
+  phone: {
+    display: "(573) 500-0064",
+    href: "tel:+15735000064",
+    schema: "+1-573-500-0064",
+  },
+  hours: {
+    weekdayLabel: "Monday - Friday: 8am - 5pm CT",
+    weekendLabel: "Saturday - Sunday: Closed",
+    weekdays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "17:00",
+  },
+  responseTime:
+    "We respond to fabrication and quote inquiries within 24 hours during business days.",
+} as const;

@@ -1,6 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { navLinks, siteConfig, socialLinks } from "@/lib/constants";
+import {
+  businessFacts,
+  contactLinks,
+  navLinks,
+  siteConfig,
+  socialLinks,
+} from "@/lib/constants";
 
 export default function Footer() {
   const policyLinks = [
@@ -98,21 +104,21 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-3 text-muted text-sm">
-              <li>St. Louis, MO</li>
+              <li>{businessFacts.location.label}</li>
               <li>
                 <a
-                  href="mailto:contact@stlouiscreations.com"
+                  href={`mailto:${contactLinks.email}`}
                   className="hover:text-primary transition-colors"
                 >
-                  contact@stlouiscreations.com
+                  {contactLinks.email}
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+15735000064"
+                  href={businessFacts.phone.href}
                   className="hover:text-primary transition-colors"
                 >
-                  (573) 500-0064
+                  {businessFacts.phone.display}
                 </a>
               </li>
             </ul>

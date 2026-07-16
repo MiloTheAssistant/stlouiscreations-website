@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import test from "node:test";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
-import { siteConfig } from "@/lib/constants";
+import { businessFacts, siteConfig } from "@/lib/constants";
 import {
   absoluteUrl,
   canonicalHost,
@@ -48,6 +48,31 @@ test("uses the resolving www host for metadata and structured data", () => {
   for (const url of siteUrls) {
     assert.ok(url.startsWith(expectedHost), `non-canonical schema URL: ${url}`);
   }
+});
+
+test("publishes only confirmed visible local business facts in schema", () => {
+  const graph = getSiteJsonLd()["@graph"] as Array<Record<string, unknown>>;
+  const business = graph.find((node) =>
+    Array.isArray(node["@type"]) &&
+    (node["@type"] as string[]).includes("LocalBusiness")
+  );
+
+  assert.ok(business);
+  assert.equal(business.telephone, businessFacts.phone.schema);
+  assert.deepEqual(business.address, {
+    "@type": "PostalAddress",
+    addressLocality: businessFacts.location.locality,
+    addressRegion: businessFacts.location.region,
+    addressCountry: businessFacts.location.country,
+  });
+  assert.deepEqual(business.openingHoursSpecification, [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: businessFacts.hours.weekdays,
+      opens: businessFacts.hours.opens,
+      closes: businessFacts.hours.closes,
+    },
+  ]);
 });
 
 test("uses the www host for every sitemap entry and robots sitemap", () => {

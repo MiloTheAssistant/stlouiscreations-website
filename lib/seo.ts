@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { contactLinks, productCategories, services, siteConfig, socialLinks } from "@/lib/constants";
+import {
+  businessFacts,
+  contactLinks,
+  productCategories,
+  services,
+  siteConfig,
+  socialLinks,
+} from "@/lib/constants";
 import type { Product } from "@/lib/products";
 
 export const canonicalHost = siteConfig.url;
@@ -79,19 +86,27 @@ export function getSiteJsonLd() {
         image: absoluteUrl("/og-image.png"),
         description: siteConfig.description,
         email: contactLinks.email,
-        telephone: "+1-573-500-0064",
+        telephone: businessFacts.phone.schema,
         priceRange: "$$",
         sameAs,
         address: {
           "@type": "PostalAddress",
-          addressLocality: "St. Louis",
-          addressRegion: "MO",
-          addressCountry: "US",
+          addressLocality: businessFacts.location.locality,
+          addressRegion: businessFacts.location.region,
+          addressCountry: businessFacts.location.country,
         },
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: businessFacts.hours.weekdays,
+            opens: businessFacts.hours.opens,
+            closes: businessFacts.hours.closes,
+          },
+        ],
         areaServed: [
           {
             "@type": "City",
-            name: "St. Louis",
+            name: businessFacts.location.locality,
           },
           {
             "@type": "State",

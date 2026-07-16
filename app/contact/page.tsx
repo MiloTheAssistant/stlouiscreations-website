@@ -4,6 +4,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import QuoteForm from "@/components/contact/QuoteForm";
 import { BrandHeroPanel, StampedPageHero } from "@/components/brand/BrandVisuals";
 import JsonLd from "@/components/seo/JsonLd";
+import { businessFacts, contactLinks } from "@/lib/constants";
 import { createPageMetadata, getFaqJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -81,7 +82,7 @@ export default function ContactPage() {
                 <h3 className="font-display text-sm uppercase tracking-wider mb-3">
                   Location
                 </h3>
-                <p className="text-muted text-sm">St. Louis, MO</p>
+                <p className="text-muted text-sm">{businessFacts.location.label}</p>
               </div>
 
               <div>
@@ -89,10 +90,10 @@ export default function ContactPage() {
                   Email
                 </h3>
                 <a
-                  href="mailto:contact@stlouiscreations.com"
+                  href={`mailto:${contactLinks.email}`}
                   className="text-primary text-sm hover:underline"
                 >
-                  contact@stlouiscreations.com
+                  {contactLinks.email}
                 </a>
               </div>
 
@@ -101,10 +102,10 @@ export default function ContactPage() {
                   Phone
                 </h3>
                 <a
-                  href="tel:+15735000064"
+                  href={businessFacts.phone.href}
                   className="text-primary text-sm hover:underline"
                 >
-                  (573) 500-0064
+                  {businessFacts.phone.display}
                 </a>
               </div>
 
@@ -113,8 +114,8 @@ export default function ContactPage() {
                   Hours
                 </h3>
                 <div className="text-muted text-sm space-y-1">
-                  <p>Monday - Friday: 8am - 5pm CT</p>
-                  <p>Saturday - Sunday: Closed</p>
+                  <p>{businessFacts.hours.weekdayLabel}</p>
+                  <p>{businessFacts.hours.weekendLabel}</p>
                 </div>
               </div>
 
@@ -122,10 +123,7 @@ export default function ContactPage() {
                 <h3 className="font-display text-sm uppercase tracking-wider mb-3">
                   Response Time
                 </h3>
-                <p className="text-muted text-sm">
-                  We respond to fabrication and quote inquiries within 24 hours
-                  during business days.
-                </p>
+                <p className="text-muted text-sm">{businessFacts.responseTime}</p>
               </div>
             </div>
           </FadeUpSection>
