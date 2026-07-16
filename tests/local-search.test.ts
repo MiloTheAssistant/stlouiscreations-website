@@ -75,6 +75,18 @@ test("publishes only confirmed visible local business facts in schema", () => {
   ]);
 });
 
+test("renders the footer bottom-bar location from business facts", async () => {
+  const source = await readFile(
+    resolve(process.cwd(), "components/layout/Footer.tsx"),
+    "utf8"
+  );
+
+  assert.match(
+    source,
+    /Creatively engineered in \{businessFacts\.location\.label\}/
+  );
+});
+
 test("uses the www host for every sitemap entry and robots sitemap", () => {
   const entries = sitemap();
   assert.ok(entries.length > 0);

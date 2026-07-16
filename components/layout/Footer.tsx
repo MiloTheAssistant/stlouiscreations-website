@@ -167,7 +167,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} St. Louis Creations. All rights reserved.
           </p>
           <p className="text-muted/50 text-xs">
-            Creatively engineered in St. Louis, MO
+            Creatively engineered in {businessFacts.location.label}
           </p>
         </div>
       </div>
