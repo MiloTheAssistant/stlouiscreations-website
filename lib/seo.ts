@@ -87,7 +87,6 @@ export function getSiteJsonLd() {
         description: siteConfig.description,
         email: contactLinks.email,
         telephone: businessFacts.phone.schema,
-        priceRange: "$$",
         sameAs,
         address: {
           "@type": "PostalAddress",
@@ -107,10 +106,6 @@ export function getSiteJsonLd() {
           {
             "@type": "City",
             name: businessFacts.location.locality,
-          },
-          {
-            "@type": "State",
-            name: "Missouri",
           },
         ],
         makesOffer: services.map((service) => ({

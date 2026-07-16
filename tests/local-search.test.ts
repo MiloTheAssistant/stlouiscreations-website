@@ -73,6 +73,25 @@ test("publishes only confirmed visible local business facts in schema", () => {
       closes: businessFacts.hours.closes,
     },
   ]);
+  assert.deepEqual(business.areaServed, [
+    {
+      "@type": "City",
+      name: businessFacts.location.locality,
+    },
+  ]);
+
+  for (const property of [
+    "priceRange",
+    "review",
+    "aggregateRating",
+    "hasMap",
+  ]) {
+    assert.equal(
+      property in business,
+      false,
+      `LocalBusiness schema must not claim unsupported ${property}`
+    );
+  }
 });
 
 test("renders the footer bottom-bar location from business facts", async () => {
