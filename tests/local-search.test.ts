@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import test from "node:test";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
-import { businessFacts, siteConfig } from "@/lib/constants";
+import { businessFacts, siteConfig, socialLinks } from "@/lib/constants";
 import {
   absoluteUrl,
   canonicalHost,
@@ -79,6 +79,10 @@ test("publishes only confirmed visible local business facts in schema", () => {
       name: businessFacts.location.locality,
     },
   ]);
+  assert.deepEqual(
+    business.sameAs,
+    [socialLinks.facebook, socialLinks.instagram].filter(Boolean)
+  );
 
   for (const property of [
     "priceRange",
