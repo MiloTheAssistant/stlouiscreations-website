@@ -22,6 +22,7 @@
 .agents/
 .codex-temp-*/
 .superpowers/
+.worktrees/
 
 # debug
 npm-debug.log*
