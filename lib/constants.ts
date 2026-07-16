@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "St. Louis Creations",
   descriptor: "Digital Fabrication Studio",
   description:
-    "A digital fabrication studio engineering ideas into precision-crafted physical products for brands, creators, and innovators.",
+    "A St. Louis digital fabrication studio for laser engraving, 3D printing, custom awards, branded products, prototypes, and small-batch production.",
   url: "https://www.stlouiscreations.com",
   tagline: "Local Craft. Real Materials. Studio Precision.",
 };

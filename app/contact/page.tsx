@@ -10,7 +10,7 @@ import { createPageMetadata, getFaqJsonLd } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Contact",
   description:
-    "Start a fabrication quote for laser engraving, additive manufacturing, custom production, branded products, or prototype work.",
+    "Request a St. Louis fabrication quote for laser engraving, 3D printing, custom awards, branded products, prototypes, and custom production.",
   path: "/contact",
   keywords: [
     "St. Louis Creations contact",
@@ -43,6 +43,29 @@ const faqs = [
   },
 ];
 
+const quoteChecklist = [
+  {
+    title: "Artwork or a 3D model",
+    detail: "Send AI, EPS, SVG, PDF, PNG, JPG, STL, STEP, OBJ, or the best source file you have.",
+  },
+  {
+    title: "Product or material",
+    detail: "Name the catalog item, material, dimensions, or object you want engraved, printed, cut, or produced.",
+  },
+  {
+    title: "Quantity and personalization",
+    detail: "Include the total count and any names, numbers, dates, sponsor marks, or other variable details.",
+  },
+  {
+    title: "Deadline",
+    detail: "Share the event date or delivery need so artwork review, proofing, production, and shipping can be assessed.",
+  },
+  {
+    title: "Intended use and finish",
+    detail: "Explain where the item will be used and any strength, heat, durability, appearance, or finish constraints.",
+  },
+] as const;
+
 export default function ContactPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
@@ -60,6 +83,34 @@ export default function ContactPage() {
             and intended use. We&apos;ll help turn it into a practical path.
           </p>
         </StampedPageHero>
+
+        <FadeUpSection className="mb-20 py-10 border-y border-white/10">
+          <div className="max-w-3xl mb-8">
+            <SectionLabel>Quote Checklist</SectionLabel>
+            <h2 className="font-display text-2xl md:text-3xl font-bold mt-4">
+              Five details that make a fabrication quote useful
+            </h2>
+            <p className="text-muted leading-relaxed mt-4">
+              For a St. Louis business order, fundraiser, one-off gift, or prototype,
+              these details help us review the material, production steps, and timing.
+            </p>
+          </div>
+          <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {quoteChecklist.map((item, index) => (
+              <li key={item.title} className="min-w-0">
+                <span className="text-primary text-xs font-display uppercase tracking-[0.2em]">
+                  0{index + 1}
+                </span>
+                <h3 className="font-display text-base font-bold mt-2">
+                  {item.title}
+                </h3>
+                <p className="text-muted text-sm leading-relaxed mt-2">
+                  {item.detail}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </FadeUpSection>
 
         {/* Form + Contact Info */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 mb-32">

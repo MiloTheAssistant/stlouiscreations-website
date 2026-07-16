@@ -210,13 +210,44 @@ export default function ServicesPage() {
           <h2 className="font-display text-3xl md:text-4xl font-bold mt-4">
             Laser engraving, 3D printing, and custom production in St. Louis
           </h2>
-          <p className="text-muted leading-relaxed mt-5">
-            St. Louis Creations provides local fabrication services for
-            customers who need durable engraving, additive-manufactured parts,
-            branded products, awards, fundraiser items, and short-run physical
-            goods. Projects can start from artwork, a product catalog item, a
-            prototype file, a material question, or a finished production goal.
+          <p className="text-muted leading-relaxed mt-5 max-w-4xl">
+            St. Louis businesses, schools, teams, nonprofits, event organizers,
+            local makers, and gift buyers can bring us branded products, awards,
+            fundraiser items, prototypes, fixtures, displays, and small production
+            runs. A project can start with finished artwork, a 3D model, a catalog
+            item, a material question, or a clear description of the result you need.
           </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 pt-8 border-t border-white/10">
+            <div>
+              <h3 className="font-display text-sm uppercase tracking-wider mb-3">
+                Choose The Process
+              </h3>
+              <p className="text-muted text-sm leading-relaxed">
+                Laser engraving marks an existing item. 3D printing creates a new object.
+                Custom production can combine materials, finishing, and
+                fulfillment when the job needs more than one step.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-display text-sm uppercase tracking-wider mb-3">
+                Bring The Details
+              </h3>
+              <p className="text-muted text-sm leading-relaxed">
+                Send the artwork or model, product or material, quantity, deadline,
+                personalization data, intended use, and any durability or finish
+                constraints that could affect production.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-display text-sm uppercase tracking-wider mb-3">
+                Confirm The Fit
+              </h3>
+              <p className="text-muted text-sm leading-relaxed">
+                We review the request for material compatibility, file readiness,
+                production steps, and timing before recommending a practical path.
+              </p>
+            </div>
+          </div>
         </FadeUpSection>
 
         <FadeUpSection className="mt-10">

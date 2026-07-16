@@ -110,3 +110,36 @@ test("keeps public and runtime site links free of the non-www host", async () =>
     assert.doesNotMatch(source, nonCanonicalHostPattern, `${file} contains a non-www URL`);
   }
 });
+
+test("publishes concrete local service-fit and quote-readiness guidance", async () => {
+  const servicesSource = await readFile(
+    resolve(process.cwd(), "app/services/page.tsx"),
+    "utf8"
+  );
+  const contactSource = await readFile(
+    resolve(process.cwd(), "app/contact/page.tsx"),
+    "utf8"
+  );
+  const combined = `${servicesSource}\n${contactSource}`.toLowerCase();
+
+  assert.match(servicesSource, /St\. Louis businesses, schools, teams, nonprofits/);
+  assert.match(servicesSource, /Laser engraving marks an existing item/);
+  assert.match(servicesSource, /3D printing creates a new object/);
+  assert.match(contactSource, /Request a St\. Louis fabrication quote/);
+  assert.match(contactSource, /Artwork or a 3D model/);
+  assert.match(contactSource, /Quantity and personalization/);
+  assert.match(contactSource, /Intended use and finish/);
+  assert.match(siteConfig.description, /St\. Louis digital fabrication studio/);
+  assert.match(siteConfig.description, /laser engraving/);
+  assert.match(siteConfig.description, /3D printing/);
+
+  for (const phrase of [
+    "in today's fast-paced",
+    "game-changer",
+    "unlock your potential",
+    "elevate your brand",
+    "seamless experience",
+  ]) {
+    assert.equal(combined.includes(phrase), false, `local copy contains filler: ${phrase}`);
+  }
+});
