@@ -5,7 +5,7 @@ Use this prompt to generate and maintain a complete, project-specific brand imag
 ## Project
 
 - Website/project name: St. Louis Creations
-- Website domain: https://stlouiscreations.com
+- Website domain: https://www.stlouiscreations.com
 - Repo: D:\Dev\StLouisCreations-Website
 - Business/location/audience: A St. Louis digital fabrication studio serving local businesses, creators, teams, schools, fundraisers, brands, and practical makers who need real physical products made with care.
 - Current hero image/vibe: Dark fabrication-studio environment with orange light, hands-on production energy, and a premium workshop feel.
@@ -189,7 +189,7 @@ Create a complete photoreal brand image asset for St. Louis Creations.
 
 Brand:
 - Name: St. Louis Creations
-- Domain: https://stlouiscreations.com
+- Domain: https://www.stlouiscreations.com
 - Tagline: Local Craft. Real Materials. Studio Precision.
 - Identity: Veteran-owned St. Louis digital fabrication studio.
 - Vibe: Local Maker with Material Craft texture and Studio Precision discipline.

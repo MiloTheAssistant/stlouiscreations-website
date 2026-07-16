@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import ContactLauncher from "@/components/layout/ContactLauncher";
 import { CartProvider } from "@/lib/cart-context";
 import JsonLd from "@/components/seo/JsonLd";
-import { getSiteJsonLd } from "@/lib/seo";
+import { canonicalHost, getSiteJsonLd } from "@/lib/seo";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   description:
     "Creatively Engineered Reality. A St. Louis digital fabrication studio for precision laser engraving, additive manufacturing, and custom production.",
-  metadataBase: new URL("https://stlouiscreations.com"),
+  metadataBase: new URL(canonicalHost),
   alternates: {
-    canonical: "https://stlouiscreations.com",
+    canonical: canonicalHost,
   },
   openGraph: {
     type: "website",

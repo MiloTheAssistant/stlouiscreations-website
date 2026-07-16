@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { contactLinks, productCategories, services, siteConfig, socialLinks } from "@/lib/constants";
 import type { Product } from "@/lib/products";
 
-export const canonicalHost = "https://stlouiscreations.com";
+export const canonicalHost = siteConfig.url;
 
 const defaultImage = {
   url: "/og-image.png",

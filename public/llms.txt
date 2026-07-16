@@ -2,69 +2,69 @@
 > St. Louis Creations is a St. Louis digital fabrication studio for precision laser engraving, additive manufacturing, custom production, branded products, awards, fundraiser items, and material-driven fabrication projects.
 
 ## Core Pages
-- [Home](https://stlouiscreations.com): Overview of the studio, services, materials, product categories, and project quote path.
-- [Services](https://stlouiscreations.com/services): Precision laser engraving, additive manufacturing, and custom design and production capabilities.
-- [Materials](https://stlouiscreations.com/materials): Material options for engraving, marking, cutting, 3D printing, awards, gifts, and custom products.
-- [Catalogs](https://stlouiscreations.com/catalogs): Product catalogs for awards, drinkware, crystal, glass, leatherette gifts, personalized products, and corporate fabrication projects.
-- [Fundraisers](https://stlouiscreations.com/fundraisers): Custom fabricated and engraved fundraiser products for schools, teams, clubs, nonprofits, and community groups.
-- [Shop](https://stlouiscreations.com/shop): Public product catalog for available St. Louis Creations items.
-- [About](https://stlouiscreations.com/about): Company background and studio positioning.
-- [Contact](https://stlouiscreations.com/contact): Quote and contact form for fabrication projects, branded products, and order support.
-- [Business Fabrication Topic Guides](https://stlouiscreations.com/topics): Buyer-ready guides for laser engraving, 3D printing, awards, recognition, corporate gifts, and custom production.
+- [Home](https://www.stlouiscreations.com): Overview of the studio, services, materials, product categories, and project quote path.
+- [Services](https://www.stlouiscreations.com/services): Precision laser engraving, additive manufacturing, and custom design and production capabilities.
+- [Materials](https://www.stlouiscreations.com/materials): Material options for engraving, marking, cutting, 3D printing, awards, gifts, and custom products.
+- [Catalogs](https://www.stlouiscreations.com/catalogs): Product catalogs for awards, drinkware, crystal, glass, leatherette gifts, personalized products, and corporate fabrication projects.
+- [Fundraisers](https://www.stlouiscreations.com/fundraisers): Custom fabricated and engraved fundraiser products for schools, teams, clubs, nonprofits, and community groups.
+- [Shop](https://www.stlouiscreations.com/shop): Public product catalog for available St. Louis Creations items.
+- [About](https://www.stlouiscreations.com/about): Company background and studio positioning.
+- [Contact](https://www.stlouiscreations.com/contact): Quote and contact form for fabrication projects, branded products, and order support.
+- [Business Fabrication Topic Guides](https://www.stlouiscreations.com/topics): Buyer-ready guides for laser engraving, 3D printing, awards, recognition, corporate gifts, and custom production.
 
 ## Services And Materials
-- [Acrylic](https://stlouiscreations.com/materials/acrylic): Acrylic fabrication and engraving for awards, signage, displays, and small products.
-- [Wood](https://stlouiscreations.com/materials/wood): Wood engraving and production for signs, coasters, plaques, cutting boards, and branded goods.
-- [Glass](https://stlouiscreations.com/materials/glass): Glass etching and personalization for gifts, awards, and premium presentation pieces.
-- [Metal](https://stlouiscreations.com/materials/metal): Metal engraving for name plates, tools, tags, business cards, and durable branded items.
-- [Leather](https://stlouiscreations.com/materials/leather): Leather personalization for wallets, journals, belts, portfolios, and premium gifts.
-- [Stone, Slate, And Tile](https://stlouiscreations.com/materials/stone-slate-tile): Permanent engraving for coasters, markers, memorials, displays, and decorative pieces.
-- [Fabric](https://stlouiscreations.com/materials/fabric): Fabric cutting and marking for textiles, patches, labels, apparel, and pattern work.
-- [Rubber](https://stlouiscreations.com/materials/rubber): Rubber stamp, gasket, seal, and mat production.
+- [Acrylic](https://www.stlouiscreations.com/materials/acrylic): Acrylic fabrication and engraving for awards, signage, displays, and small products.
+- [Wood](https://www.stlouiscreations.com/materials/wood): Wood engraving and production for signs, coasters, plaques, cutting boards, and branded goods.
+- [Glass](https://www.stlouiscreations.com/materials/glass): Glass etching and personalization for gifts, awards, and premium presentation pieces.
+- [Metal](https://www.stlouiscreations.com/materials/metal): Metal engraving for name plates, tools, tags, business cards, and durable branded items.
+- [Leather](https://www.stlouiscreations.com/materials/leather): Leather personalization for wallets, journals, belts, portfolios, and premium gifts.
+- [Stone, Slate, And Tile](https://www.stlouiscreations.com/materials/stone-slate-tile): Permanent engraving for coasters, markers, memorials, displays, and decorative pieces.
+- [Fabric](https://www.stlouiscreations.com/materials/fabric): Fabric cutting and marking for textiles, patches, labels, apparel, and pattern work.
+- [Rubber](https://www.stlouiscreations.com/materials/rubber): Rubber stamp, gasket, seal, and mat production.
 
 ## Products And Shopping
-- [Branded Drinkware](https://stlouiscreations.com/shop?category=drinkware): Precision-engraved tumblers, mugs, and bottles for teams, events, brands, and client gifts.
-- [Wood And Slate Products](https://stlouiscreations.com/shop?category=wood-slate): Signs, display pieces, home goods, and recognition items made from premium materials.
-- [Awards And Recognition](https://stlouiscreations.com/shop?category=awards): Plaques, trophies, and recognition pieces with consistent detail and finish.
-- [Corporate Gifts](https://stlouiscreations.com/shop?category=corporate): Executive gifts and branded merchandise for organizations.
-- [Fundraiser Products](https://stlouiscreations.com/shop?category=fundraiser): Customizable products for schools, clubs, teams, nonprofits, and community campaigns.
-- [3D Printed Products](https://stlouiscreations.com/shop?category=3d-prints): Additive-manufactured products and small-batch creative items.
+- [Branded Drinkware](https://www.stlouiscreations.com/shop?category=drinkware): Precision-engraved tumblers, mugs, and bottles for teams, events, brands, and client gifts.
+- [Wood And Slate Products](https://www.stlouiscreations.com/shop?category=wood-slate): Signs, display pieces, home goods, and recognition items made from premium materials.
+- [Awards And Recognition](https://www.stlouiscreations.com/shop?category=awards): Plaques, trophies, and recognition pieces with consistent detail and finish.
+- [Corporate Gifts](https://www.stlouiscreations.com/shop?category=corporate): Executive gifts and branded merchandise for organizations.
+- [Fundraiser Products](https://www.stlouiscreations.com/shop?category=fundraiser): Customizable products for schools, clubs, teams, nonprofits, and community campaigns.
+- [3D Printed Products](https://www.stlouiscreations.com/shop?category=3d-prints): Additive-manufactured products and small-batch creative items.
 
 ## Guides And Ideas
-- [Blog](https://stlouiscreations.com/blog): Guides and ideas for digital fabrication, laser engraving, materials, branded products, and production planning.
-- [Custom Laser Engraving For Businesses In St. Louis](https://stlouiscreations.com/topics/business-laser-engraving-st-louis): Guide for business engraving buyers comparing materials, artwork, bulk orders, QR codes, asset tags, awards, and branded products.
-- [Business Laser Engraving FAQ](https://stlouiscreations.com/topics/business-laser-engraving-st-louis/faq): FAQ for artwork, material, personalization, proofing, and bulk engraving questions.
-- [Business Laser Engraving Use Case](https://stlouiscreations.com/topics/business-laser-engraving-st-louis/use-case): Use-case page for planning engraved recognition kits, sponsor gifts, and business event products.
-- [3D Printing Services For Businesses In St. Louis](https://stlouiscreations.com/topics/business-3d-printing-st-louis): Guide for companies planning prototypes, fixtures, custom parts, models, and short-run additive manufacturing.
-- [Business 3D Printing FAQ](https://stlouiscreations.com/topics/business-3d-printing-st-louis/faq): FAQ for prototypes, replacement parts, jigs, fixtures, files, materials, and production limits.
-- [Business 3D Printing Use Case](https://stlouiscreations.com/topics/business-3d-printing-st-louis/use-case): Use-case page for replacing a low-volume fixture or workflow aid with a reviewed printed part.
-- [Consumer 3D Printing Guide](https://stlouiscreations.com/topics/consumer-3d-printing-custom-gifts-repair-parts): Guide for custom gifts, household repair parts, cosplay accessories, tabletop pieces, and hobby projects.
-- [Consumer 3D Printing FAQ](https://stlouiscreations.com/topics/consumer-3d-printing-custom-gifts-repair-parts/faq): FAQ for consumer printability, downloaded files, sketches, safety limits, and finishing.
-- [Consumer 3D Printing Use Case](https://stlouiscreations.com/topics/consumer-3d-printing-custom-gifts-repair-parts/use-case): Use-case page for turning a small household repair idea into a reviewed printed part.
-- [Laser Engraving vs 3D Printing](https://stlouiscreations.com/topics/laser-engraving-vs-3d-printing): Comparison guide for choosing surface marking, personalization, prototyping, custom parts, or a combined process.
-- [Laser Engraving vs 3D Printing FAQ](https://stlouiscreations.com/topics/laser-engraving-vs-3d-printing/faq): FAQ for buyers comparing marking an existing item with creating a new object.
-- [Laser Engraving vs 3D Printing Use Case](https://stlouiscreations.com/topics/laser-engraving-vs-3d-printing/use-case): Use-case page for choosing the right process for a branded product idea.
-- [Materials Guide For Laser Engraving And 3D Printing](https://stlouiscreations.com/topics/materials-guide-laser-engraving-3d-printing): Guide for matching wood, acrylic, glass, metal, leatherette, slate, PLA, PETG, TPU, ABS, ASA, resin, and specialty materials to real jobs.
-- [Materials FAQ](https://stlouiscreations.com/topics/materials-guide-laser-engraving-3d-printing/faq): FAQ for material choice, contrast, strength, heat, flexibility, detail, and print orientation.
-- [Materials Use Case](https://stlouiscreations.com/topics/materials-guide-laser-engraving-3d-printing/use-case): Use-case page for choosing materials across engraved gifts, signage, and 3D printed display parts.
-- [Custom Awards, Recognition, And Corporate Gifts](https://stlouiscreations.com/topics/custom-awards-recognition-corporate-gifts): Guide for awards, plaques, branded drinkware, sponsor gifts, donor gifts, and employee recognition.
-- [Laser Engraving vs Screen Printing vs Vinyl](https://stlouiscreations.com/blog/laser-engraving-vs-screen-printing-vs-vinyl): Business comparison guide for choosing a branding method.
-- [How To Prepare Artwork For Laser Engraving](https://stlouiscreations.com/blog/how-to-prepare-artwork-for-laser-engraving): Artwork, file format, QR code, and variable data checklist for engraving projects.
-- [When Businesses Should Use 3D Printing](https://stlouiscreations.com/blog/when-businesses-should-use-3d-printing): Guide to prototypes, jigs, fixtures, short runs, mockups, and production method tradeoffs.
-- [How To Prepare A 3D Model For Printing](https://stlouiscreations.com/blog/how-to-prepare-a-3d-model-for-printing): STL, STEP, OBJ, CAD, scale, strength, fit, and quote-readiness checklist.
-- [Best Custom 3D Printed Gifts For Consumers](https://stlouiscreations.com/blog/best-custom-3d-printed-gifts-for-consumers): Consumer guide to custom 3D printed desk accessories, decor, lamps, collectibles, and personalized gifts.
-- [Why Custom Tumblers Are The #1 Corporate Gift](https://stlouiscreations.com/blog/custom-tumblers-bulk-orders): Guide to engraved drinkware as a practical branded product.
-- [The Ultimate Guide To Laser Engraving Materials](https://stlouiscreations.com/blog/laser-engraving-materials-guide): Overview of how material selection affects engraving and production outcomes.
-- [Getting Ready For Awards Season](https://stlouiscreations.com/blog/sports-awards-season): Planning guide for recognition pieces, quantities, proofs, materials, and timing.
+- [Blog](https://www.stlouiscreations.com/blog): Guides and ideas for digital fabrication, laser engraving, materials, branded products, and production planning.
+- [Custom Laser Engraving For Businesses In St. Louis](https://www.stlouiscreations.com/topics/business-laser-engraving-st-louis): Guide for business engraving buyers comparing materials, artwork, bulk orders, QR codes, asset tags, awards, and branded products.
+- [Business Laser Engraving FAQ](https://www.stlouiscreations.com/topics/business-laser-engraving-st-louis/faq): FAQ for artwork, material, personalization, proofing, and bulk engraving questions.
+- [Business Laser Engraving Use Case](https://www.stlouiscreations.com/topics/business-laser-engraving-st-louis/use-case): Use-case page for planning engraved recognition kits, sponsor gifts, and business event products.
+- [3D Printing Services For Businesses In St. Louis](https://www.stlouiscreations.com/topics/business-3d-printing-st-louis): Guide for companies planning prototypes, fixtures, custom parts, models, and short-run additive manufacturing.
+- [Business 3D Printing FAQ](https://www.stlouiscreations.com/topics/business-3d-printing-st-louis/faq): FAQ for prototypes, replacement parts, jigs, fixtures, files, materials, and production limits.
+- [Business 3D Printing Use Case](https://www.stlouiscreations.com/topics/business-3d-printing-st-louis/use-case): Use-case page for replacing a low-volume fixture or workflow aid with a reviewed printed part.
+- [Consumer 3D Printing Guide](https://www.stlouiscreations.com/topics/consumer-3d-printing-custom-gifts-repair-parts): Guide for custom gifts, household repair parts, cosplay accessories, tabletop pieces, and hobby projects.
+- [Consumer 3D Printing FAQ](https://www.stlouiscreations.com/topics/consumer-3d-printing-custom-gifts-repair-parts/faq): FAQ for consumer printability, downloaded files, sketches, safety limits, and finishing.
+- [Consumer 3D Printing Use Case](https://www.stlouiscreations.com/topics/consumer-3d-printing-custom-gifts-repair-parts/use-case): Use-case page for turning a small household repair idea into a reviewed printed part.
+- [Laser Engraving vs 3D Printing](https://www.stlouiscreations.com/topics/laser-engraving-vs-3d-printing): Comparison guide for choosing surface marking, personalization, prototyping, custom parts, or a combined process.
+- [Laser Engraving vs 3D Printing FAQ](https://www.stlouiscreations.com/topics/laser-engraving-vs-3d-printing/faq): FAQ for buyers comparing marking an existing item with creating a new object.
+- [Laser Engraving vs 3D Printing Use Case](https://www.stlouiscreations.com/topics/laser-engraving-vs-3d-printing/use-case): Use-case page for choosing the right process for a branded product idea.
+- [Materials Guide For Laser Engraving And 3D Printing](https://www.stlouiscreations.com/topics/materials-guide-laser-engraving-3d-printing): Guide for matching wood, acrylic, glass, metal, leatherette, slate, PLA, PETG, TPU, ABS, ASA, resin, and specialty materials to real jobs.
+- [Materials FAQ](https://www.stlouiscreations.com/topics/materials-guide-laser-engraving-3d-printing/faq): FAQ for material choice, contrast, strength, heat, flexibility, detail, and print orientation.
+- [Materials Use Case](https://www.stlouiscreations.com/topics/materials-guide-laser-engraving-3d-printing/use-case): Use-case page for choosing materials across engraved gifts, signage, and 3D printed display parts.
+- [Custom Awards, Recognition, And Corporate Gifts](https://www.stlouiscreations.com/topics/custom-awards-recognition-corporate-gifts): Guide for awards, plaques, branded drinkware, sponsor gifts, donor gifts, and employee recognition.
+- [Laser Engraving vs Screen Printing vs Vinyl](https://www.stlouiscreations.com/blog/laser-engraving-vs-screen-printing-vs-vinyl): Business comparison guide for choosing a branding method.
+- [How To Prepare Artwork For Laser Engraving](https://www.stlouiscreations.com/blog/how-to-prepare-artwork-for-laser-engraving): Artwork, file format, QR code, and variable data checklist for engraving projects.
+- [When Businesses Should Use 3D Printing](https://www.stlouiscreations.com/blog/when-businesses-should-use-3d-printing): Guide to prototypes, jigs, fixtures, short runs, mockups, and production method tradeoffs.
+- [How To Prepare A 3D Model For Printing](https://www.stlouiscreations.com/blog/how-to-prepare-a-3d-model-for-printing): STL, STEP, OBJ, CAD, scale, strength, fit, and quote-readiness checklist.
+- [Best Custom 3D Printed Gifts For Consumers](https://www.stlouiscreations.com/blog/best-custom-3d-printed-gifts-for-consumers): Consumer guide to custom 3D printed desk accessories, decor, lamps, collectibles, and personalized gifts.
+- [Why Custom Tumblers Are The #1 Corporate Gift](https://www.stlouiscreations.com/blog/custom-tumblers-bulk-orders): Guide to engraved drinkware as a practical branded product.
+- [The Ultimate Guide To Laser Engraving Materials](https://www.stlouiscreations.com/blog/laser-engraving-materials-guide): Overview of how material selection affects engraving and production outcomes.
+- [Getting Ready For Awards Season](https://www.stlouiscreations.com/blog/sports-awards-season): Planning guide for recognition pieces, quantities, proofs, materials, and timing.
 
 ## Customer Care
-- [Terms Of Service](https://stlouiscreations.com/terms): Terms governing use of the St. Louis Creations website and services.
-- [Privacy Policy](https://stlouiscreations.com/privacy-policy): How St. Louis Creations collects, uses, shares, and protects personal information.
-- [Return And Refund Policy](https://stlouiscreations.com/refund-policy): Return windows, refund process, damages, and issue handling.
-- [Shipping Policy](https://stlouiscreations.com/shipping): Shipping origin, carriers, transit times, and related delivery details.
+- [Terms Of Service](https://www.stlouiscreations.com/terms): Terms governing use of the St. Louis Creations website and services.
+- [Privacy Policy](https://www.stlouiscreations.com/privacy-policy): How St. Louis Creations collects, uses, shares, and protects personal information.
+- [Return And Refund Policy](https://www.stlouiscreations.com/refund-policy): Return windows, refund process, damages, and issue handling.
+- [Shipping Policy](https://www.stlouiscreations.com/shipping): Shipping origin, carriers, transit times, and related delivery details.
 
 ## Contact
 - Email: contact@stlouiscreations.com
 - Phone: (573) 500-0064
 - Location: St. Louis, MO
-- Website: https://stlouiscreations.com
+- Website: https://www.stlouiscreations.com

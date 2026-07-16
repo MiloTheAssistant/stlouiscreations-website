@@ -67,7 +67,7 @@ Create a complete photoreal brand image asset for St. Louis Creations.
 
 Brand:
 - Name: St. Louis Creations
-- Domain: https://stlouiscreations.com
+- Domain: https://www.stlouiscreations.com
 - Tagline: Local Craft. Real Materials. Studio Precision.
 - Identity: Veteran-owned St. Louis digital fabrication studio.
 - Vibe: Local Maker with Material Craft texture and Studio Precision discipline.

@@ -46,7 +46,7 @@ The app expects:
 DATABASE_URL="postgres://..."
 STRIPE_SECRET_KEY="sk_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_..."
-NEXT_PUBLIC_SITE_URL="https://stlouiscreations.com"
+NEXT_PUBLIC_SITE_URL="https://www.stlouiscreations.com"
 ```
 
 Keep Neon on the smallest/free usage tier while this is catalog and quote data only. Avoid always-on jobs. Run syncs manually after catalog edits or as a low-frequency scheduled job later.

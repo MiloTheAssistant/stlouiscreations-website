@@ -4,6 +4,7 @@ import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import GlowButton from "@/components/ui/GlowButton";
+import { siteConfig } from "@/lib/constants";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -44,7 +45,7 @@ export default function PrivacyPolicyPage() {
               (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) collects,
               uses, and discloses personal information when you use{" "}
               <a
-                href="https://stlouiscreations.com"
+                href={siteConfig.url}
                 className="text-primary underline hover:no-underline"
               >
                 stlouiscreations.com

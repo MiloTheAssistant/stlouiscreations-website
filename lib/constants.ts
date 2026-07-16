@@ -3,7 +3,7 @@ export const siteConfig = {
   descriptor: "Digital Fabrication Studio",
   description:
     "A digital fabrication studio engineering ideas into precision-crafted physical products for brands, creators, and innovators.",
-  url: "https://stlouiscreations.com",
+  url: "https://www.stlouiscreations.com",
   tagline: "Local Craft. Real Materials. Studio Precision.",
 };
 
