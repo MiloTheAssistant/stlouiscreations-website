@@ -19,6 +19,8 @@ export type GraphFetch = (
 
 export type GraphMailStage = "configuration" | "token" | "send";
 
+const graphRequestTimeoutMs = 10_000;
+
 export class GraphMailError extends Error {
   constructor(
     public readonly stage: GraphMailStage,
@@ -62,6 +64,22 @@ async function responseErrorCode(response: Response) {
   }
 }
 
+async function fetchGraph(
+  stage: Extract<GraphMailStage, "token" | "send">,
+  fetcher: GraphFetch,
+  input: string,
+  init: RequestInit,
+) {
+  try {
+    return await fetcher(input, {
+      ...init,
+      signal: AbortSignal.timeout(graphRequestTimeoutMs),
+    });
+  } catch {
+    throw new GraphMailError(stage, undefined, "request_failed");
+  }
+}
+
 export async function sendGraphMail(
   message: GraphMailMessage,
   config: GraphMailConfig,
@@ -75,7 +93,9 @@ export async function sendGraphMail(
     scope: "https://graph.microsoft.com/.default",
   });
 
-  const tokenResponse = await fetcher(
+  const tokenResponse = await fetchGraph(
+    "token",
+    fetcher,
     `https://login.microsoftonline.com/${encodeURIComponent(resolved.tenantId)}/oauth2/v2.0/token`,
     {
       method: "POST",
@@ -92,20 +112,36 @@ export async function sendGraphMail(
     );
   }
 
-  const tokenPayload = (await tokenResponse.json()) as { access_token?: unknown };
+  let tokenPayload: unknown;
+  try {
+    tokenPayload = await tokenResponse.json();
+  } catch {
+    throw new GraphMailError("token", tokenResponse.status, "invalid_token_response");
+  }
   if (
-    typeof tokenPayload.access_token !== "string" ||
-    tokenPayload.access_token.length === 0
+    typeof tokenPayload !== "object" ||
+    tokenPayload === null ||
+    Array.isArray(tokenPayload)
+  ) {
+    throw new GraphMailError("token", tokenResponse.status, "invalid_token_response");
+  }
+
+  const accessToken = (tokenPayload as { access_token?: unknown }).access_token;
+  if (
+    typeof accessToken !== "string" ||
+    accessToken.length === 0
   ) {
     throw new GraphMailError("token", tokenResponse.status, "missing_access_token");
   }
 
-  const sendResponse = await fetcher(
+  const sendResponse = await fetchGraph(
+    "send",
+    fetcher,
     `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(resolved.fromEmail)}/sendMail`,
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${tokenPayload.access_token}`,
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({

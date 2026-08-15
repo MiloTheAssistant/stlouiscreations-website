@@ -152,3 +152,70 @@ test("does not accept a Graph 200 response as sendMail success", async () => {
     (error: unknown) => error instanceof GraphMailError && error.stage === "send",
   );
 });
+
+test("normalizes token timeouts and send aborts with their provider stage", async () => {
+  let tokenSignal: AbortSignal | null | undefined;
+  const tokenTimeoutFetcher: GraphFetch = async (_input, init) => {
+    tokenSignal = init?.signal;
+    throw new DOMException("token provider timeout details", "TimeoutError");
+  };
+
+  await assert.rejects(
+    sendGraphMail(message, config, tokenTimeoutFetcher),
+    (error: unknown) => {
+      assert.ok(error instanceof GraphMailError);
+      assert.equal(error.stage, "token");
+      assert.equal(error.code, "request_failed");
+      assert.doesNotMatch(error.message, /token provider timeout details/);
+      return true;
+    },
+  );
+  assert.ok(tokenSignal instanceof AbortSignal);
+
+  let call = 0;
+  let sendSignal: AbortSignal | null | undefined;
+  const sendAbortFetcher: GraphFetch = async (_input, init) => {
+    call += 1;
+    if (call === 1) {
+      return Response.json({ access_token: "test-access-token" });
+    }
+    sendSignal = init?.signal;
+    throw new DOMException("send provider abort details", "AbortError");
+  };
+
+  await assert.rejects(
+    sendGraphMail(message, config, sendAbortFetcher),
+    (error: unknown) => {
+      assert.ok(error instanceof GraphMailError);
+      assert.equal(error.stage, "send");
+      assert.equal(error.code, "request_failed");
+      assert.doesNotMatch(error.message, /send provider abort details/);
+      return true;
+    },
+  );
+  assert.ok(sendSignal instanceof AbortSignal);
+});
+
+test("normalizes malformed and invalid token payloads", async () => {
+  const malformedTokenFetcher: GraphFetch = async () =>
+    new Response("{not valid JSON", {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  await assert.rejects(
+    sendGraphMail(message, config, malformedTokenFetcher),
+    (error: unknown) =>
+      error instanceof GraphMailError &&
+      error.stage === "token" &&
+      error.code === "invalid_token_response",
+  );
+
+  const invalidTokenFetcher: GraphFetch = async () => Response.json(null);
+  await assert.rejects(
+    sendGraphMail(message, config, invalidTokenFetcher),
+    (error: unknown) =>
+      error instanceof GraphMailError &&
+      error.stage === "token" &&
+      error.code === "invalid_token_response",
+  );
+});
