@@ -11,8 +11,8 @@ import {
 } from "@/lib/analytics-events";
 import {
   productTypes,
-  quoteRequestSchema,
-  type QuoteRequest,
+  quoteRequestBrowserFormSchema,
+  type BrowserQuoteRequest,
 } from "@/lib/contact/quote-request";
 import { submitQuoteRequest } from "@/lib/contact/submit-quote-request";
 import { cn } from "@/lib/utils";
@@ -25,11 +25,11 @@ export default function QuoteForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<QuoteRequest>({
-    resolver: zodResolver(quoteRequestSchema),
+  } = useForm<BrowserQuoteRequest>({
+    resolver: zodResolver(quoteRequestBrowserFormSchema),
   });
 
-  const onSubmit = async (data: QuoteRequest) => {
+  const onSubmit = async (data: BrowserQuoteRequest) => {
     setStatus("loading");
     try {
       trackAnalyticsEvent(ANALYTICS_EVENTS.quoteFormSubmit, {

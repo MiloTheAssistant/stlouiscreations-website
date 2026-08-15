@@ -1,4 +1,4 @@
-import type { QuoteRequest } from "@/lib/contact/quote-request";
+import type { BrowserQuoteRequest } from "@/lib/contact/quote-request";
 
 export type ContactFetch = (
   input: string,
@@ -6,7 +6,7 @@ export type ContactFetch = (
 ) => Promise<Response>;
 
 export async function submitQuoteRequest(
-  data: QuoteRequest,
+  data: BrowserQuoteRequest,
   fetcher: ContactFetch = (input, init) => fetch(input, init),
 ) {
   const response = await fetcher("/api/contact", {

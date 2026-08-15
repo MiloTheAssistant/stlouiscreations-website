@@ -121,14 +121,43 @@ export function createContactPostHandler(dependencies: ContactHandlerDependencie
       if (parsedLength > MAX_CONTACT_BODY_BYTES) return tooLargeResponse();
     }
 
-    let rawBody: string;
-    try {
-      rawBody = await request.text();
-    } catch {
-      return invalidResponse();
-    }
-    if (new TextEncoder().encode(rawBody).byteLength > MAX_CONTACT_BODY_BYTES) {
-      return tooLargeResponse();
+    let rawBody = "";
+    if (request.body) {
+      let reader: ReadableStreamDefaultReader<Uint8Array>;
+      try {
+        reader = request.body.getReader();
+      } catch {
+        return invalidResponse();
+      }
+      const chunks: Uint8Array[] = [];
+      let bodyLength = 0;
+
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          if (value.byteLength > MAX_CONTACT_BODY_BYTES - bodyLength) {
+            void reader.cancel().catch(() => undefined);
+            return tooLargeResponse();
+          }
+
+          chunks.push(value);
+          bodyLength += value.byteLength;
+        }
+
+        const bytes = new Uint8Array(bodyLength);
+        let offset = 0;
+        for (const chunk of chunks) {
+          bytes.set(chunk, offset);
+          offset += chunk.byteLength;
+        }
+        rawBody = new TextDecoder().decode(bytes);
+      } catch {
+        return invalidResponse();
+      } finally {
+        reader.releaseLock();
+      }
     }
 
     let payload: unknown;

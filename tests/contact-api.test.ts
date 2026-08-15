@@ -11,6 +11,8 @@ import {
 } from "@/lib/microsoft-graph-mail";
 
 const origin = "https://www.stlouiscreations.com";
+type NodeRequestInit = RequestInit & { duplex: "half" };
+
 const validQuote = {
   name: "Ada Lovelace",
   company: "Analytical Engines",
@@ -83,6 +85,130 @@ test("rejects declared and actual bodies larger than 32 KiB", async () => {
   assert.equal(actualRequest.headers.has("content-length"), false);
   const actual = await post(actualRequest);
   assert.equal(actual.status, 413);
+});
+
+test("stops an oversized stream before consuming its remaining body", async () => {
+  let deliveries = 0;
+  let emittedChunks = 0;
+  let cancelled = false;
+  const chunks = [
+    new Uint8Array(MAX_CONTACT_BODY_BYTES),
+    new Uint8Array([0]),
+    new Uint8Array([0]),
+  ];
+  const body = new ReadableStream<Uint8Array>(
+    {
+      pull(controller) {
+        if (emittedChunks === chunks.length) {
+          controller.close();
+          return;
+        }
+        controller.enqueue(chunks[emittedChunks]!);
+        emittedChunks += 1;
+      },
+      cancel() {
+        cancelled = true;
+      },
+    },
+    { highWaterMark: 0 },
+  );
+  const post = createContactPostHandler({
+    deliver: async () => {
+      deliveries += 1;
+    },
+  });
+  const request = new Request(`${origin}/api/contact`, {
+    method: "POST",
+    headers: {
+      origin,
+      "content-type": "application/json",
+    },
+    body,
+    duplex: "half",
+  } as NodeRequestInit);
+
+  assert.equal(request.headers.has("content-length"), false);
+  const response = await post(request);
+
+  assert.equal(response.status, 413);
+  assert.equal(cancelled, true);
+  assert.equal(emittedChunks, 2);
+  assert.equal(deliveries, 0);
+});
+
+test("returns a generic 400 when the request body is already locked", async () => {
+  let deliveries = 0;
+  const request = new Request(`${origin}/api/contact`, {
+    method: "POST",
+    headers: {
+      origin,
+      "content-type": "application/json",
+    },
+    body: new ReadableStream<Uint8Array>(),
+    duplex: "half",
+  } as NodeRequestInit);
+  const lockedReader = request.body!.getReader();
+  const post = createContactPostHandler({
+    deliver: async () => {
+      deliveries += 1;
+    },
+  });
+
+  try {
+    const response = await post(request);
+
+    assert.equal(response.status, 400);
+    assert.deepEqual(await response.json(), { error: "Invalid submission." });
+    assert.equal(deliveries, 0);
+  } finally {
+    lockedReader.releaseLock();
+  }
+});
+
+test("returns 413 without waiting for oversized stream cancellation", async () => {
+  let cancelled = false;
+  let emittedChunks = 0;
+  const chunks = [
+    new Uint8Array(MAX_CONTACT_BODY_BYTES),
+    new Uint8Array([0]),
+  ];
+  const body = new ReadableStream<Uint8Array>(
+    {
+      pull(controller) {
+        if (emittedChunks === chunks.length) {
+          controller.close();
+          return;
+        }
+        controller.enqueue(chunks[emittedChunks]!);
+        emittedChunks += 1;
+      },
+      cancel() {
+        cancelled = true;
+        return new Promise<void>(() => undefined);
+      },
+    },
+    { highWaterMark: 0 },
+  );
+  const post = createContactPostHandler({ deliver: async () => undefined });
+  const request = new Request(`${origin}/api/contact`, {
+    method: "POST",
+    headers: {
+      origin,
+      "content-type": "application/json",
+    },
+    body,
+    duplex: "half",
+  } as NodeRequestInit);
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<Response>((resolve) => {
+    timeoutId = setTimeout(() => resolve(new Response(null, { status: 599 })), 25);
+  });
+
+  const response = await Promise.race([post(request), timeout]);
+  if (timeoutId !== undefined) clearTimeout(timeoutId);
+
+  assert.equal(response.status, 413);
+  assert.equal(cancelled, true);
 });
 
 test("routes a valid quote only to the public contact address", async () => {
