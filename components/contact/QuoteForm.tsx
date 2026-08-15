@@ -3,38 +3,19 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ANALYTICS_EVENTS,
   analyticsEventAttributes,
   trackAnalyticsEvent,
 } from "@/lib/analytics-events";
+import {
+  productTypes,
+  quoteRequestSchema,
+  type QuoteRequest,
+} from "@/lib/contact/quote-request";
+import { submitQuoteRequest } from "@/lib/contact/submit-quote-request";
 import { cn } from "@/lib/utils";
-
-const schema = z.object({
-  name: z.string().min(2, "Name is required"),
-  company: z.string().min(1, "Company name is required"),
-  email: z.string().email("Valid email is required"),
-  phone: z.string().optional(),
-  productType: z.string().min(1, "Please select a product type"),
-  quantity: z.string().min(1, "Estimated quantity is required"),
-  message: z.string().min(10, "Please provide some project details"),
-});
-
-type FormData = z.infer<typeof schema>;
-
-const productTypes = [
-  "Precision Laser Engraving",
-  "3D Printing / Design Services",
-  "Custom Design & Production",
-  "Branded Drinkware",
-  "Awards & Recognition",
-  "Corporate Gifts",
-  "Fundraiser Items",
-  "Laser Cutting",
-  "Other",
-];
 
 export default function QuoteForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -44,40 +25,19 @@ export default function QuoteForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
+  } = useForm<QuoteRequest>({
+    resolver: zodResolver(quoteRequestSchema),
   });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: QuoteRequest) => {
     setStatus("loading");
     try {
-      const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
-      if (!endpoint) {
-        setStatus("error");
-        return;
-      }
-
       trackAnalyticsEvent(ANALYTICS_EVENTS.quoteFormSubmit, {
         productType: data.productType,
         quantity: data.quantity,
       });
 
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...data,
-          _replyto: data.email,
-          _subject: `St. Louis Creations quote request: ${data.productType}`,
-          source: "stlouiscreations.com/contact",
-          submittedAt: new Date().toISOString(),
-        }),
-      });
-
-      if (res.ok) {
+      if (await submitQuoteRequest(data)) {
         setStatus("success");
         reset();
       } else {
@@ -123,6 +83,18 @@ export default function QuoteForm() {
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-5"
         >
+          <div
+            aria-hidden="true"
+            className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
+          >
+            <label htmlFor="quote-website">Website</label>
+            <input
+              id="quote-website"
+              {...register("website")}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <input

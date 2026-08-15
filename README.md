@@ -25,6 +25,16 @@ Open [http://localhost:3001](http://localhost:3001) for the alternate session.
 
 See [docs/local-port-map.md](docs/local-port-map.md) for the full local project port map.
 
+## Quote Delivery
+
+The public quote form posts to the same-origin `/api/contact` Route Handler. Production sends the validated request through Microsoft Graph from the sender mailbox `Media@digitalenergymedia.com` to the fixed recipient alias `contact@stlouiscreations.com`; the existing server-side Exchange rule moves delivered messages into `_StLouisCreations`.
+
+The Graph application is authorized only through Exchange Application RBAC scoped to the sender mailbox. Do not grant tenant-wide Microsoft Graph `Mail.Send` in Entra.
+
+Vercel Production requires these server-only variables: `MS_TENANT_ID`, `MS_CLIENT_ID`, `MS_CLIENT_SECRET`, and `MS_FROM_EMAIL`. Preview deployments intentionally do not receive them. Never prefix these variables with `NEXT_PUBLIC_` or commit their real values.
+
+Provision and verify this path in the approved Microsoft 365 and Vercel admin runbook: confirm the Exchange Application RBAC assignment remains mailbox-scoped to `Media@digitalenergymedia.com`, set the four variables in Vercel Production only, then submit one controlled Production quote and confirm it reaches `contact@stlouiscreations.com` and is moved to `_StLouisCreations`. Do not remove the existing Production Formspree variable until that delivery check succeeds.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
