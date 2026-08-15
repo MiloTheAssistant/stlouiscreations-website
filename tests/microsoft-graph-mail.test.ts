@@ -157,20 +157,25 @@ test("normalizes token timeouts and send aborts with their provider stage", asyn
   let tokenSignal: AbortSignal | null | undefined;
   const tokenTimeoutFetcher: GraphFetch = async (_input, init) => {
     tokenSignal = init?.signal;
-    throw new DOMException("token provider timeout details", "TimeoutError");
+    return waitForSignalAbort(init?.signal);
   };
 
   await assert.rejects(
-    sendGraphMail(message, config, tokenTimeoutFetcher),
+    sendGraphMail(
+      message,
+      config,
+      tokenTimeoutFetcher,
+      () => AbortSignal.timeout(1),
+    ),
     (error: unknown) => {
       assert.ok(error instanceof GraphMailError);
       assert.equal(error.stage, "token");
       assert.equal(error.code, "request_failed");
-      assert.doesNotMatch(error.message, /token provider timeout details/);
+      assert.doesNotMatch(error.message, /request signal did not abort/);
       return true;
     },
   );
-  assert.ok(tokenSignal instanceof AbortSignal);
+  assert.ok(tokenSignal?.aborted);
 
   let call = 0;
   let sendSignal: AbortSignal | null | undefined;
@@ -180,21 +185,48 @@ test("normalizes token timeouts and send aborts with their provider stage", asyn
       return Response.json({ access_token: "test-access-token" });
     }
     sendSignal = init?.signal;
-    throw new DOMException("send provider abort details", "AbortError");
+    return waitForSignalAbort(init?.signal);
   };
 
   await assert.rejects(
-    sendGraphMail(message, config, sendAbortFetcher),
+    sendGraphMail(
+      message,
+      config,
+      sendAbortFetcher,
+      () => AbortSignal.timeout(1),
+    ),
     (error: unknown) => {
       assert.ok(error instanceof GraphMailError);
       assert.equal(error.stage, "send");
       assert.equal(error.code, "request_failed");
-      assert.doesNotMatch(error.message, /send provider abort details/);
+      assert.doesNotMatch(error.message, /request signal did not abort/);
       return true;
     },
   );
-  assert.ok(sendSignal instanceof AbortSignal);
+  assert.ok(sendSignal?.aborted);
 });
+
+function waitForSignalAbort(signal: AbortSignal | null | undefined) {
+  return new Promise<never>((_resolve, reject) => {
+    if (!signal) {
+      reject(new Error("missing request signal"));
+      return;
+    }
+
+    const timeout = setTimeout(
+      () => reject(new Error("request signal did not abort")),
+      20,
+    );
+    signal.addEventListener(
+      "abort",
+      () => {
+        clearTimeout(timeout);
+        reject(signal.reason);
+      },
+      { once: true },
+    );
+  });
+}
 
 test("normalizes malformed and invalid token payloads", async () => {
   const malformedTokenFetcher: GraphFetch = async () =>
