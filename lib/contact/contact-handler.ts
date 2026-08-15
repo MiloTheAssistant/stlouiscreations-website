@@ -123,7 +123,12 @@ export function createContactPostHandler(dependencies: ContactHandlerDependencie
 
     let rawBody = "";
     if (request.body) {
-      const reader = request.body.getReader();
+      let reader: ReadableStreamDefaultReader<Uint8Array>;
+      try {
+        reader = request.body.getReader();
+      } catch {
+        return invalidResponse();
+      }
       const chunks: Uint8Array[] = [];
       let bodyLength = 0;
 
@@ -133,11 +138,7 @@ export function createContactPostHandler(dependencies: ContactHandlerDependencie
           if (done) break;
 
           if (value.byteLength > MAX_CONTACT_BODY_BYTES - bodyLength) {
-            try {
-              await reader.cancel();
-            } catch {
-              // The limit response does not depend on cancellation acknowledgement.
-            }
+            void reader.cancel().catch(() => undefined);
             return tooLargeResponse();
           }
 
