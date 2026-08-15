@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   productTypes,
+  quoteRequestBrowserFormSchema,
   quoteRequestSchema,
   quoteRequestSubject,
   renderQuoteRequestHtml,
@@ -52,6 +53,16 @@ test("rejects invalid, unknown, overlong, and honeypot quote fields", () => {
   for (const input of invalidQuotes) {
     assert.equal(quoteRequestSchema.safeParse(input).success, false);
   }
+});
+
+test("allows an autofilled honeypot through browser validation but rejects it for delivery", () => {
+  const autofilledQuote = {
+    ...validQuote,
+    website: "https://spam.example",
+  };
+
+  assert.equal(quoteRequestBrowserFormSchema.safeParse(autofilledQuote).success, true);
+  assert.equal(quoteRequestSchema.safeParse(autofilledQuote).success, false);
 });
 
 test("builds a fixed subject and escapes every rendered customer value", () => {

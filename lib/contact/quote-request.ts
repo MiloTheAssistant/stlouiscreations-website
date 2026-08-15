@@ -13,7 +13,7 @@ export const productTypes = [
   "Other",
 ] as const;
 
-export const quoteRequestSchema = z.strictObject({
+const quoteRequestFields = {
   name: z.string().trim().min(2, "Name is required").max(120),
   company: z.string().trim().min(1, "Company name is required").max(160),
   email: z.string().trim().max(254).email("Valid email is required"),
@@ -25,9 +25,19 @@ export const quoteRequestSchema = z.strictObject({
     .trim()
     .min(10, "Please provide some project details")
     .max(5_000),
+};
+
+export const quoteRequestBrowserFormSchema = z.strictObject({
+  ...quoteRequestFields,
+  website: z.string().optional(),
+});
+
+export const quoteRequestSchema = z.strictObject({
+  ...quoteRequestFields,
   website: z.literal("").optional(),
 });
 
+export type BrowserQuoteRequest = z.infer<typeof quoteRequestBrowserFormSchema>;
 export type QuoteRequest = z.infer<typeof quoteRequestSchema>;
 
 function escapeHtml(value: string) {
