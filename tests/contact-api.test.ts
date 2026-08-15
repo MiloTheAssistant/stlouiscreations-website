@@ -11,6 +11,8 @@ import {
 } from "@/lib/microsoft-graph-mail";
 
 const origin = "https://www.stlouiscreations.com";
+type NodeRequestInit = RequestInit & { duplex: "half" };
+
 const validQuote = {
   name: "Ada Lovelace",
   company: "Analytical Engines",
@@ -123,7 +125,7 @@ test("stops an oversized stream before consuming its remaining body", async () =
     },
     body,
     duplex: "half",
-  });
+  } as NodeRequestInit);
 
   assert.equal(request.headers.has("content-length"), false);
   const response = await post(request);
@@ -144,7 +146,7 @@ test("returns a generic 400 when the request body is already locked", async () =
     },
     body: new ReadableStream<Uint8Array>(),
     duplex: "half",
-  });
+  } as NodeRequestInit);
   const lockedReader = request.body!.getReader();
   const post = createContactPostHandler({
     deliver: async () => {
@@ -196,7 +198,7 @@ test("returns 413 without waiting for oversized stream cancellation", async () =
     },
     body,
     duplex: "half",
-  });
+  } as NodeRequestInit);
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
   const timeout = new Promise<Response>((resolve) => {
     timeoutId = setTimeout(() => resolve(new Response(null, { status: 599 })), 25);
