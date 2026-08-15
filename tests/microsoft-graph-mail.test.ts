@@ -6,6 +6,11 @@ import {
   type GraphFetch,
 } from "@/lib/microsoft-graph-mail";
 
+type SupportsFourArguments = 4 extends Parameters<typeof sendGraphMail>["length"]
+  ? true
+  : false;
+const supportsFourArguments: SupportsFourArguments = false;
+
 const message = {
   to: "contact@stlouiscreations.com",
   replyTo: "visitor@example.com",
@@ -154,56 +159,65 @@ test("does not accept a Graph 200 response as sendMail success", async () => {
 });
 
 test("normalizes token timeouts and send aborts with their provider stage", async () => {
-  let tokenSignal: AbortSignal | null | undefined;
-  const tokenTimeoutFetcher: GraphFetch = async (_input, init) => {
-    tokenSignal = init?.signal;
-    return waitForSignalAbort(init?.signal);
-  };
-
-  await assert.rejects(
-    sendGraphMail(
-      message,
-      config,
-      tokenTimeoutFetcher,
-      () => AbortSignal.timeout(1),
-    ),
-    (error: unknown) => {
-      assert.ok(error instanceof GraphMailError);
-      assert.equal(error.stage, "token");
-      assert.equal(error.code, "request_failed");
-      assert.doesNotMatch(error.message, /request signal did not abort/);
-      return true;
-    },
+  const timeoutDescriptor = Object.getOwnPropertyDescriptor(
+    AbortSignal,
+    "timeout",
   );
-  assert.ok(tokenSignal?.aborted);
-
-  let call = 0;
-  let sendSignal: AbortSignal | null | undefined;
-  const sendAbortFetcher: GraphFetch = async (_input, init) => {
-    call += 1;
-    if (call === 1) {
-      return Response.json({ access_token: "test-access-token" });
-    }
-    sendSignal = init?.signal;
-    return waitForSignalAbort(init?.signal);
-  };
-
-  await assert.rejects(
-    sendGraphMail(
-      message,
-      config,
-      sendAbortFetcher,
-      () => AbortSignal.timeout(1),
-    ),
-    (error: unknown) => {
-      assert.ok(error instanceof GraphMailError);
-      assert.equal(error.stage, "send");
-      assert.equal(error.code, "request_failed");
-      assert.doesNotMatch(error.message, /request signal did not abort/);
-      return true;
+  assert.ok(timeoutDescriptor);
+  const timeoutCalls: number[] = [];
+  Object.defineProperty(AbortSignal, "timeout", {
+    ...timeoutDescriptor,
+    value: (milliseconds: number) => {
+      timeoutCalls.push(milliseconds);
+      return timeoutDescriptor.value.call(AbortSignal, 1);
     },
-  );
-  assert.ok(sendSignal?.aborted);
+  });
+
+  try {
+    let tokenSignal: AbortSignal | null | undefined;
+    const tokenTimeoutFetcher: GraphFetch = async (_input, init) => {
+      tokenSignal = init?.signal;
+      return waitForSignalAbort(init?.signal);
+    };
+
+    await assert.rejects(
+      sendGraphMail(message, config, tokenTimeoutFetcher),
+      (error: unknown) => {
+        assert.ok(error instanceof GraphMailError);
+        assert.equal(error.stage, "token");
+        assert.equal(error.code, "request_failed");
+        assert.doesNotMatch(error.message, /request signal did not abort/);
+        return true;
+      },
+    );
+    assert.ok(tokenSignal?.aborted);
+
+    let call = 0;
+    let sendSignal: AbortSignal | null | undefined;
+    const sendAbortFetcher: GraphFetch = async (_input, init) => {
+      call += 1;
+      if (call === 1) {
+        return Response.json({ access_token: "test-access-token" });
+      }
+      sendSignal = init?.signal;
+      return waitForSignalAbort(init?.signal);
+    };
+
+    await assert.rejects(
+      sendGraphMail(message, config, sendAbortFetcher),
+      (error: unknown) => {
+        assert.ok(error instanceof GraphMailError);
+        assert.equal(error.stage, "send");
+        assert.equal(error.code, "request_failed");
+        assert.doesNotMatch(error.message, /request signal did not abort/);
+        return true;
+      },
+    );
+    assert.ok(sendSignal?.aborted);
+    assert.deepEqual(timeoutCalls, [10_000, 10_000, 10_000]);
+  } finally {
+    Object.defineProperty(AbortSignal, "timeout", timeoutDescriptor);
+  }
 });
 
 function waitForSignalAbort(signal: AbortSignal | null | undefined) {

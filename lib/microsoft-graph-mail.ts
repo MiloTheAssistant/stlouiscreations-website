@@ -21,11 +21,6 @@ export type GraphMailStage = "configuration" | "token" | "send";
 
 const graphRequestTimeoutMs = 10_000;
 
-type GraphAbortSignalFactory = () => AbortSignal;
-
-const defaultGraphAbortSignal: GraphAbortSignalFactory = () =>
-  AbortSignal.timeout(graphRequestTimeoutMs);
-
 export class GraphMailError extends Error {
   constructor(
     public readonly stage: GraphMailStage,
@@ -74,12 +69,11 @@ async function fetchGraph(
   fetcher: GraphFetch,
   input: string,
   init: RequestInit,
-  createAbortSignal: GraphAbortSignalFactory,
 ) {
   try {
     return await fetcher(input, {
       ...init,
-      signal: createAbortSignal(),
+      signal: AbortSignal.timeout(graphRequestTimeoutMs),
     });
   } catch {
     throw new GraphMailError(stage, undefined, "request_failed");
@@ -90,7 +84,6 @@ export async function sendGraphMail(
   message: GraphMailMessage,
   config: GraphMailConfig,
   fetcher: GraphFetch = (input, init) => fetch(input, init),
-  createAbortSignal: GraphAbortSignalFactory = defaultGraphAbortSignal,
 ) {
   const resolved = requiredConfig(config);
   const tokenBody = new URLSearchParams({
@@ -109,7 +102,6 @@ export async function sendGraphMail(
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: tokenBody,
     },
-    createAbortSignal,
   );
 
   if (!tokenResponse.ok) {
@@ -162,7 +154,6 @@ export async function sendGraphMail(
         saveToSentItems: true,
       }),
     },
-    createAbortSignal,
   );
 
   if (sendResponse.status !== 202) {
