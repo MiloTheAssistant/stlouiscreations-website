@@ -85,6 +85,55 @@ test("rejects declared and actual bodies larger than 32 KiB", async () => {
   assert.equal(actual.status, 413);
 });
 
+test("stops an oversized stream before consuming its remaining body", async () => {
+  let deliveries = 0;
+  let emittedChunks = 0;
+  let cancelled = false;
+  const chunks = [
+    new Uint8Array(MAX_CONTACT_BODY_BYTES),
+    new Uint8Array([0]),
+    new Uint8Array([0]),
+  ];
+  const body = new ReadableStream<Uint8Array>(
+    {
+      pull(controller) {
+        if (emittedChunks === chunks.length) {
+          controller.close();
+          return;
+        }
+        controller.enqueue(chunks[emittedChunks]!);
+        emittedChunks += 1;
+      },
+      cancel() {
+        cancelled = true;
+      },
+    },
+    { highWaterMark: 0 },
+  );
+  const post = createContactPostHandler({
+    deliver: async () => {
+      deliveries += 1;
+    },
+  });
+  const request = new Request(`${origin}/api/contact`, {
+    method: "POST",
+    headers: {
+      origin,
+      "content-type": "application/json",
+    },
+    body,
+    duplex: "half",
+  });
+
+  assert.equal(request.headers.has("content-length"), false);
+  const response = await post(request);
+
+  assert.equal(response.status, 413);
+  assert.equal(cancelled, true);
+  assert.equal(emittedChunks, 2);
+  assert.equal(deliveries, 0);
+});
+
 test("routes a valid quote only to the public contact address", async () => {
   const deliveries: GraphMailMessage[] = [];
   const post = createContactPostHandler({
