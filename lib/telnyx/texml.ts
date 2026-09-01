@@ -40,10 +40,12 @@ export function successTexml() {
 
 export function failoverRecordTexml(recordActionUrl: string) {
   const action = escapeXml(recordActionUrl);
+  // Record action is the only lead-delivery callback. Do not also set
+  // recordingStatusCallback to this URL — Telnyx would POST twice.
   return texmlDocument(
     [
       `  <Say voice="Polly.Joanna">${escapeXml(FAILOVER_COPY)}</Say>`,
-      `  <Record action="${action}" method="POST" maxLength="90" timeout="5" playBeep="true" recordingStatusCallback="${action}" recordingStatusCallbackMethod="POST" recordingStatusCallbackEvent="completed"/>`,
+      `  <Record action="${action}" method="POST" maxLength="90" timeout="5" playBeep="true"/>`,
       "  <Hangup/>",
     ].join("\n"),
   );
