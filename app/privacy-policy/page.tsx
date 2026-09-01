@@ -4,7 +4,7 @@ import FadeUpSection from "@/components/ui/FadeUpSection";
 import SectionLabel from "@/components/ui/SectionLabel";
 import AnimatedHeading from "@/components/ui/AnimatedHeading";
 import GlowButton from "@/components/ui/GlowButton";
-import { siteConfig } from "@/lib/constants";
+import { businessFacts, siteConfig } from "@/lib/constants";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -323,8 +323,13 @@ export default function PrivacyPolicyPage() {
               </a>
             </p>
             <p>
-              <span className="font-semibold text-text">Phone:</span> (573)
-              500-0064
+              <span className="font-semibold text-text">Phone:</span>{" "}
+              <a
+                href={businessFacts.phone.href}
+                className="text-primary underline hover:no-underline"
+              >
+                {businessFacts.phone.display}
+              </a>
             </p>
             <p>
               <span className="font-semibold text-text">Mail:</span> St. Louis

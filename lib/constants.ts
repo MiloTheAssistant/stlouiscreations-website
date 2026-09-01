@@ -183,9 +183,9 @@ export const businessFacts = {
     country: "US",
   },
   phone: {
-    display: "(573) 500-0064",
-    href: "tel:+15735000064",
-    schema: "+1-573-500-0064",
+    display: "(314) 350-0006",
+    href: "tel:+13143500006",
+    schema: "+1-314-350-0006",
   },
   hours: {
     weekdayLabel: "Monday - Friday: 8am - 5pm CT",
