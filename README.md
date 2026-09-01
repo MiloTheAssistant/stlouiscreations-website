@@ -35,6 +35,10 @@ Vercel Production requires these server-only variables: `MS_TENANT_ID`, `MS_CLIE
 
 Provision and verify this path in the approved Microsoft 365 and Vercel admin runbook: confirm the Exchange Application RBAC assignment remains mailbox-scoped to `Media@digitalenergymedia.com`, set the four variables in Vercel Production only, then submit one controlled Production quote and confirm it reaches `contact@stlouiscreations.com` and is moved to `_StLouisCreations`. Do not remove the existing Production Formspree variable until that delivery check succeeds.
 
+## Telnyx inbound voicemail pilot
+
+The 24x7 inbound TeXML app answers **+13143500006** only. Operator paste list (Telnyx Mission Control + Vercel env): [docs/telnyx-voicemail-pilot.md](docs/telnyx-voicemail-pilot.md). Do not buy numbers, do not raise auto-recharge, do not assign the app to any other DID.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
