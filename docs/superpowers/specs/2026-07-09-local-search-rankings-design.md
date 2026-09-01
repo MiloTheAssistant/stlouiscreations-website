@@ -70,7 +70,7 @@ The content should use a practical local buyer voice:
 - Name the work: laser engraving, additive manufacturing, custom awards, branded drinkware, sponsor gifts, fundraiser products, prototypes, fixtures, displays, and small-batch production.
 - Explain quote readiness: artwork files, product or material, quantity, deadline, personalization data, intended use, and any durability or finish constraints.
 - Make service fit clear: engraving marks existing items; 3D printing creates new objects; custom production can combine materials, finishing, and fulfillment.
-- Use claims already supported by the site. The existing contact page supports St. Louis, MO, `contact@stlouiscreations.com`, `(573) 500-0064`, Monday-Friday hours, and 24-hour business-day response language.
+- Use claims already supported by the site. The existing contact page supports St. Louis, MO, `contact@stlouiscreations.com`, `(314) 350-0006`, Monday-Friday hours, and 24-hour business-day response language.
 
 Avoid:
 

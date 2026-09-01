@@ -15,7 +15,7 @@
 - Keep business facts in `lib/constants.ts` and URL/schema assembly in `lib/seo.ts`.
 - Do not add thin location pages or repeated city-keyword copy.
 - Do not claim ranking gains, Google Business Profile status, reviews, storefront access, or Search Console index status.
-- Use only the visible facts already supported by the site: St. Louis, MO; `contact@stlouiscreations.com`; `(573) 500-0064`; Monday-Friday, 8am-5pm CT; weekends closed; replies within 24 hours on business days.
+- Use only the visible facts already supported by the site: St. Louis, MO; `contact@stlouiscreations.com`; `(314) 350-0006`; Monday-Friday, 8am-5pm CT; weekends closed; replies within 24 hours on business days.
 - Keep the current visual system and dependencies; add no package.
 - Treat Google Search Console URL Inspection as blocked while `/Volumes/BotCentral/Users/milo/repos/GoogleCloudSearch/credentials/oauth-client.json` is absent.
 
@@ -428,9 +428,9 @@ export const businessFacts = {
     country: "US",
   },
   phone: {
-    display: "(573) 500-0064",
-    href: "tel:+15735000064",
-    schema: "+1-573-500-0064",
+    display: "(314) 350-0006",
+    href: "tel:+13143500006",
+    schema: "+1-314-350-0006",
   },
   hours: {
     weekdayLabel: "Monday - Friday: 8am - 5pm CT",

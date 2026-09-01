@@ -11,7 +11,7 @@
     "stripe:sync-catalog": "tsx scripts/sync-stripe-catalog.ts",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --import tsx --test tests/local-search.test.ts tests/admin-jds-import.test.ts tests/analytics-events.test.ts tests/shop-category-navigation.test.ts tests/stripe-catalog-sync.test.ts tests/topic-hubs.test.ts tests/quote-request.test.ts tests/microsoft-graph-mail.test.ts tests/contact-api.test.ts tests/submit-quote-request.test.ts",
+    "test": "node --import tsx --test tests/local-search.test.ts tests/admin-jds-import.test.ts tests/analytics-events.test.ts tests/shop-category-navigation.test.ts tests/stripe-catalog-sync.test.ts tests/topic-hubs.test.ts tests/quote-request.test.ts tests/microsoft-graph-mail.test.ts tests/contact-api.test.ts tests/submit-quote-request.test.ts tests/telnyx-voicemail.test.ts",
     "test:readiness": "node --import tsx --test tests/analytics-events.test.ts",
     "test:catalog": "node --import tsx --test tests/stripe-catalog-sync.test.ts tests/admin-jds-import.test.ts tests/topic-hubs.test.ts"
   },

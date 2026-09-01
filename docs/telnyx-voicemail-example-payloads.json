@@ -1,0 +1,18 @@
+{
+  "gathered": {
+    "name": "Ada Lovelace",
+    "phone": "314-555-0188",
+    "email": "ada@example.com",
+    "callId": "CA-gather-1",
+    "recordingUrl": null,
+    "status": "gathered"
+  },
+  "voicemail": {
+    "name": null,
+    "phone": null,
+    "email": null,
+    "callId": "CA-record-1",
+    "recordingUrl": "https://recordings.example/ca-record-1.mp3",
+    "status": "voicemail"
+  }
+}
