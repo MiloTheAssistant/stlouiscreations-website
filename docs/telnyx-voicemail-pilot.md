@@ -9,7 +9,7 @@ Inbound TeXML for **+13143500006** only. Do not merge. Do not deploy. Do not buy
 3. Bind that TeXML / Voice app to **+13143500006 only**.
 4. Leave the gather and record action URLs alone; the app returns them:
    - Gather callback: `https://www.stlouiscreations.com/api/telnyx/gather`
-   - Record / recording-ready callback: `https://www.stlouiscreations.com/api/telnyx/record`
+   - Record action (single lead-delivery path; no `recordingStatusCallback`): `https://www.stlouiscreations.com/api/telnyx/record`
 5. Copy the account **Public Key** (Keys & Credentials) for Vercel. Do not paste secret values into git.
 
 ## Paste into Vercel env (names + purpose, no secret values)
@@ -19,7 +19,7 @@ Inbound TeXML for **+13143500006** only. Do not merge. Do not deploy. Do not buy
 | `TELNYX_FROM_NUMBER` | `+13143500006` — Creations DID this inbound app answers. |
 | `TELNYX_PUBLIC_KEY` | Mission Control Ed25519 public key. Verifies inbound Telnyx signatures. |
 | `TELNYX_API_KEY` | Mission Control API key. Server-only; keep it out of git and the browser. |
-| `TELNYX_WEBHOOK_URL` | Optional HTTPS URL. When set, the handler POSTs the structured JSON lead body Milo can turn into a HubSpot contact + a note to `contact@stlouiscreations.com`. |
+| `TELNYX_WEBHOOK_URL` | HTTPS URL for the structured JSON lead body (Milo → HubSpot + a note to `contact@stlouiscreations.com`). If this is unset and nothing injects `deliverLead`, a successful AI Gather is a **config failure**: we do not play the success line or discard the lead as delivered. The call fails over to voicemail instead. Failover Record still hangs up without promising a follow-up. |
 
 `TELNYX_FROM_NUMBER=+13143500006` is required. The handler answers that DID only.
 

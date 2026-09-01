@@ -64,12 +64,18 @@ function failedGatherStatus(status: string | undefined) {
   );
 }
 
+function hasLeadDestination(dependencies: TelnyxVoiceDependencies) {
+  return Boolean(dependencies.deliverLead || dependencies.leadWebhookUrl?.trim());
+}
+
 async function defaultDeliverLead(
   url: string | undefined,
   payload: VoicemailLeadPayload,
 ) {
   const destination = url?.trim();
-  if (!destination) return;
+  if (!destination) {
+    throw new Error("lead_destination_missing");
+  }
 
   const response = await fetch(destination, {
     method: "POST",
@@ -126,14 +132,21 @@ export function createTelnyxVoiceHandlers(dependencies: TelnyxVoiceDependencies)
   }
 
   async function emitLead(payload: VoicemailLeadPayload) {
+    if (!hasLeadDestination(dependencies)) {
+      dependencies.reportFailure?.({ stage: "configuration" });
+      return false;
+    }
+
     try {
       if (dependencies.deliverLead) {
         await dependencies.deliverLead(payload);
-        return;
+        return true;
       }
       await defaultDeliverLead(dependencies.leadWebhookUrl, payload);
+      return true;
     } catch {
       dependencies.reportFailure?.({ stage: "deliver" });
+      return false;
     }
   }
 
@@ -166,6 +179,13 @@ export function createTelnyxVoiceHandlers(dependencies: TelnyxVoiceDependencies)
     });
 
     if (failedGatherStatus(callbackStatus(authorized.payload)) || !hasGatheredLead(lead)) {
+      return texmlResponse(failoverRecordTexml(recordUrl));
+    }
+
+    // No webhook and no injected deliverLead: do not promise a follow-up
+    // while discarding the lead. Failover voicemail still captures a recording.
+    if (!hasLeadDestination(dependencies)) {
+      dependencies.reportFailure?.({ stage: "configuration" });
       return texmlResponse(failoverRecordTexml(recordUrl));
     }
 

@@ -213,11 +213,66 @@ test("AI Gather timeout or missing fields fail over to the locked record prompt"
     assert.match(xml, new RegExp(FAILOVER_COPY.replaceAll(".", "\\.")));
     assert.match(xml, /<Record /);
     assert.match(xml, /playBeep="true"/);
-    assert.match(xml, /\/api\/telnyx\/record/);
+    assert.match(xml, /action="https:\/\/www\.stlouiscreations\.com\/api\/telnyx\/record"/);
+    assert.doesNotMatch(xml, /recordingStatusCallback/);
     assert.match(xml, /<Hangup\/>/);
     assert.doesNotMatch(xml, new RegExp(SUCCESS_COPY.replaceAll(".", "\\.")));
   }
   assert.equal(leads.length, 0);
+});
+
+test("missing lead destination is a config failure and does not promise follow-up", async () => {
+  const failures: unknown[] = [];
+  const voice = createTelnyxVoiceHandlers({
+    publicKey: publicKeyB64,
+    fromNumber: CREATIONS_DID_E164,
+    siteUrl: origin,
+    nowMs: () => nowMs,
+    reportFailure: (failure) => {
+      failures.push(failure);
+    },
+  });
+  const gatheredBody = new URLSearchParams({
+    CallSid: "CA-gather-no-dest",
+    To: CREATIONS_DID_E164,
+    Status: "valid",
+    Result: JSON.stringify({
+      name: "Ada Lovelace",
+      phone: "314-555-0188",
+      email: "ada@example.com",
+    }),
+  }).toString();
+
+  const gatherResponse = await voice.gather(
+    signedRequest("/api/telnyx/gather", gatheredBody),
+  );
+  const gatherXml = await gatherResponse.text();
+
+  assert.equal(gatherResponse.status, 200);
+  assert.doesNotMatch(gatherXml, new RegExp(SUCCESS_COPY.replaceAll(".", "\\.")));
+  assert.match(gatherXml, new RegExp(FAILOVER_COPY.replaceAll(".", "\\.")));
+  assert.match(gatherXml, /<Record /);
+  assert.doesNotMatch(gatherXml, /recordingStatusCallback/);
+  assert.deepEqual(failures, [{ stage: "configuration" }]);
+
+  const recordBody = new URLSearchParams({
+    CallSid: "CA-record-no-dest",
+    To: CREATIONS_DID_E164,
+    RecordingUrl: "https://recordings.example/ca-record-no-dest.mp3",
+    RecordingStatus: "completed",
+  }).toString();
+  const recordResponse = await voice.record(
+    signedRequest("/api/telnyx/record", recordBody),
+  );
+  const recordXml = await recordResponse.text();
+
+  assert.equal(recordResponse.status, 200);
+  assert.match(recordXml, /<Hangup\/>/);
+  assert.doesNotMatch(recordXml, new RegExp(SUCCESS_COPY.replaceAll(".", "\\.")));
+  assert.deepEqual(failures, [
+    { stage: "configuration" },
+    { stage: "configuration" },
+  ]);
 });
 
 test("record callback emits structured JSON with call id and recording URL", async () => {
