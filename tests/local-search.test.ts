@@ -123,22 +123,30 @@ test("uses the www host for every sitemap entry and robots sitemap", () => {
 });
 
 test("publishes the Creations DID as the only public site phone", async () => {
+  const retiredDidDigits = [5, 7, 3, 5, 0, 0, 0, 0, 6, 4].join("");
   const files = [
     "lib/constants.ts",
+    "lib/seo.ts",
+    "lib/contact/quote-request.ts",
+    "lib/contact/contact-handler.ts",
+    "lib/microsoft-graph-mail.ts",
     "public/llms.txt",
     "app/contact/page.tsx",
     "components/layout/Footer.tsx",
+    "components/contact/QuoteForm.tsx",
     "app/terms/page.tsx",
     "app/privacy-policy/page.tsx",
     "app/shipping/page.tsx",
     "app/refund-policy/page.tsx",
+    "docs/telnyx-voicemail-pilot.md",
   ];
 
   for (const file of files) {
     const source = await readFile(resolve(process.cwd(), file), "utf8");
-    assert.doesNotMatch(
-      source,
-      /573\D*500\D*0064|15735000064/,
+    const digits = source.replace(/\D/g, "");
+    assert.equal(
+      digits.includes(retiredDidDigits),
+      false,
       `${file} still shows the retired public phone`,
     );
   }
