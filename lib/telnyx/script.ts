@@ -4,6 +4,10 @@ export const CREATIONS_DID_E164 = "+13143500006";
 export const GREETING_COPY =
   "Thanks for calling St. Louis Creations. This call may be recorded. I just need your name, a number we can call back, and an email.";
 
+/** Kokoro reads "St. Louis" as "St Louie". Speak the city name in full. */
+export const SPOKEN_GREETING_COPY =
+  "Thanks for calling Saint Louis Creations. This call may be recorded. I just need your name, a number we can call back, and an email.";
+
 export const SUCCESS_COPY = "Got it. Thanks for calling. We’ll follow up.";
 
 export const FAILOVER_COPY = "Please leave a short message after the tone.";
