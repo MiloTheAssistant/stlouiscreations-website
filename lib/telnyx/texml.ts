@@ -1,7 +1,7 @@
 import {
   FAILOVER_COPY,
   GATHER_PARAMETERS,
-  GREETING_COPY,
+  SPOKEN_GREETING_COPY,
   SUCCESS_COPY,
 } from "@/lib/telnyx/script";
 
@@ -59,7 +59,7 @@ export function inboundGatherTexml(gatherActionUrl: string) {
   return texmlDocument(
     [
       `  <AIGather action="${escapeXml(gatherActionUrl)}" method="POST">`,
-      `    <Greeting>${escapeXml(GREETING_COPY)}</Greeting>`,
+      `    <Greeting>${escapeXml(SPOKEN_GREETING_COPY)}</Greeting>`,
       `    <Voice name="${ATTENDANT_VOICE}"/>`,
       "    <Parameters>",
       "      <![CDATA[",
