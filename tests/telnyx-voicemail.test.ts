@@ -5,6 +5,7 @@ import {
   CREATIONS_DID_E164,
   FAILOVER_COPY,
   GREETING_COPY,
+  SPOKEN_GREETING_COPY,
   SUCCESS_COPY,
 } from "@/lib/telnyx/script";
 import { createTelnyxVoiceHandlers } from "@/lib/telnyx/voice-handler";
@@ -142,7 +143,8 @@ test("inbound TeXML gathers the three locked fields only on +13143500006", async
   assert.equal(inbound.status, 200);
   assert.match(inbound.headers.get("content-type") || "", /xml/);
   assert.match(xml, /<AIGather /);
-  assert.match(xml, /<Greeting>Thanks for calling St\. Louis Creations\. This call may be recorded\. I just need your name, a number we can call back, and an email\.<\/Greeting>/);
+  assert.match(xml, /<Greeting>Thanks for calling Saint Louis Creations\. This call may be recorded\. I just need your name, a number we can call back, and an email\.<\/Greeting>/);
+  assert.doesNotMatch(xml, /<Greeting>[^<]*St\. Louis/);
   assert.match(xml, /"name"/);
   assert.match(xml, /"phone"/);
   assert.match(xml, /"email"/);
@@ -317,6 +319,10 @@ test("locked caller script is used verbatim and does not invent SMS or quotes", 
   assert.equal(
     GREETING_COPY,
     "Thanks for calling St. Louis Creations. This call may be recorded. I just need your name, a number we can call back, and an email.",
+  );
+  assert.equal(
+    SPOKEN_GREETING_COPY,
+    "Thanks for calling Saint Louis Creations. This call may be recorded. I just need your name, a number we can call back, and an email.",
   );
   assert.equal(SUCCESS_COPY, "Got it. Thanks for calling. We’ll follow up.");
   assert.equal(FAILOVER_COPY, "Please leave a short message after the tone.");
