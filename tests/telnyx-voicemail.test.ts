@@ -70,6 +70,17 @@ function signedRequest(
   });
 }
 
+function signedGetRequest(path: string, query: string) {
+  const signed = signBody("");
+  return new Request(`${origin}${path}?${query}`, {
+    method: "GET",
+    headers: {
+      "telnyx-signature-ed25519": signed.signature,
+      "telnyx-timestamp": signed.timestamp,
+    },
+  });
+}
+
 test("rejects unsigned, forged, and stale Telnyx webhooks", async () => {
   const failures: unknown[] = [];
   const voice = handlers({ failures });
@@ -310,4 +321,83 @@ test("locked caller script is used verbatim and does not invent SMS or quotes", 
   assert.equal(SUCCESS_COPY, "Got it. Thanks for calling. We’ll follow up.");
   assert.equal(FAILOVER_COPY, "Please leave a short message after the tone.");
   assert.equal(CREATIONS_DID_E164, "+13143500006");
+});
+
+test("inbound AIGather uses Kokoro Heart and documented TeXML children only", async () => {
+  const voice = handlers();
+  const inbound = await voice.inbound(
+    signedRequest(
+      "/api/telnyx/voice",
+      `To=${encodeURIComponent(CREATIONS_DID_E164)}&CallSid=CA-kokoro`,
+    ),
+  );
+  const xml = await inbound.text();
+
+  assert.equal(inbound.status, 200);
+  assert.match(xml, /<Voice name="Telnyx\.KokoroTTS\.af_heart"\/>/);
+  assert.match(xml, /<AIGather action="https:\/\/www\.stlouiscreations\.com\/api\/telnyx\/gather" method="POST">/);
+  assert.match(xml, /<Parameters>/);
+  assert.match(xml, /<!\[CDATA\[/);
+  assert.doesNotMatch(xml, /Polly\.Joanna/);
+  assert.doesNotMatch(xml, /userResponseTimeoutMs/);
+  assert.doesNotMatch(xml, /<Assistant[\s>]/);
+  assert.doesNotMatch(xml, /ElevenLabs|Azure|Ultra|api_key_ref/);
+});
+
+test("success and failover TeXML speak with Kokoro Heart", async () => {
+  const voice = handlers();
+  const gatheredBody = new URLSearchParams({
+    CallSid: "CA-kokoro-success",
+    To: CREATIONS_DID_E164,
+    Status: "valid",
+    Result: JSON.stringify({
+      name: "Ada Lovelace",
+      phone: "314-555-0188",
+      email: "ada@example.com",
+    }),
+  }).toString();
+  const timeoutBody = new URLSearchParams({
+    CallSid: "CA-kokoro-failover",
+    To: CREATIONS_DID_E164,
+    Status: "timeout",
+  }).toString();
+
+  const success = await voice.gather(signedRequest("/api/telnyx/gather", gatheredBody));
+  const failover = await voice.gather(signedRequest("/api/telnyx/gather", timeoutBody));
+  const successXml = await success.text();
+  const failoverXml = await failover.text();
+
+  assert.match(successXml, /<Say voice="Telnyx\.KokoroTTS\.af_heart">Got it\. Thanks for calling\./);
+  assert.doesNotMatch(successXml, /Polly\.Joanna/);
+  assert.match(failoverXml, /<Say voice="Telnyx\.KokoroTTS\.af_heart">Please leave a short message after the tone\.<\/Say>/);
+  assert.doesNotMatch(failoverXml, /Polly\.Joanna/);
+});
+
+test("signed GET gather still returns the locked success line", async () => {
+  const leads: VoicemailLeadPayload[] = [];
+  const voice = handlers({ leads });
+  const result = JSON.stringify({
+    name: "Ada Lovelace",
+    phone: "314-555-0188",
+    email: "ada@example.com",
+  });
+  const query = new URLSearchParams({
+    CallSid: "CA-gather-get",
+    To: CREATIONS_DID_E164,
+    Status: "valid",
+    Result: result,
+  }).toString();
+
+  const unsigned = await voice.gather(
+    new Request(`${origin}/api/telnyx/gather?${query}`, { method: "GET" }),
+  );
+  const signed = await voice.gather(signedGetRequest("/api/telnyx/gather", query));
+  const xml = await signed.text();
+
+  assert.equal(unsigned.status, 403);
+  assert.equal(signed.status, 200);
+  assert.match(xml, new RegExp(SUCCESS_COPY.replaceAll(".", "\\.")));
+  assert.match(xml, /<Say voice="Telnyx\.KokoroTTS\.af_heart">/);
+  assert.equal(leads.length, 1);
+  assert.equal(leads[0]?.callId, "CA-gather-get");
 });

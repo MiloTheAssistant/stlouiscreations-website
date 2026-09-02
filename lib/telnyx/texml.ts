@@ -1,10 +1,11 @@
 import {
-  ASSISTANT_INSTRUCTIONS,
   FAILOVER_COPY,
   GATHER_PARAMETERS,
   GREETING_COPY,
   SUCCESS_COPY,
 } from "@/lib/telnyx/script";
+
+export const ATTENDANT_VOICE = "Telnyx.KokoroTTS.af_heart";
 
 function escapeXml(value: string) {
   return value
@@ -34,7 +35,7 @@ export function hangupTexml() {
 
 export function successTexml() {
   return texmlDocument(
-    `  <Say voice="Polly.Joanna">${escapeXml(SUCCESS_COPY)}</Say>\n  <Hangup/>`,
+    `  <Say voice="${ATTENDANT_VOICE}">${escapeXml(SUCCESS_COPY)}</Say>\n  <Hangup/>`,
   );
 }
 
@@ -44,7 +45,7 @@ export function failoverRecordTexml(recordActionUrl: string) {
   // recordingStatusCallback to this URL — Telnyx would POST twice.
   return texmlDocument(
     [
-      `  <Say voice="Polly.Joanna">${escapeXml(FAILOVER_COPY)}</Say>`,
+      `  <Say voice="${ATTENDANT_VOICE}">${escapeXml(FAILOVER_COPY)}</Say>`,
       `  <Record action="${action}" method="POST" maxLength="90" timeout="5" playBeep="true"/>`,
       "  <Hangup/>",
     ].join("\n"),
@@ -53,17 +54,18 @@ export function failoverRecordTexml(recordActionUrl: string) {
 
 export function inboundGatherTexml(gatherActionUrl: string) {
   const parameters = JSON.stringify(GATHER_PARAMETERS, null, 2);
+  // TeXML AIGather accepts action and method only. userResponseTimeoutMs is
+  // Voice API. Assistant is not a documented TeXML noun and needs a BYO key.
   return texmlDocument(
     [
-      `  <AIGather action="${escapeXml(gatherActionUrl)}" method="POST" userResponseTimeoutMs="20000">`,
+      `  <AIGather action="${escapeXml(gatherActionUrl)}" method="POST">`,
       `    <Greeting>${escapeXml(GREETING_COPY)}</Greeting>`,
-      `    <Voice name="Polly.Joanna"/>`,
+      `    <Voice name="${ATTENDANT_VOICE}"/>`,
       "    <Parameters>",
       "      <![CDATA[",
       parameters,
       "      ]]>",
       "    </Parameters>",
-      `    <Assistant instructions="${escapeXml(ASSISTANT_INSTRUCTIONS)}"/>`,
       "  </AIGather>",
     ].join("\n"),
   );
